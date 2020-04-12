@@ -1,2 +1,2 @@
-# Client boilerplate
+# Educational Package
 
