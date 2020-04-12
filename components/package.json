@@ -7,7 +7,7 @@
   "scripts": {
     "start": "npm run start:storybook",
     "start:storybook": "start-storybook -p 6006 -s ./Image",
-    "build-storybook": "build-storybook -c .storybook -o .storybook-build",
+    "build-storybook": "build-storybook -c .storybook -o .storybook-build -s ./Image",
     "build": "tsc -p tsconfig.prod.json",
     "generate-todos": "leasot -x --reporter markdown 'src/**/*.ts' > TODO.md",
     "test": "jest",
