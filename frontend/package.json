@@ -13,6 +13,12 @@
     "start:production": "NODE_ENV=production node server.js"
   },
   "dependencies": {
+    "@iin/typeface-iran": "file:../fonts/IRAN",
+    "@iin/typeface-iran-kharazmi": "file:../fonts/IRANKharazmi",
+    "@iin/typeface-iran-rounded": "file:../fonts/IRANRounded",
+    "@iin/typeface-iran-sans": "file:../fonts/IRANSans",
+    "@iin/typeface-iran-sharp": "file:../fonts/IRANSharp",
+    "@iin/typeface-iran-yekan": "file:../fonts/IRANYekan",
     "@apollo/react-hooks": "^3.1.3",
     "@apollo/react-ssr": "^3.1.3",
     "@material-ui/core": "^4.8.3",
