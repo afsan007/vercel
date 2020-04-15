@@ -3,9 +3,9 @@ import { Header } from "./Header";
 
 export default {
   title: "NavBar / Header",
-  component: Header,
+  component: Header
 };
 
-export const HeaderH = () => {
+export const HeaderComponent = () => {
   return <Header src="Logo.png" />;
 };

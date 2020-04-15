@@ -7,6 +7,10 @@ const ToolBar = styled(Toolbar)`
   padding-left: 14px;
 `;
 
+const Img = styled.img`
+  width: 110px;
+`;
+
 export interface HeaderProps {
   src: string;
 }
@@ -15,7 +19,7 @@ export const Header = ({ src }: HeaderProps) => {
   return (
     <AppBar>
       <ToolBar>
-        <img src={src} width="110px" />
+        <Img src={src} />
       </ToolBar>
     </AppBar>
   );

@@ -14,6 +14,12 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@iin/typeface-iran": "file:../fonts/IRAN",
+    "@iin/typeface-iran-kharazmi": "file:../fonts/IRANKharazmi",
+    "@iin/typeface-iran-rounded": "file:../fonts/IRANRounded",
+    "@iin/typeface-iran-sans": "file:../fonts/IRANSans",
+    "@iin/typeface-iran-sharp": "file:../fonts/IRANSharp",
+    "@iin/typeface-iran-yekan": "file:../fonts/IRANYekan",
     "@atlaskit/datetime-picker": "^9.2.2",
     "@atlaskit/field-base": "^13.0.15",
     "@atlaskit/icon": "^19.0.11",

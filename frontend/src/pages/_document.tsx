@@ -2,11 +2,17 @@
 // Event handlers like onClick can't be added to this file
 
 // ./pages/_document.js
-import React from 'react';
-import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
-import { ServerStyleSheets as MuiServerStyleSheets } from '@material-ui/styles';
-import { ServerStyleSheet as SCServerStyleSheet } from 'styled-components';
-import muiTheme from '$components/theme/muiTheme';
+import React from "react";
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+} from "next/document";
+import { ServerStyleSheets as MuiServerStyleSheets } from "@material-ui/styles";
+import { ServerStyleSheet as SCServerStyleSheet } from "styled-components";
+import muiTheme from "$components/theme/muiTheme";
 
 class MyDocument extends Document {
   render = () => (
