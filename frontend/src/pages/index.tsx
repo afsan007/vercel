@@ -1,8 +1,27 @@
 import React from "react";
 import { NextPage } from "next";
 import Page from "$components/layout/Page";
-import { Banner } from "bp-components";
+import { Banner, Presnter , Ipresenter } from "bp-components";
 import Link from "next/link";
+
+const presnters: Ipresenter[] = [{
+  name:"سینا ماشینی",
+  education: "دانشگاه آزاد",
+  image: "profile.jpg"
+},{
+  name:"سینا ماشینی",
+  education: "دانشگاه آزاد",
+  image: "profile.jpg"
+},{
+  name:"سینا ماشینی",
+  education: "دانشگاه آزاد",
+  image: "profile.jpg"
+},{
+  name:"سینا ماشینی",
+  education: "دانشگاه آزاد",
+  image: "profile.jpg"
+},
+];
 
 const Home: NextPage<{ test: string }> = () => {
   const renderAddItemLink = (children: JSX.Element) => (
@@ -16,6 +35,7 @@ const Home: NextPage<{ test: string }> = () => {
         linktitle="بیشتر بخوانید > "
         linkWrapper={renderAddItemLink}
       ></Banner>
+      <Presnter presnters={presnters}/>
     </Page>
   );
 };

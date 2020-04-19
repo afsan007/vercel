@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
-import Head from 'next/head';
-import { bool, node, InferProps } from 'prop-types';
-import { Header } from 'bp-components';
+import React, { FC } from "react";
+import Head from "next/head";
+import { bool, node, InferProps } from "prop-types";
+import { Header } from "bp-components";
 
 type PropTypes = InferProps<typeof propTypes>;
 
@@ -11,6 +11,7 @@ const Page: FC<PropTypes> = (props) => (
       <Head>
         <title>Educational Package</title>
         <link rel="icon" href="favicon.ico" />
+        <link rel="stylsheet" href="./global.css" />
       </Head>
     )}
     <Header src="Logo.png" />
