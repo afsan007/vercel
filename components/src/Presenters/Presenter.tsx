@@ -2,9 +2,8 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import styled from "styled-components";
-import { Ipresenter } from './interfaces/presenter';
 import { TextTitle } from "../Titles/TextTitle";
-import { SimplePresenter } from "./SimplePresenter";
+import { SimplePresenter, SimplePresenterProps } from "../Card/SimplePresenterCard/SimplePresenter";
 
 const BodyContainer = styled(Container)`
   margin-top: 20px;
@@ -16,16 +15,17 @@ const BodyGrid = styled(Grid)`
 
 
 export interface PresnterProps {
-  presnters: Ipresenter[]
+  presnters: SimplePresenterProps[]
 };
 
-const renderPresenters: ({ presnters }: PresnterProps) => JSX.Element[] = function({ presnters }){
-  return presnters.map(function (presenter) {
+const renderPresenters = ({ presnters }: PresnterProps) => {
+  return presnters.map(function (presenter, index) {
   return(             
             <SimplePresenter
-              name={presenter.name}
-              education={presenter.education}
-              image={presenter.image}
+              key = {index}  
+              name = {presenter.name}
+              education = {presenter.education}
+              image = {presenter.image}
           />
         );
 });

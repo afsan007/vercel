@@ -8,6 +8,7 @@ const MyContainer = styled(Container)`
 `;
 
 const SectionTitle = styled.span`
+  font-family: "IRANSans";
   font-size: 21px;
   font-weight: bold;
   color: #323232

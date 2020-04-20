@@ -1,13 +1,13 @@
 import React from "react";
-import { Ipresenter } from './interfaces/presenter';
 import { Presnter } from "./Presenter";
+import { SimplePresenterProps } from "../Card/SimplePresenterCard/SimplePresenter"
 
 export default {
-  title: "Presenter / PresenterStory",
+  title: "Presenters / Presenters",
   component: Presnter,
 };
 
-const presnters: Ipresenter[] = [{
+const presnters: SimplePresenterProps[] = [{
   name:"سینا ماشینی",
   education: "دانشگاه آزاد",
   image: "profile.jpg"
