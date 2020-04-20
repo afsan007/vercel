@@ -2,7 +2,7 @@ import React from "react";
 import { SimplePresenter } from "./SimplePresenter";
 
 export default {
-    title: "Card / SimplePresenterCard",
+    title: "ATOMS | Card / SimplePresenterCard",
     component: SimplePresenter
 };
 

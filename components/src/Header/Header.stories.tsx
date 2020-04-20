@@ -2,7 +2,7 @@ import React from "react";
 import { Header } from "./Header";
 
 export default {
-  title: "NavBar / Header",
+  title: "Layout Components | NavBar / Header",
   component: Header
 };
 
