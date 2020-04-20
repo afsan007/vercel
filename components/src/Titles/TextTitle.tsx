@@ -10,6 +10,7 @@ const SectionTitle = styled.span`
 
 export interface TextTitleProps {
   title: string;
+  direction: string | null;
 }
 
 export const TextTitle = ({ title }: TextTitleProps) => {
