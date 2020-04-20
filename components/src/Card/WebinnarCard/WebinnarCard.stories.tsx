@@ -2,7 +2,7 @@ import React from "react";
 import { WebbinarCard } from "./WebinnarCard";
 
 export default {
-    title: "Card / WebbinarCard",
+    title: "ATOMS | Card / WebbinarCard",
     component: WebbinarCard
 };
 

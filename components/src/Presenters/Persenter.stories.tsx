@@ -3,7 +3,7 @@ import { Presnter } from "./Presenter";
 import { SimplePresenterProps } from "../Card/SimplePresenterCard/SimplePresenter"
 
 export default {
-  title: "Presenters / Presenters",
+  title: "Section Components | Presenters / Presenters",
   component: Presnter,
 };
 
