@@ -2,7 +2,7 @@ import React from "react";
 import { TextTitle } from "./TextTitle";
 
 export default {
-  title: "ATOM | Title / TextTitle",
+  title: "ATOMS | Title / TextTitle",
   component: TextTitle,
 };
 
