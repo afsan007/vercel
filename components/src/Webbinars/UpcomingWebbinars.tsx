@@ -29,7 +29,9 @@ const renderWebbinars = ({ webbinars }: UpComingWebbbinarsProps) => {
                     presenter = {webbinar.presenter}
                     presenterImage = {webbinar.presenterImage}
                     keywords = {webbinar.keywords}
-                    date = {webbinar.date} />
+                    date = {webbinar.date}
+                    link ={webbinar.link}
+                     />
               );
   });
 }
@@ -46,7 +48,7 @@ export const UpComingWebbbinars = ({webbinars}: UpComingWebbbinarsProps) => {
               justify="center"
               alignItems="flex-start"
             >
-              <TextTitle title="وبینار ها" />
+              <TextTitle title="وبینار ها" dir="center"/>
                 {renderWebbinars({webbinars})}   
             </Mygrid> 
           </Container>                       

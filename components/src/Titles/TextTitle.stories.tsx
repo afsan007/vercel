@@ -7,5 +7,5 @@ export default {
 };
 
 export const Title = () => {
-  return <TextTitle title="Presenter" />;
+  return <TextTitle title="Presenter" dir="center"/>;
 };

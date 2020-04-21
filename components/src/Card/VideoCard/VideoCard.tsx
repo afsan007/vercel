@@ -10,7 +10,7 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 const VideoCardComponent = styled(Card)`
   font-family: "IRANSans";
   width: 243px;
-  height: 240px;
+  height: 255px;
   border-radius: 5px;
   box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
@@ -85,7 +85,7 @@ export const VideoCard = ({
             <MyMedia>
                 <CardMedia 
                   component = "iframe"
-                  src={video}
+                  src = {video}
                   width = "220"
                   height = "140"
                   title = {desc}

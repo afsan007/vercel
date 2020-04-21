@@ -4,7 +4,7 @@ import Container from "@material-ui/core/Container";
 import styled from "styled-components";
 
 const MyContainer = styled(Container)`
-  text-align: center;
+  text-align: ${props => props.dir}
 `;
 
 const SectionTitle = styled.span`
@@ -14,14 +14,16 @@ const SectionTitle = styled.span`
   color: #323232
 `;
 
+
+
 export interface TextTitleProps {
   title: string;
-  direction: string | null;
+  dir: string;
 }
 
-export const TextTitle = ({ title }: TextTitleProps) => {
+export const TextTitle = ({ title, dir}: TextTitleProps) => {
   return (
-    <MyContainer>
+    <MyContainer dir = {dir} >
       <Typography variant="body2" color="textSecondary">
         <SectionTitle>{title}</SectionTitle>
       </Typography>

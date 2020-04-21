@@ -23,6 +23,10 @@ const presnters: SimplePresenterProps[] = [{
 },
 ];
 
+const renderWebinarLink = (children: JSX.Element) =>(
+  <Link href="/webinnar">{children}</Link>
+)
+
 const webbinars: WebbinarCardProps[] = [
   {
   name: "وبینار برای گراف کیوال",
@@ -30,7 +34,8 @@ const webbinars: WebbinarCardProps[] = [
   presenter:"سینا ماشینی",
   presenterImage:"profile.jpg",
   keywords:["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-  date:"1.10.1399"
+  date:"1.10.1399",
+  link: renderWebinarLink
 },
 {
   name: "وبینار برای گراف کیوال",
@@ -38,7 +43,8 @@ const webbinars: WebbinarCardProps[] = [
   presenter:"سینا ماشینی",
   presenterImage:"profile.jpg",
   keywords:["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-  date:"1.10.1399"
+  date:"1.10.1399",
+  link: renderWebinarLink
 },
 {
   name: "وبینار برای گراف کیوال",
@@ -46,14 +52,19 @@ const webbinars: WebbinarCardProps[] = [
   presenter:"سینا ماشینی",
   presenterImage:"profile.jpg",
   keywords:["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-  date:"1.10.1399"
+  date:"1.10.1399",
+  link: renderWebinarLink
 }
 ]
 
+const renderAddItemLink = (children: JSX.Element) => (
+  <Link href="/">{children}</Link>
+);
+
+
+
+
 const Home: NextPage<{ test: string }> = () => {
-  const renderAddItemLink = (children: JSX.Element) => (
-    <Link href="/">{children}</Link>
-  );
 
   return (
     <Page>
