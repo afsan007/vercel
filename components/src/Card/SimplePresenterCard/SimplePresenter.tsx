@@ -55,7 +55,7 @@ export const SimplePresenter = ({
   education,
 }: SimplePresenterProps) => {
   return (
-      <Grid item xl={2} lg={2} md={4} sm={4} xs={12} >
+      <Grid item xl={3} lg={3} md={3} sm={6} xs={12} >
         <PresenterCard>
           <MyMedia image={image} title={name} />
           <CardContent>

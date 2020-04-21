@@ -34,7 +34,7 @@ const renderPresenters = ({ presnters }: PresnterProps) => {
 export const Presnter = ({presnters}: PresnterProps) => {
   return (
     <BodyContainer>
-      <TextTitle title="ارائه دهندگان" />
+      <TextTitle title="ارائه دهندگان" dir="center" />
       <BodyGrid
         item
         xs={12}
