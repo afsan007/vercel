@@ -21,7 +21,8 @@ export interface UpComingWebbbinarsProps {
 
 const renderWebbinars = ({ webbinars }: UpComingWebbbinarsProps) => {
       return webbinars.map(function (webbinar,index) {
-        return(             
+        return(         
+          <Grid item key = {index} xl={4} lg={4} md={4} sm={4} xs={12}>
               <WebbinarCard
                     key = {index}                    
                     name = {webbinar.name}
@@ -30,9 +31,10 @@ const renderWebbinars = ({ webbinars }: UpComingWebbbinarsProps) => {
                     presenterImage = {webbinar.presenterImage}
                     keywords = {webbinar.keywords}
                     date = {webbinar.date}
-                    link ={webbinar.link}
+                    link = {webbinar.link}
                      />
-              );
+              </Grid>    
+              );          
   });
 }
 

@@ -79,8 +79,7 @@ export const VideoCard = ({
   video,
   duration,
 }: VideoCardProps) => {
-  return (
-      <Grid item xl={4} lg={4} md={4} sm={4} xs={12} >
+  return (      
         <VideoCardComponent>
             <MyMedia>
                 <CardMedia 
@@ -110,7 +109,6 @@ export const VideoCard = ({
                 </FatherGrid>
           </CardContent>
         </VideoCardComponent>
-      </Grid>
   );
 };
 
