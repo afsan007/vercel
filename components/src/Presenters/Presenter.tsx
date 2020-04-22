@@ -20,13 +20,15 @@ export interface PresnterProps {
 
 const renderPresenters = ({ presnters }: PresnterProps) => {
   return presnters.map(function (presenter, index) {
-  return(             
-            <SimplePresenter
-              key = {index}  
-              name = {presenter.name}
-              education = {presenter.education}
-              image = {presenter.image}
-          />
+  return(        
+        <Grid item key = {index} xl={3} lg={3} md={3} sm={6} xs={12} >     
+                <SimplePresenter
+                  key = {index}  
+                  name = {presenter.name}
+                  education = {presenter.education}
+                  image = {presenter.image}
+              />
+          </Grid>
         );
 });
 }

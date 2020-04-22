@@ -91,8 +91,7 @@ export interface WebbinarCardProps {
 
 
 export const WebbinarCard: FC<WebbinarCardProps> = ({ name, image, presenter, presenterImage, keywords, date, link}) => {
-    return (
-        <Grid item xl={4} lg={4} md={4} sm={4} xs={12}>
+    return (        
             <WebCard>
             {link(
                 <MyMedia
@@ -138,7 +137,6 @@ export const WebbinarCard: FC<WebbinarCardProps> = ({ name, image, presenter, pr
                         </Grid>                                         
                 </FatherGrid>                         
                 </WebCard>
-            </Grid>
     );
 };
 

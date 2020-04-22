@@ -30,12 +30,14 @@ export interface VideosCardProps {
 const renderVideos = ({ videos }: VideosCardProps) => {
       return videos.map(function (video, index) {
         return(             
+          <Grid key = {index} item xl={4} lg={4} md={4} sm={4} xs={12} >
               <VideoCard
                     key = {index}   
                     desc = {video.desc}
                     video = {video.video}
                     duration = {video.duration}              
                 />
+            </Grid>
               );
   });
 }
