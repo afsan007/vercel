@@ -40,7 +40,7 @@ export const Services = ({ services }: ServiceProps) => {
   return (
     <Root container direction="column" justify="center" alignItems="center">
       <Title item xl={12} xs={10} sm={4} md={6} lg={12}>
-        <TextTitle title="سرویس ها" />
+        <TextTitle title="سرویس ها" dir="center" />
       </Title>
 
       <Grid item xs={8} sm={4} md={12} lg={12}>
