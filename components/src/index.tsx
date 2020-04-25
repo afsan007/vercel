@@ -4,4 +4,5 @@ export * from "./Header/Header";
 export * from "./Banner/Banner";
 export * from "./Presenters";
 export * from "./Titles/TextTitle";
-export * from './Webbinars';
+export * from "./Webbinars";
+export * from "./Services";
