@@ -30,6 +30,7 @@ const MyMedia = styled(CardMedia)`
     width: 231px;
     height: 145px;
     margin: 0 auto;
+    cursor: pointer;
     object-fit: contain; 
 `;
 
@@ -50,6 +51,7 @@ const WebbinarName = styled(Typography)`
     font-size: 18px;
     letter-spacing: -0.29px;
     color: #323232;
+    cursor: pointer;
     margin: 40px 15px 0px 0px ;
 `;
 
@@ -84,21 +86,24 @@ export interface WebbinarCardProps {
     presenterImage: string;
     keywords: string[];
     date: string;
+    link: (children: JSX.Element) => JSX.Element;
 }
 
 
-export const WebbinarCard: FC<WebbinarCardProps> = ({ name, image, presenter, presenterImage, keywords, date}) => {
-    return (
-        <Grid item xl={4} lg={4} md={4} sm={4} xs={12}>
+export const WebbinarCard: FC<WebbinarCardProps> = ({ name, image, presenter, presenterImage, keywords, date, link}) => {
+    return (        
             <WebCard>
+            {link(
                 <MyMedia
                     image={image}
                     title={name}
                 />   
+                )}
                 <PresenterAvatar aria-label="recipe" src={presenterImage} title={presenter} />                    
+                {link(
                 <WebbinarName>
                     {name}
-                </WebbinarName>  
+                </WebbinarName>)}
                 <FatherGrid item xs={12} container direction="row" justify="flex-start" alignItems="baseline">
                     <Grid item xs >
                         <Title>
@@ -132,7 +137,6 @@ export const WebbinarCard: FC<WebbinarCardProps> = ({ name, image, presenter, pr
                         </Grid>                                         
                 </FatherGrid>                         
                 </WebCard>
-            </Grid>
     );
 };
 

@@ -7,6 +7,9 @@ export default {
     component: UpComingWebbbinars
 };
 
+const renderWebinarLink = (children: JSX.Element) =>(
+    <a href="#">{children}</a>
+  )
 
 export const Webbinars = () => {
     const webbinars: WebbinarCardProps[] = [
@@ -16,7 +19,8 @@ export const Webbinars = () => {
         presenter:"سینا ماشینی",
         presenterImage:"profile.jpg",
         keywords:["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-        date:"1.10.1399"
+        date:"1.10.1399",
+        link: renderWebinarLink
     },
     {
         name: "وبینار برای گراف کیوال",
@@ -24,7 +28,8 @@ export const Webbinars = () => {
         presenter:"سینا ماشینی",
         presenterImage:"profile.jpg",
         keywords:["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-        date:"1.10.1399"
+        date:"1.10.1399",
+        link: renderWebinarLink
     },
     {
         name: "وبینار برای گراف کیوال",
@@ -32,7 +37,8 @@ export const Webbinars = () => {
         presenter:"سینا ماشینی",
         presenterImage:"profile.jpg",
         keywords:["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-        date:"1.10.1399"
+        date:"1.10.1399",
+        link: renderWebinarLink
     }
 ]
     return <UpComingWebbbinars webbinars = {webbinars} />

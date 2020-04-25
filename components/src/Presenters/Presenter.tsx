@@ -20,31 +20,33 @@ export interface PresnterProps {
 
 const renderPresenters = ({ presnters }: PresnterProps) => {
   return presnters.map(function (presenter, index) {
-  return(             
-            <SimplePresenter
-              key = {index}  
-              name = {presenter.name}
-              education = {presenter.education}
-              image = {presenter.image}
-          />
+  return(        
+        <Grid item key = {index} xl={3} lg={3} md={3} sm={3} xs={12} >     
+                <SimplePresenter
+                  key = {index}  
+                  name = {presenter.name}
+                  education = {presenter.education}
+                  image = {presenter.image}
+              />
+          </Grid>
         );
 });
 }
 
 export const Presnter = ({presnters}: PresnterProps) => {
   return (
-    <BodyContainer>
-      <TextTitle title="ارائه دهندگان" />
-      <BodyGrid
-        item
-        xs={12}
-        container
-        direction="row"
-        justify="center"
-        alignItems="flex-start"
-      >
-         {renderPresenters({presnters})}
-      </BodyGrid>
+    <BodyContainer maxWidth="md">
+      <TextTitle title="ارائه دهندگان" dir="center" />
+        <BodyGrid
+          item
+          xs={12}
+          container
+          direction="row"
+          justify="center"
+          alignItems="flex-start"
+        >
+           {renderPresenters({presnters})}
+        </BodyGrid>
     </BodyContainer>
   );
 };

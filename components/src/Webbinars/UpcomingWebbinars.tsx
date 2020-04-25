@@ -21,7 +21,8 @@ export interface UpComingWebbbinarsProps {
 
 const renderWebbinars = ({ webbinars }: UpComingWebbbinarsProps) => {
       return webbinars.map(function (webbinar,index) {
-        return(             
+        return(         
+          <Grid item key = {index} xl={4} lg={4} md={4} sm={4} xs={12}>
               <WebbinarCard
                     key = {index}                    
                     name = {webbinar.name}
@@ -29,8 +30,11 @@ const renderWebbinars = ({ webbinars }: UpComingWebbbinarsProps) => {
                     presenter = {webbinar.presenter}
                     presenterImage = {webbinar.presenterImage}
                     keywords = {webbinar.keywords}
-                    date = {webbinar.date} />
-              );
+                    date = {webbinar.date}
+                    link = {webbinar.link}
+                     />
+              </Grid>    
+              );          
   });
 }
 
@@ -39,14 +43,15 @@ export const UpComingWebbbinars = ({webbinars}: UpComingWebbbinarsProps) => {
         <ContainerSection
             container
         >
-          <Container maxWidth="lg">
+          <Container maxWidth="md">
             <Mygrid
               container
               direction="row"
               justify="center"
               alignItems="flex-start"
+              spacing={0}
             >
-              <TextTitle title="وبینار ها" />
+              <TextTitle title="وبینار ها" dir="center"/>
                 {renderWebbinars({webbinars})}   
             </Mygrid> 
           </Container>                       
