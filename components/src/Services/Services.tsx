@@ -8,9 +8,11 @@ import {
 } from "../Card/ServicesCard/ServiceCard";
 
 const Root = styled(Grid)`
-  background-image: url("HowTo.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  @media only screen and (min-width: 1150px) {
+    background-image: url("HowTo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 `;
 
 const BodyGrid = styled(Grid)`
