@@ -7,8 +7,8 @@ import styled from "styled-components";
 
 
 const ContainerSection = styled(Grid)`
+    margin-top: 50px;
     min-height: 507px;
-
 `;
 
 const VideoSectionTitle = styled.div`
@@ -30,7 +30,7 @@ export interface VideosCardProps {
 const renderVideos = ({ videos }: VideosCardProps) => {
       return videos.map(function (video, index) {
         return(             
-          <Grid key = {index} item xl={4} lg={4} md={4} sm={4} xs={12} >
+          <Grid key = {index} item xl={3} lg={3} md={4} sm={4} xs={12} >
               <VideoCard
                     key = {index}   
                     desc = {video.desc}
@@ -56,6 +56,7 @@ export const VideoCards = ({videos}: VideosCardProps) => {
               direction="row"
               justify="center"
               alignItems="center"
+              spacing={0}
             >
               {renderVideos({videos})}   
             </Mygrid> 
