@@ -21,7 +21,7 @@ export interface PresnterProps {
 const renderPresenters = ({ presnters }: PresnterProps) => {
   return presnters.map(function (presenter, index) {
   return(        
-        <Grid item key = {index} xl={3} lg={3} md={3} sm={6} xs={12} >     
+        <Grid item key = {index} xl={3} lg={3} md={3} sm={3} xs={12} >     
                 <SimplePresenter
                   key = {index}  
                   name = {presenter.name}
@@ -35,18 +35,18 @@ const renderPresenters = ({ presnters }: PresnterProps) => {
 
 export const Presnter = ({presnters}: PresnterProps) => {
   return (
-    <BodyContainer>
+    <BodyContainer maxWidth="md">
       <TextTitle title="ارائه دهندگان" dir="center" />
-      <BodyGrid
-        item
-        xs={12}
-        container
-        direction="row"
-        justify="center"
-        alignItems="flex-start"
-      >
-         {renderPresenters({presnters})}
-      </BodyGrid>
+        <BodyGrid
+          item
+          xs={12}
+          container
+          direction="row"
+          justify="center"
+          alignItems="flex-start"
+        >
+           {renderPresenters({presnters})}
+        </BodyGrid>
     </BodyContainer>
   );
 };

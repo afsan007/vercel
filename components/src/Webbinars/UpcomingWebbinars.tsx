@@ -43,12 +43,13 @@ export const UpComingWebbbinars = ({webbinars}: UpComingWebbbinarsProps) => {
         <ContainerSection
             container
         >
-          <Container maxWidth="lg">
+          <Container maxWidth="md">
             <Mygrid
               container
               direction="row"
               justify="center"
               alignItems="flex-start"
+              spacing={0}
             >
               <TextTitle title="وبینار ها" dir="center"/>
                 {renderWebbinars({webbinars})}   

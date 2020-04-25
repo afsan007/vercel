@@ -30,7 +30,7 @@ export interface VideosCardProps {
 const renderVideos = ({ videos }: VideosCardProps) => {
       return videos.map(function (video, index) {
         return(             
-          <Grid key = {index} item xl={3} lg={3} md={4} sm={4} xs={12} >
+          <Grid key = {index} item xl={3} lg={4} md={4} sm={4} xs={12} >
               <VideoCard
                     key = {index}   
                     desc = {video.desc}
@@ -47,7 +47,7 @@ export const VideoCards = ({videos}: VideosCardProps) => {
         <ContainerSection
             container
         >
-          <Container maxWidth="lg">
+          <Container maxWidth="md">
             <VideoSectionTitle>
               <TextTitle title = "ویدیوها" dir = "right" />
             </VideoSectionTitle>
