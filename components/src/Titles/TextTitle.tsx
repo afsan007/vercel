@@ -1,4 +1,6 @@
 import React from "react";
+import Container from '@material-ui/core/Container';
+
 import styled from "styled-components";
 
 const MyContainer = styled(Container)`
@@ -22,9 +24,7 @@ export interface TextTitleProps {
 export const TextTitle = ({ title, dir}: TextTitleProps) => {
   return (
     <MyContainer dir = {dir} >
-      <Typography variant="body2" color="textSecondary">
         <SectionTitle>{title}</SectionTitle>
-      </Typography>
     </MyContainer>
   );
 };
