@@ -8,10 +8,11 @@ import {
 } from "../Card/ServicesCard/ServiceCard";
 
 const Root = styled(Grid)`
-  @media only screen and (min-width: 1150px) {
-    background-image: url("HowTo.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url("HowTo.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  @media (max-width: 768px) {
+    background:transparent;
   }
 `;
 
@@ -20,6 +21,9 @@ const BodyGrid = styled(Grid)`
 `;
 const Title = styled(Grid)`
   margin-top: 160px;
+  @media (max-width: 768px) {
+    margin-top: 80px;
+  }
 `;
 
 export interface ServiceProps {
