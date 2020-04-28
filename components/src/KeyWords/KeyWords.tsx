@@ -5,10 +5,17 @@ import Chip from '@material-ui/core/Chip';
 
 const CircleKeyWords = styled(Chip)`
     font-family: "IRANSans";
+    font-size:10px;
     background-color: #bde1f6;
-    color: #323232;
     margin-left:5px;
     margin-bottom:5px;
+    font-size: 10px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.41px;
+    color: #323232;
 `;
 
 export interface keyWordsProps {

@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 
 const ContainerSection = styled(Grid)`
-    margin-top: 50px;
+    margin-top: 20px;
     min-height: 507px;
 `;
 
