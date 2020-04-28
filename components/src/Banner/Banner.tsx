@@ -13,6 +13,7 @@ const Root = styled(Grid)`
   height: 434px;
   background-size: cover;
   background-position: right bottom, left top;
+  margin-top: 100px;
 `;
 
 export interface BannerProps {
@@ -26,7 +27,7 @@ export const Banner: FC<BannerProps> = ({
   title,
   description,
   linktitle,
-  linkWrapper
+  linkWrapper,
 }) => {
   return (
     <Root container direction="row" justify="flex-start" alignItems="center">

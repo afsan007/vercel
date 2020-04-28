@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 
 const ToolBar = styled(Toolbar)`
   background-color: #ffffff;
-  height: 104px;
+  height: 100px;
 `;
 
 const Img = styled.img`
