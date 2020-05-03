@@ -3,7 +3,7 @@ import { UpComingWebbbinars } from "./UpcomingWebbinars";
 import { WebbinarCardProps } from "../Card/WebinnarCard/WebinnarCard";
 
 export default {
-    title: "Section Components | UpCommingWebinnars / Webbinars",
+    title: "Section Components | Webbinar / UpCommingWebinnars ",
     component: UpComingWebbbinars
 };
 
