@@ -14,6 +14,7 @@ const renderWebinarLink = (children: JSX.Element) => (
 
 const webbinars: WebbinarCardProps[] = [
   {
+    id: "5eaff0eb1d2a5f00086a8921",
     name: "وبینار برای گراف کیوال",
     image: "gph.png",
     presenter: "سینا ماشینی",
@@ -23,6 +24,7 @@ const webbinars: WebbinarCardProps[] = [
     link: renderWebinarLink,
   },
   {
+    id: "5eaff0eb1d2a5f00086a8921",
     name: "وبینار برای گراف کیوال",
     image: "gph.png",
     presenter: "سینا ماشینی",
@@ -32,6 +34,7 @@ const webbinars: WebbinarCardProps[] = [
     link: renderWebinarLink,
   },
   {
+    id: "5eaff0eb1d2a5f00086a8921",
     name: "وبینار برای گراف کیوال",
     image: "gph.png",
     presenter: "سینا ماشینی",
@@ -41,6 +44,7 @@ const webbinars: WebbinarCardProps[] = [
     link: renderWebinarLink,
   },
   {
+    id: "5eaff0eb1d2a5f00086a8921",
     name: "وبینار برای گراف کیوال",
     image: "gph.png",
     presenter: "سینا ماشینی",
@@ -50,6 +54,7 @@ const webbinars: WebbinarCardProps[] = [
     link: renderWebinarLink,
   },
   {
+    id: "5eaff0eb1d2a5f00086a8921",
     name: "وبینار برای گراف کیوال",
     image: "gph.png",
     presenter: "سینا ماشینی",
@@ -59,6 +64,7 @@ const webbinars: WebbinarCardProps[] = [
     link: renderWebinarLink,
   },
   {
+    id: "5eaff0eb1d2a5f00086a8921",
     name: "وبینار برای گراف کیوال",
     image: "gph.png",
     presenter: "سینا ماشینی",
