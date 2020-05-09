@@ -7,3 +7,4 @@ export * from "./Titles/TextTitle";
 export * from "./Webbinars";
 export * from "./Services";
 export * from './VideoCards';
+export * from './OtherFile';

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -9,9 +9,9 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 
 const VideoCardComponent = styled(Card)`
   font-family: "IRANSans";
-  width: 243px;
-  height: 255px;
-  border-radius: 5px;background-color: white;
+  width: 180px;
+  height: 195px;
+  border-radius: 5px;
   box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   padding: 13px 5px 13px 5px;
@@ -20,12 +20,16 @@ const VideoCardComponent = styled(Card)`
 `;
 
 const MyMedia = styled.div`
-  font-family: "IRANSans";
-  width: 220px;
-  height: 140px;
+  width: 161px;
+  height: 103px;
   margin: 0 auto;
   object-fit: contain;
 `;
+
+const ImageFile = styled(CardMedia)`
+    width: 161px;
+    height: 103px;
+`
 
 const VideoDesc = styled(Typography)`
   font-family: "IRANSans";
@@ -33,25 +37,17 @@ const VideoDesc = styled(Typography)`
   font-size: 12px;
   letter-spacing: -0.29px;
   color: #323232;
-  height:50px;
-  margin-bottom: 5px;
+  height:30px;
 `;
 
 const FatherGrid = styled(Grid)`
-    margin-top: 10px;
+    margin-top: 5px;
     font-family: "IRANSans";
 `
 
-const Title = styled.span`
+const Desc = styled.span`
     font-family: "IRANSans";
-    font-size: 12px;
-    letter-spacing: -0.29px;
-    color: #c2c2c2;
-`;
-
-const Duration = styled.span`
-    font-family: "IRANSans";
-    font-size: 14px;
+    font-size: 10px;
     font-weight: bold;
     letter-spacing: -0.29px;
     color: #7a7a7a;
@@ -68,41 +64,32 @@ const Download = styled.a`
 `
 
 
-export interface VideoCardProps {
-  desc: string;
-  video: string;
-  duration: string;
+export interface OtherFileCardProps {
+  title: string;
+  type: string;
+  src: string;
+  image?: string;
 }
 
-export const VideoCard = ({
-  desc,
-  video,
-  duration,
-}: VideoCardProps) => {
-  return (      
+export const OtherFileCard: FC<OtherFileCardProps> = ({title, type, src, image = "File.jpg"}) =>{
+   return (     
         <VideoCardComponent>
             <MyMedia>
-                <CardMedia 
-                  component = "iframe"
-                  src = {video}
-                  width = "220"
-                  height = "140"
-                  title = {desc}
+                <ImageFile 
+                  image = {image}
+                  title = {title}
                 />
           </MyMedia>
           <CardContent>
-            <VideoDesc>{desc}</VideoDesc>
+            <VideoDesc>{title}</VideoDesc>
             <FatherGrid item xs={12} container direction="row" justify="flex-start" alignItems="flex-start">
-                        <Grid item xs={6}>
-                            <Title>
-                                  مدت: 
-                            </Title>   
-                            <Duration>
-                                {duration}
-                            </Duration>                    
+                        <Grid item xs={6}> 
+                            <Desc>
+                                {type}
+                            </Desc>                    
                         </Grid>
                         <Grid item xs={6}>
-                            <Download href={video}>
+                            <Download href={src}>
                                 <GetAppIcon/>
                             </Download>
                         </Grid>
@@ -112,4 +99,4 @@ export const VideoCard = ({
   );
 };
 
-export default VideoCard;
+export default OtherFileCard;
