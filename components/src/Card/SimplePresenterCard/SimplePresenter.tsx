@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
@@ -13,11 +13,12 @@ const PresenterCard = styled(Card)`
   box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   padding: 13px 5px 13px 5px;
-  margin:0 auto;
+  margin: 0 auto;
   margin-bottom: 10px;
 `;
 
 const MyMedia = styled(CardMedia)`
+  cursor: pointer;
   font-family: "IRANSans";
   width: 169px;
   height: 130px;
@@ -26,6 +27,7 @@ const MyMedia = styled(CardMedia)`
 `;
 
 const FullName = styled(Typography)`
+  cursor: pointer;
   font-family: "IRANSans";
   text-align: right;
   font-size: 18px;
@@ -46,21 +48,23 @@ export interface SimplePresenterProps {
   name: string;
   image: string;
   education: string;
+  link: (children: JSX.Element) => JSX.Element;
 }
 
-export const SimplePresenter = ({
+export const SimplePresenter: FC<SimplePresenterProps> = ({
   name,
   image,
   education,
-}: SimplePresenterProps) => {
+  link,
+}) => {
   return (
-        <PresenterCard>
-          <MyMedia image={image} title={name} />
-          <CardContent>
-            <FullName>{name}</FullName>
-            <Education>{education}</Education>
-          </CardContent>
-        </PresenterCard>
+    <PresenterCard>
+      {link(<MyMedia image={image} title={name} />)}
+      <CardContent>
+        {link(<FullName>{name}</FullName>)}
+        <Education>{education}</Education>
+      </CardContent>
+    </PresenterCard>
   );
 };
 

@@ -38,26 +38,34 @@ const service: ServiceCardProps[] = [
   },
 ];
 
+const renderPresenterLink = (children: JSX.Element) => (
+  <Link href="/presenter">{children}</Link>
+);
+
 const presnters: SimplePresenterProps[] = [
   {
     name: "سینا ماشینی",
     education: "دانشگاه آزاد",
     image: "profile.jpg",
+    link: renderPresenterLink,
   },
   {
     name: "سینا ماشینی",
     education: "دانشگاه آزاد",
     image: "profile.jpg",
+    link: renderPresenterLink,
   },
   {
     name: "سینا ماشینی",
     education: "دانشگاه آزاد",
     image: "profile.jpg",
+    link: renderPresenterLink,
   },
   {
     name: "سینا ماشینی",
     education: "دانشگاه آزاد",
     image: "profile.jpg",
+    link: renderPresenterLink,
   },
 ];
 
