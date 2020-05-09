@@ -18,10 +18,10 @@ const SectionTitle = styled.span`
 
 export interface TextTitleProps {
   title: string;
-  dir: string;
+  dir?: string;
 }
 
-export const TextTitle = ({ title, dir}: TextTitleProps) => {
+export const TextTitle = ({ title, dir = "center"}: TextTitleProps) => {
   return (
     <MyContainer dir = {dir} >
         <SectionTitle>{title}</SectionTitle>

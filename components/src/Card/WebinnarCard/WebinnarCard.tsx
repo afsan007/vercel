@@ -80,17 +80,18 @@ const Like = styled.a`
 `
 
 export interface WebbinarCardProps {
+    id: string;
     name: string;
     image: string;
     presenter: string;
     presenterImage: string;
     keywords: string[];
     date: string;
-    link: (children: JSX.Element) => JSX.Element;
+    link: (children: JSX.Element,id: string) => JSX.Element;
 }
 
 
-export const WebbinarCard: FC<WebbinarCardProps> = ({ name, image, presenter, presenterImage, keywords, date, link}) => {
+export const WebbinarCard: FC<WebbinarCardProps> = ({ id, name, image, presenter, presenterImage, keywords, date, link}) => {
     return (        
             <WebCard>
             {link(
@@ -98,12 +99,12 @@ export const WebbinarCard: FC<WebbinarCardProps> = ({ name, image, presenter, pr
                     image={image}
                     title={name}
                 />   
-                )}
+                ,id)}
                 <PresenterAvatar aria-label="recipe" src={presenterImage} title={presenter} />                    
                 {link(
                 <WebbinarName>
                     {name}
-                </WebbinarName>)}
+                </WebbinarName>,id)}
                 <FatherGrid item xs={12} container direction="row" justify="flex-start" alignItems="baseline">
                     <Grid item xs >
                         <Title>

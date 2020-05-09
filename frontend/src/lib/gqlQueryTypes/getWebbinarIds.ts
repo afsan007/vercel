@@ -4,33 +4,26 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: getChildren
+// GraphQL query operation: getWebbinarIds
 // ====================================================
 
-export interface getChildren_search_items_schema {
-  __typename: "Schema";
-  name: string;
-}
-
-export interface getChildren_search_items {
+export interface getWebbinarIds_search_items {
   __typename: "Collection" | "Webinar" | "Video" | "Presenter" | "General" | "_BaseItem";
   _id: GraphQLObjectId;
   title: string;
-  isCollection: boolean;
-  schema: getChildren_search_items_schema;
 }
 
-export interface getChildren_search {
+export interface getWebbinarIds_search {
   __typename: "SearchResults";
-  items: getChildren_search_items[];
+  items: getWebbinarIds_search_items[];
   total: number;
 }
 
-export interface getChildren {
-  search: getChildren_search;
+export interface getWebbinarIds {
+  search: getWebbinarIds_search;
 }
 
-export interface getChildrenVariables {
+export interface getWebbinarIdsVariables {
   parentId: GraphQLObjectId;
   offset: number;
   limit: number;
