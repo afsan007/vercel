@@ -10,11 +10,11 @@ const Page: FC<PropTypes> = (props) => (
     {props.headless ? null : (
       <Head>
         <title>Educational Package</title>
-        <link rel="icon" href="favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
         <link rel="stylsheet" href="./global.css" />
       </Head>
     )}
-    <Header src="Logo.png" />
+    <Header src="/Logo.png" />
     {props.children}
   </div>
 );

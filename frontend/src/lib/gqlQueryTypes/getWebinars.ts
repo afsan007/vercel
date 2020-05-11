@@ -21,6 +21,7 @@ export interface getWebinars_getWebinars_Attachment {
   Kind: string | null;
   Duration: string | null;
   Thumbnail: string | null;
+  format: string | null;
   Iframe: getWebinars_getWebinars_Attachment_Iframe | null;
 }
 
@@ -28,6 +29,7 @@ export interface getWebinars_getWebinars_presenter {
   __typename: "Webinar_Presenter";
   presenterName: string | null;
   presenterImage: string | null;
+  presenterEducation: string | null;
 }
 
 export interface getWebinars_getWebinars {
@@ -37,6 +39,7 @@ export interface getWebinars_getWebinars {
   keywords: string[] | null;
   thumbnail: string | null;
   presentDate: GraphQLDateTime | null;
+  description: string | null;
   coverImageAddress: string | null;
   Attachment: getWebinars_getWebinars_Attachment[] | null;
   presenter: getWebinars_getWebinars_presenter | null;

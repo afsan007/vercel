@@ -8,10 +8,10 @@ import {
   Banner,
   Presnter,
   SimplePresenterProps,
-  UpComingWebbbinars,
-  WebbinarCardProps,
   Services,
   ServiceCardProps,
+  WebbinarCardProps,
+  UpComingWebbbinars
 } from "bp-components";
 import Link from "next/link";
 import { getWebbinarIds, getWebbinarIdsVariables } from "$gqlQueryTypes/getWebbinarIds";
@@ -70,7 +70,7 @@ const presnters: SimplePresenterProps[] = [
 ];
 
 const renderWebinarLink = (children: JSX.Element,id :string ) => {
-  return <Link href="/webinnar/[webId]" as={`/webinnar/${id}`}>{children}</Link>
+  return <Link href="/webinar/[webId]" as={`/webinar/${id}`}>{children}</Link>
 };
 
 
@@ -143,9 +143,9 @@ const Home: NextPage<FC> = () => {
               linktitle="بیشتر بخوانید > "
               linkWrapper={renderAddItemLink}
             />
-            <Services services={service} />
-            <UpComingWebbbinars webbinars={webinars.data} loading={webinars.loading} />
-            <Presnter presnters={presnters} />
+            <Services services = { service } />
+            <UpComingWebbbinars webbinars = { webinars.data } loading = { webinars.loading } />
+            <Presnter presnters={ presnters } />
         </Page>
   );
 };

@@ -16,7 +16,7 @@ const TextArea = styled.div`
 `
 
 export interface ShowMoreTextProps{
-    text: string;
+    text?: string | undefined;
 }
 
 const createShorterText = (text) => {

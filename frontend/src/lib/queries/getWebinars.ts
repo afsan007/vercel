@@ -8,6 +8,7 @@ export const GET_WEBINARS = gql`
         keywords
         thumbnail      
         presentDate
+        description
         coverImageAddress
         Attachment{
           URL
@@ -15,6 +16,7 @@ export const GET_WEBINARS = gql`
           Kind
           Duration
           Thumbnail
+          format
           Iframe{
              Source
              Width
@@ -24,6 +26,7 @@ export const GET_WEBINARS = gql`
         presenter{
           presenterName
           presenterImage
+          presenterEducation
         }
   }
 }

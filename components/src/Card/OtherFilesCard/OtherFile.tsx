@@ -71,7 +71,8 @@ export interface OtherFileCardProps {
   image?: string;
 }
 
-export const OtherFileCard: FC<OtherFileCardProps> = ({title, type, src, image = "File.jpg"}) =>{
+export const OtherFileCard: FC<OtherFileCardProps> = ({title, type, src, image = "/File.jpg"}) =>{
+  if (image === null) image =  "/File.jpg";
    return (     
         <VideoCardComponent>
             <MyMedia>

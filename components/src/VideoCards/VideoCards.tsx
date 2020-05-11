@@ -53,7 +53,7 @@ export const VideoCards = ({videos}: VideosCardProps) => {
             <Mygrid
               container
               direction="row"
-              justify="center"
+              justify="flex-start"
               alignItems="center"
               spacing={0}
             >
