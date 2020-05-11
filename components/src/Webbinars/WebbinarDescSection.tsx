@@ -1,6 +1,7 @@
 import React ,{ FC } from "react";
 import Grid from '@material-ui/core/Grid';
 import { WebbinarDescription } from './WebbinarDescription'
+import { LoadingData } from "../Progress/LoadingData"
 import styled from "styled-components";
 
 const MyConatiner = styled(Grid)`
@@ -14,30 +15,38 @@ const MyGrid = styled(Grid)`
 `
 
 export interface WebinarDescSectionProps {
-    image: string;
-    title: string;
-    prsenterName: string;
-    prsenterImage: string;
-    prsenterEducation: string;
-    keywords: string[];
-    description: string;
+    image?: string | undefined | null;
+    title?: string | undefined | null;
+    prsenterName?: string | undefined | null;
+    prsenterImage?: string | undefined | null;
+    prsenterEducation?: string | undefined | null;
+    keywords?: string[] | undefined | null;
+    description?: string | undefined | null;
+    loading: boolean;
   };
 
 export const WebinarDescSection: FC<WebinarDescSectionProps> = (props) =>{
     return(
-        <MyConatiner container>
-            <MyGrid>
-                <WebbinarDescription
-                    title = {props.title}
-                    description = {props.description}
-                    image = {props.image}
-                    keywords = {props.keywords} 
-                    prsenterName = {props.prsenterName}
-                    prsenterImage = {props.prsenterImage}
-                    prsenterEducation = {props.prsenterEducation}
-                />
-            </MyGrid>
-        </MyConatiner>
+      <MyConatiner container>
+          <MyGrid>
+              <LoadingData loading = {props.loading} >
+                  {() => {
+                    return (
+                      <>
+                        <WebbinarDescription
+                                title = {props.title}
+                                description = {props.description}
+                                image = {props.image}
+                                keywords = {props.keywords} 
+                                prsenterName = {props.prsenterName}
+                                prsenterImage = {props.prsenterImage}
+                                prsenterEducation = {props.prsenterEducation}
+                            />
+                        </>
+                    )}}
+              </LoadingData> 
+          </MyGrid>
+      </MyConatiner>
     );
 
 }

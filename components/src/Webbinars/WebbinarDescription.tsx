@@ -104,17 +104,19 @@ const LikeSymbol = styled(FavoriteBorderIcon)`
 `
 
 export interface WebbinarDescriptionProps {
-      image: string;
-      title: string;
-      prsenterName: string;
-      prsenterImage: string;
-      prsenterEducation: string;
-      keywords: string[];
-      description: string;
+      image?: string | undefined | null;
+      title?: string | undefined | null;
+      prsenterName?: string | undefined | null;
+      prsenterImage?: string | undefined | null;
+      prsenterEducation?: string | undefined | null;
+      keywords?: string[] | undefined | null;
+      description?: string | undefined | null;
     };
 
 export const WebbinarDescription: FC<WebbinarDescriptionProps> = (props) => {
-
+  if (!props.image || !props.title || !props.prsenterImage || !props.prsenterName || !props.keywords || !props.description){
+    return <div></div>;
+  }
   return (   
         <DescriptionDiv>      
           <FatherGrid item xs={12} container direction="row" justify="flex-start" alignItems="flex-start">

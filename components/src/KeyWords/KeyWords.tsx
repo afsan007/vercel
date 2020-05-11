@@ -19,13 +19,17 @@ const CircleKeyWords = styled(Chip)`
 `;
 
 export interface keyWordsProps {
-    keywords: string[];
+    keywords?: string[] | undefined;
 }
 
 export const WebbinarKeyWords: FC<keyWordsProps> = ({ keywords }) => {
-    const webinarKeyWordss = keywords.map(function (keyword, index) {
-        return <CircleKeyWords key = { index } label={keyword} />
-    });
+    let webinarKeyWordss  = [<div></div>];
+    if (keywords){
+        webinarKeyWordss = keywords.map(function (keyword, index) {
+            return <CircleKeyWords key = { index } label = { keyword } />
+        });
+   }
+
     return (
         <Grid>
             { webinarKeyWordss }
