@@ -45,10 +45,11 @@ const Education = styled(Typography)`
 `;
 
 export interface SimplePresenterProps {
+  id: string;
   name: string;
   image: string;
   education: string;
-  link: (children: JSX.Element) => JSX.Element;
+  link: (children: JSX.Element, id) => JSX.Element;
 }
 
 export const SimplePresenter: FC<SimplePresenterProps> = ({
@@ -56,12 +57,13 @@ export const SimplePresenter: FC<SimplePresenterProps> = ({
   image,
   education,
   link,
+  id,
 }) => {
   return (
     <PresenterCard>
-      {link(<MyMedia image={image} title={name} />)}
+      {link(<MyMedia image={image} title={name} />, id)}
       <CardContent>
-        {link(<FullName>{name}</FullName>)}
+        {link(<FullName>{name}</FullName>, id)}
         <Education>{education}</Education>
       </CardContent>
     </PresenterCard>

@@ -13,6 +13,7 @@ const renderPresenterLink = (children: JSX.Element) => (
 export const Presenter = () => {
   return (
     <SimplePresenter
+      id="4564654654634"
       name="سینا ماشینی"
       education="دانشگاه آزاد"
       image="profile.jpg"

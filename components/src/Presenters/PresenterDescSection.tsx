@@ -14,11 +14,11 @@ const MyGrid = styled(Grid)`
 `;
 
 export interface PresenterDescSectionProps {
-  prsenterUniversity: string;
-  prsenterName: string;
-  prsenterImage: string;
-  prsenterEducation: string;
-  description: string;
+  prsenterUniversity?: string | undefined | null;
+  prsenterName?: string | undefined | null;
+  prsenterImage?: string | undefined | null;
+  prsenterEducation?: string | undefined | null;
+  description?: string | undefined | null;
 }
 
 export const PresenterDescSection: FC<PresenterDescSectionProps> = (props) => {

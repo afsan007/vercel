@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import styled from "styled-components";
 import { TextTitle } from "../Titles/TextTitle";
+import { LoadingData } from "../Progress/LoadingData";
 import {
   SimplePresenter,
   SimplePresenterProps,
@@ -18,6 +19,7 @@ const BodyGrid = styled(Grid)`
 
 export interface PresnterProps {
   presnters: SimplePresenterProps[];
+  loading?: boolean;
 }
 
 const renderPresenters = ({ presnters }: PresnterProps) => {
@@ -26,6 +28,7 @@ const renderPresenters = ({ presnters }: PresnterProps) => {
       <Grid item key={index} xl={3} lg={3} md={3} sm={3} xs={12}>
         <SimplePresenter
           key={index}
+          id={presenter.id}
           name={presenter.name}
           education={presenter.education}
           image={presenter.image}
@@ -36,21 +39,27 @@ const renderPresenters = ({ presnters }: PresnterProps) => {
   });
 };
 
-export const Presnter = ({ presnters }: PresnterProps) => {
+export const Presnter = ({ presnters, loading = false }: PresnterProps) => {
   return (
-    <BodyContainer maxWidth="md">
-      <TextTitle title="ارائه دهندگان" dir="center" />
-      <BodyGrid
-        item
-        xs={12}
-        container
-        direction="row"
-        justify="center"
-        alignItems="flex-start"
-      >
-        {renderPresenters({ presnters })}
-      </BodyGrid>
-    </BodyContainer>
+    <LoadingData loading={loading}>
+      {() => {
+        return (
+          <BodyContainer maxWidth="md">
+            <TextTitle title="ارائه دهندگان" dir="center" />
+            <BodyGrid
+              item
+              xs={12}
+              container
+              direction="row"
+              justify="flex-start"
+              alignItems="flex-start"
+            >
+              {renderPresenters({ presnters })}
+            </BodyGrid>
+          </BodyContainer>
+        );
+      }}
+    </LoadingData>
   );
 };
 
