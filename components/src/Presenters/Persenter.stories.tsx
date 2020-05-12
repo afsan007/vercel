@@ -13,24 +13,28 @@ const renderPresenterLink = (children: JSX.Element) => (
 
 const presnters: SimplePresenterProps[] = [
   {
+    id: "4564654654651",
     name: "سینا ماشینی",
     education: "دانشگاه آزاد",
     image: "profile.jpg",
     link: renderPresenterLink,
   },
   {
+    id: "4564654654651fd651",
     name: "سینا ماشینی",
     education: "دانشگاه آزاد",
     image: "profile.jpg",
     link: renderPresenterLink,
   },
   {
+    id: "4564654654fdf651",
     name: "سینا ماشینی",
     education: "دانشگاه آزاد",
     image: "profile.jpg",
     link: renderPresenterLink,
   },
   {
+    id: "4564654654fdffdfsd651",
     name: "سینا ماشینی",
     education: "دانشگاه آزاد",
     image: "profile.jpg",
