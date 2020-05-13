@@ -23,6 +23,7 @@ const renderWebbinars = ({ webbinars }: PresenterWebbbinarsProps) => {
     return (
       <Grid item key={index} xl={4} lg={4} md={4} sm={4} xs={12}>
         <WebbinarCard
+          id = {webbinar.id}
           key={index}
           name={webbinar.name}
           image={webbinar.image}

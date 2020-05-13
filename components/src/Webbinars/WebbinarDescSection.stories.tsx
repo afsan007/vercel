@@ -13,11 +13,13 @@ const desc = `GraphQL یک پرس و جوی داده ای منبع باز و ز�
 
 export const DescSection = () => {
     return <WebinarDescSection 
-    title="وبینار برای گراف کیوال" 
-    image="gph.png" 
-    prsenterImage="profile.jpg"
-    prsenterName="سینا ماشینی"
-    prsenterEducation="دانشگاه آزاد"
-    keywords={keywords} 
-    description={desc} />
+    title = "وبینار برای گراف کیوال" 
+    image = "gph.png" 
+    prsenterImage = "profile.jpg"
+    prsenterName = "سینا ماشینی"
+    prsenterEducation = "دانشگاه آزاد"
+    keywords = {keywords} 
+    description = {desc} 
+    loading = {false}
+    />
 };

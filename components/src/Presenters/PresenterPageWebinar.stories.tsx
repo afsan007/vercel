@@ -12,6 +12,7 @@ const renderWebinarLink = (children: JSX.Element) => <a href="#">{children}</a>;
 export const PresenterWebbbinars = () => {
   const webbinars: WebbinarCardProps[] = [
     {
+      id: "6545645646565",
       name: "وبینار برای گراف کیوال",
       image: "gph.png",
       presenter: "سینا ماشینی",
@@ -21,6 +22,7 @@ export const PresenterWebbbinars = () => {
       link: renderWebinarLink,
     },
     {
+      id: "6545645646565",
       name: "وبینار برای گراف کیوال",
       image: "gph.png",
       presenter: "سینا ماشینی",
@@ -30,6 +32,7 @@ export const PresenterWebbbinars = () => {
       link: renderWebinarLink,
     },
     {
+      id: "6545645646565",
       name: "وبینار برای گراف کیوال",
       image: "gph.png",
       presenter: "سینا ماشینی",
@@ -39,6 +42,7 @@ export const PresenterWebbbinars = () => {
       link: renderWebinarLink,
     },
     {
+      id: "6545645646565",
       name: "وبینار برای گراف کیوال",
       image: "gph.png",
       presenter: "سینا ماشینی",
@@ -48,6 +52,7 @@ export const PresenterWebbbinars = () => {
       link: renderWebinarLink,
     },
     {
+      id: "6545645646565",
       name: "وبینار برای گراف کیوال",
       image: "gph.png",
       presenter: "سینا ماشینی",
@@ -57,6 +62,7 @@ export const PresenterWebbbinars = () => {
       link: renderWebinarLink,
     },
     {
+      id: "6545645646565",
       name: "وبینار برای گراف کیوال",
       image: "gph.png",
       presenter: "سینا ماشینی",
