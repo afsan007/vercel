@@ -25,9 +25,10 @@ const renderWebbinars = ({ webbinars }: UpComingWebbbinarsProps) => {
       return webbinars.map(function (webbinar,index) {
         return(         
           <Grid item key = {index} xl={4} lg={4} md={4} sm={4} xs={12}>
-              <WebbinarCard                    
+              <WebbinarCard                                        
                     key = {index}    
-                    id = {webbinar.id}               
+                    id = {webbinar.id}   
+                    presenterId = {webbinar.presenterId}            
                     name = {webbinar.name}
                     image = {webbinar.image}
                     presenter = {webbinar.presenter}
@@ -35,6 +36,7 @@ const renderWebbinars = ({ webbinars }: UpComingWebbbinarsProps) => {
                     keywords = {webbinar.keywords}
                     date = {webbinar.date}
                     link = {webbinar.link}
+                    presenterLink = {webbinar.presenterLink}
                      />
               </Grid>    
               );          

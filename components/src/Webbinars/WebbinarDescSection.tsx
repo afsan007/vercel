@@ -23,6 +23,8 @@ export interface WebinarDescSectionProps {
     keywords?: string[] | undefined | null;
     description?: string | undefined | null;
     loading: boolean;
+    presenterId: string | undefined | null;
+    presenterLink: (children: JSX.Element,id: string) => JSX.Element;
   };
 
 export const WebinarDescSection: FC<WebinarDescSectionProps> = (props) =>{
@@ -41,6 +43,8 @@ export const WebinarDescSection: FC<WebinarDescSectionProps> = (props) =>{
                                 prsenterName = {props.prsenterName}
                                 prsenterImage = {props.prsenterImage}
                                 prsenterEducation = {props.prsenterEducation}
+                                presenterId = {props.presenterId}
+                                presenterLink = {props.presenterLink}
                             />
                         </>
                     )}}

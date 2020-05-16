@@ -59,6 +59,7 @@ const FullName = styled.span`
   font-size: 12px;
   letter-spacing: -0.29px;
   color: #7a7a7a;
+  cursor:pointer;
 `;
 
 const WebbinarDesc = styled.div`
@@ -111,6 +112,8 @@ export interface WebbinarDescriptionProps {
       prsenterEducation?: string | undefined | null;
       keywords?: string[] | undefined | null;
       description?: string | undefined | null;
+      presenterId: string | undefined | null;
+      presenterLink: (children: JSX.Element,id: string) => JSX.Element;
     };
 
 export const WebbinarDescription: FC<WebbinarDescriptionProps> = (props) => {
@@ -131,10 +134,10 @@ export const WebbinarDescription: FC<WebbinarDescriptionProps> = (props) => {
                     <WebbinarTitle variant="h6" gutterBottom>{props.title}</WebbinarTitle>                 
                     <FatherGrid item xs={12} container direction="row" justify="flex-start" alignItems="center">
                       <Grid item xs={2} lg={1} xl={1} md={1} sm={2}>
-                        <Avatar aria-label="recipe" src={props.prsenterImage} title={props.prsenterName} />                    
+                      {props.presenterLink(<a><Avatar aria-label="recipe" src={props.prsenterImage} title={props.prsenterName} /></a>, props.presenterId)}                    
                       </Grid>
                       <Grid item xs={10} lg={11} xl={11} md={11} sm={10} >
-                          <Title>ارائه دهنده:</Title> <FullName>{props.prsenterName}</FullName>
+                          <Title>ارائه دهنده:</Title> {props.presenterLink(<FullName>{props.prsenterName}</FullName>, props.presenterId)}
                       </Grid>
                       <SpaceBetween>
                       <Title>تحصیلات:</Title> <FullName>{props.prsenterEducation}</FullName>                                     

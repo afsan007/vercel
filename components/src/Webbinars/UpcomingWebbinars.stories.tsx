@@ -21,7 +21,9 @@ export const Webbinars = () => {
         presenterImage:"profile.jpg",
         keywords:["OOP", "Grphql", "Programmig", "برنامه نویسی"],
         date:"1.10.1399",
-        link: renderWebinarLink
+        link: renderWebinarLink,
+        presenterId:"445465456546",
+        presenterLink: renderWebinarLink
     },
     {   id: "4564654654fdf651",
         name: "وبینار برای گراف کیوال",
@@ -30,7 +32,9 @@ export const Webbinars = () => {
         presenterImage:"profile.jpg",
         keywords:["OOP", "Grphql", "Programmig", "برنامه نویسی"],
         date:"1.10.1399",
-        link: renderWebinarLink
+        link: renderWebinarLink,
+        presenterId:"445465456546",
+        presenterLink: renderWebinarLink
     },
     {
         id: "4564654654fdffdfsd651",
@@ -40,7 +44,9 @@ export const Webbinars = () => {
         presenterImage:"profile.jpg",
         keywords:["OOP", "Grphql", "Programmig", "برنامه نویسی"],
         date:"1.10.1399",
-        link: renderWebinarLink
+        link: renderWebinarLink,
+        presenterId:"445465456546",
+        presenterLink: renderWebinarLink
     }
 ]
     return <UpComingWebbbinars webbinars = {webbinars} />
