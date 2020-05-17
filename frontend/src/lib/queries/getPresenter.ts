@@ -9,6 +9,13 @@ export const GET_PRESENTER = gql`
       affiliation
       profileImage
       biography
+      Webinars {
+        title
+        coverImageAddress
+        keywords
+        _id
+        presentDate
+      }
     }
   }
 `;

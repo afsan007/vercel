@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import { NextPage } from "next";
 import {
   PresenterDescSection,
-  PresenterPageWebbbinars,
+  PresenterPageWebinars,
   WebbinarCardProps,
 } from "bp-components";
 import { useRouter } from "next/router";
@@ -16,72 +16,13 @@ import {
   getPresentersVariables,
 } from "$gqlQueryTypes/getPresenters";
 
-const renderWebinarLink = (children: JSX.Element) => (
-  <Link href="/webinnar">{children}</Link>
-);
-
-const webbinars: WebbinarCardProps[] = [
-  {
-    id: "5eaff0eb1d2a5f00086a8921",
-    name: "وبینار برای گراف کیوال",
-    image: "/gph.png",
-    presenter: "سینا ماشینی",
-    presenterImage: "/profile.jpg",
-    keywords: ["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-    date: "1.10.1399",
-    link: renderWebinarLink,
-  },
-  {
-    id: "5eaff0eb1d2a5f00086a8921",
-    name: "وبینار برای گراف کیوال",
-    image: "/gph.png",
-    presenter: "سینا ماشینی",
-    presenterImage: "/profile.jpg",
-    keywords: ["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-    date: "1.10.1399",
-    link: renderWebinarLink,
-  },
-  {
-    id: "5eaff0eb1d2a5f00086a8921",
-    name: "وبینار برای گراف کیوال",
-    image: "/gph.png",
-    presenter: "سینا ماشینی",
-    presenterImage: "/profile.jpg",
-    keywords: ["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-    date: "1.10.1399",
-    link: renderWebinarLink,
-  },
-  {
-    id: "5eaff0eb1d2a5f00086a8921",
-    name: "وبینار برای گراف کیوال",
-    image: "/gph.png",
-    presenter: "سینا ماشینی",
-    presenterImage: "/profile.jpg",
-    keywords: ["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-    date: "1.10.1399",
-    link: renderWebinarLink,
-  },
-  {
-    id: "5eaff0eb1d2a5f00086a8921",
-    name: "وبینار برای گراف کیوال",
-    image: "/gph.png",
-    presenter: "سینا ماشینی",
-    presenterImage: "/profile.jpg",
-    keywords: ["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-    date: "1.10.1399",
-    link: renderWebinarLink,
-  },
-  {
-    id: "5eaff0eb1d2a5f00086a8921",
-    name: "وبینار برای گراف کیوال",
-    image: "/gph.png",
-    presenter: "سینا ماشینی",
-    presenterImage: "/profile.jpg",
-    keywords: ["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-    date: "1.10.1399",
-    link: renderWebinarLink,
-  },
-];
+const renderWebinarLink = (children: JSX.Element, id: string) => {
+  return (
+    <Link href="/webinar/[webId]" as={`/webinar/${id}`}>
+      {children}
+    </Link>
+  );
+};
 
 const fetchPresenter = (presenterId) => {
   const { loading, error, data } = useQuery<
@@ -96,13 +37,35 @@ const fetchPresenter = (presenterId) => {
   return { loading, error, data };
 };
 
-// const desc = `GraphQL یک پرس و جوی داده ای منبع باز و زبان دستکاری برای API ها است. همچنین یک زمان اجرا برای پاسخ دادن به پرس و جوها با استفاده از داده های موجود است. GraphQL در سال 2012 توسط Facebook توسعه یافت و سپس در سال 2015 به صورت عمومی منتشر شد. این زبان یک رویکرد کار آمد، قدرتمند و انعطاف پذیر را برای توسعه API های وب فراهم می کند و با REST و سایر معماری های سرویس وب مقایسه می شود و در تقابل است. GraphQL از خواندن، نوشتن یا همان تویض و اشتراک گذاری تغییرات در داده ها (به روز رسانی در زمان واقعی) پشتیبانی می کند.
-// `;
+const createWebbinarData = (items, presenterImage, presenterName) => {
+  let webinars: WebbinarCardProps[] = [];
+  if (items) {
+    webinars = items.map(function (item) {
+      return {
+        id: item._id,
+        image: item.coverImageAddress,
+        date: item.presentDate,
+        name: item.title,
+        presenter: presenterName,
+        presenterImage: presenterImage,
+        keywords: item.keywords,
+        link: renderWebinarLink,
+      };
+    });
+  }
+  return webinars;
+};
 
-const Presenter: NextPage<{ test: string }> = () => {
+const Presenter: NextPage<FC> = () => {
   const router = useRouter();
-  const webinarMetaData = fetchPresenter(router.query.presenterId);
-  const descData = webinarMetaData.data?.getPresenters[0];
+  const presenterMetaData = fetchPresenter(router.query.presenterId);
+  const descData = presenterMetaData.data?.getPresenters[0];
+  const presenterWebinars = createWebbinarData(
+    descData?.Webinars,
+    descData?.profileImage,
+    descData?.title
+  );
+
   return (
     <Page>
       <PresenterDescSection
@@ -112,7 +75,7 @@ const Presenter: NextPage<{ test: string }> = () => {
         prsenterEducation={descData?.fieldOfStudy}
         description={descData?.biography}
       />
-      <PresenterPageWebbbinars webbinars={webbinars} />
+      <PresenterPageWebinars webinars={presenterWebinars} />
     </Page>
   );
 };

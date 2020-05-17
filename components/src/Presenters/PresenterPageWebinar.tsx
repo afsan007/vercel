@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import {
@@ -8,22 +8,21 @@ import {
 import { TextTitle } from "../Titles/TextTitle";
 import styled from "styled-components";
 
-const ContainerSection = styled(Grid)``;
-
 const Mygrid = styled(Grid)`
   margin-top: 30px;
   margin-bottom: 30px;
 `;
-export interface PresenterWebbbinarsProps {
-  webbinars: WebbinarCardProps[];
+
+export interface PresenterWebinarsProps {
+  webinars: WebbinarCardProps[];
 }
 
-const renderWebbinars = ({ webbinars }: PresenterWebbbinarsProps) => {
-  return webbinars.map(function(webbinar, index) {
+const renderWebbinars = ({ webinars }: PresenterWebinarsProps) => {
+  return webinars.map(function(webbinar, index) {
     return (
       <Grid item key={index} xl={4} lg={4} md={4} sm={4} xs={12}>
         <WebbinarCard
-          id = {webbinar.id}
+          id={webbinar.id}
           key={index}
           name={webbinar.name}
           image={webbinar.image}
@@ -38,25 +37,25 @@ const renderWebbinars = ({ webbinars }: PresenterWebbbinarsProps) => {
   });
 };
 
-export const PresenterPageWebbbinars = ({
-  webbinars,
-}: PresenterWebbbinarsProps) => {
+export const PresenterPageWebinars: FC<PresenterWebinarsProps> = ({
+  webinars,
+}) => {
   return (
-    <ContainerSection container>
+    <Grid container>
       <Container maxWidth="md">
         <Mygrid
           container
           direction="row"
-          justify="center"
+          justify="flex-start"
           alignItems="flex-start"
           spacing={0}
         >
           <TextTitle title="وبینار ها" dir="right" />
-          {renderWebbinars({ webbinars })}
+          {renderWebbinars({ webinars })}
         </Mygrid>
       </Container>
-    </ContainerSection>
+    </Grid>
   );
 };
 
-export default PresenterPageWebbbinars;
+export default PresenterPageWebinars;
