@@ -13,7 +13,7 @@ const WebCard = styled(Card)`
     margin: 0 auto;
     margin-top: 50px;
     width:243px;
-    min-height: 327px;    
+    height: 500px;    
     border-radius: 5px;
     box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
