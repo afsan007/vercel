@@ -4,26 +4,25 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: getWebbinarIds
+// GraphQL query operation: getServicesIds
 // ====================================================
 
-export interface getWebbinarIds_search_items {
+export interface getServicesIds_search_items {
   __typename: "Collection" | "Webinar" | "Presenter" | "Video" | "General" | "Test" | "_BaseItem";
-  _id: GraphQLObjectId;
   title: string;
+  _id: GraphQLObjectId;
 }
 
-export interface getWebbinarIds_search {
+export interface getServicesIds_search {
   __typename: "SearchResults";
-  items: getWebbinarIds_search_items[];
-  total: number;
+  items: getServicesIds_search_items[];
 }
 
-export interface getWebbinarIds {
-  search: getWebbinarIds_search;
+export interface getServicesIds {
+  search: getServicesIds_search;
 }
 
-export interface getWebbinarIdsVariables {
+export interface getServicesIdsVariables {
   parentId: GraphQLObjectId;
   offset: number;
   limit: number;

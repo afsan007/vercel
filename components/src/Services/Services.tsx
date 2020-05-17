@@ -6,9 +6,10 @@ import {
   ServiceCard,
   ServiceCardProps,
 } from "../Card/ServicesCard/ServiceCard";
+import { LoadingData} from '../Progress/LoadingData'
 
 const Root = styled(Grid)`
-  background-image: url("HowTo.jpg");
+  background-image: url(${props => props.theme});
   background-repeat: no-repeat;
   background-size: cover;
   @media (max-width: 768px) {
@@ -28,9 +29,12 @@ const Title = styled(Grid)`
 
 export interface ServiceProps {
   services: ServiceCardProps[];
+  loading: boolean;
+  backgroundImg: string;
 }
 
-const renderServices = ({ services }: ServiceProps) => {
+const renderServices = ({ services, loading }) => {
+  if (loading) return <div></div>;
   return services.map((services, index) => (
     <Grid key={index} item xs={12} sm={4} md={4} lg={4}>
       <ServiceCard
@@ -42,25 +46,31 @@ const renderServices = ({ services }: ServiceProps) => {
   ));
 };
 
-export const Services = ({ services }: ServiceProps) => {
+export const Services = ({ services, loading, backgroundImg }: ServiceProps) => {
   return (
-    <Root container direction="column" justify="center" alignItems="center">
-      <Title item xl={12} xs={12} sm={12} md={12} lg={12}>
-        <TextTitle title="سرویس ها" dir="center" />
-      </Title>
-
-      <Grid item xs={8} sm={12} md={12} lg={12}>
-        <BodyGrid
-          container
-          direction="row"
-          justify="space-between"
-          alignItems="center"
-          spacing={6}
-        >
-          {renderServices({ services })}
-        </BodyGrid>
-      </Grid>
-    </Root>
+    <LoadingData loading = {loading}>
+      {() => {
+      return(
+       <>
+          <Root container direction="column" justify="center" alignItems="center" theme = {backgroundImg}>
+              <Title item xl={12} xs={12} sm={12} md={12} lg={12}>
+                <TextTitle title="سرویس ها" dir="center" />
+              </Title>
+              <Grid item xs={8} sm={12} md={12} lg={12}>
+                <BodyGrid
+                  container
+                  direction="row"
+                  justify="space-between"
+                  alignItems="center"
+                  spacing={6}
+                >
+                  {renderServices({ services, loading })}
+                    </BodyGrid>
+                    </Grid>
+          </Root>
+       </>
+       )}}
+    </LoadingData>
   );
 };
 

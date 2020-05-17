@@ -29,5 +29,5 @@ const service: ServiceCardProps[] = [
 ];
 
 export const ServicesStory = () => {
-  return <Services services={service} />;
+  return <Services services={service} loading={false} backgroundImg="HowTo.jpg" />;
 };
