@@ -2,6 +2,12 @@ import React, { FC, ReactElement } from 'react';
 import { CircularProgress, Grid, Card, CardHeader, Box } from '@material-ui/core';
 import { ApolloError } from 'apollo-client';
 import ErrorRoundedIcon from '@material-ui/icons/ErrorRounded';
+import styled from "styled-components";
+
+
+const LoadingGrid = styled(Grid)`
+  margin-top:400px
+`
 
 export interface Props {
   loading: boolean;
@@ -12,7 +18,7 @@ export interface Props {
 export const LoadingData: FC<Props> = (props) => {
   if (props.loading || props.error) {
     return (
-      <Grid container justify="center">
+      <LoadingGrid container justify="center">
         <Box m={4}>
           {props.loading ? (
             <CircularProgress />
@@ -25,7 +31,7 @@ export const LoadingData: FC<Props> = (props) => {
             </Card>
           ) : null}
         </Box>
-      </Grid>
+      </LoadingGrid>
     );
   }
   return <>{props.children()}</>;

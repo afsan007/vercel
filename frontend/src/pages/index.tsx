@@ -1,9 +1,8 @@
 import React, { FC } from "react";
 import { NextPage } from "next";
 import { withApollo } from "$withApollo";
-import { GET_WEBINARIDS, GET_WEBINARS } from "$queries";
-import { GET_PRESENTERIDS, GET_PRESENTER } from "$queries";
-import { useQuery } from "@apollo/react-hooks";
+import { GET_WEBINARIDS, GET_WEBINARS, GET_SERVICESIDS, GET_SERVICES, GET_PRESENTERIDS, GET_PRESENTER  } from '$queries';
+import { useQuery } from '@apollo/react-hooks';
 import Page from "$components/layout/Page";
 import {
   Banner,
@@ -12,13 +11,13 @@ import {
   Services,
   ServiceCardProps,
   WebbinarCardProps,
-  UpComingWebbbinars
+  UpComingWebbbinars,
+  LoadingData
 } from "bp-components";
 import Link from "next/link";
-import {
-  getWebbinarIds,
-  getWebbinarIdsVariables,
-} from "$gqlQueryTypes/getWebbinarIds";
+import { getWebbinarIds, getWebbinarIdsVariables } from "$gqlQueryTypes/getWebbinarIds";
+import { getServicesIds, getServicesIdsVariables } from "$gqlQueryTypes/getServicesIds";
+import { getServices, getServicesVariables } from "$gqlQueryTypes/getServices";
 import { getWebinars, getWebinarsVariables } from "$gqlQueryTypes/getWebinars";
 import {
   getPresenterIds,
@@ -29,29 +28,10 @@ import {
   getPresentersVariables,
 } from "$gqlQueryTypes/getPresenters";
 
-const service: ServiceCardProps[] = [
-  {
-    name: "کتاب",
-    description:
-      "کتاب یکی از ابزار هایی که است می توان در لرنیتو به آن دسترسی داشت",
-    image: "reader.png",
-  },
-  {
-    name: "آزمون",
-    description:
-      "آزمون یکی از ابزار هایی که است می توان در لرنیتو به آن دسترسی داشت",
-    image: "studio.png",
-  },
-  {
-    name: "ویدیو",
-    description:
-      "ویدیو یکی از ابزار هایی که است می توان در لرنیتو به آن دسترسی داشت",
-    image: "Store.png",
-  },
-];
+
 const renderAddItemLink = (children: JSX.Element) => (
   <Link href="/">{children}</Link>
-);
+)
 
 const renderPresenterLink = (children: JSX.Element, id: string) => {
   return (
@@ -138,19 +118,48 @@ const FetchWebinarsIds = () => {
   return { loading, error, ids };
 };
 
-const FetchWebinars = (ids, idsIsLoading) => {
-  const { loading, error, data } = useQuery<getWebinars, getWebinarsVariables>(
-    GET_WEBINARS,
+
+const fetchGenralServicesIds = () =>
+{
+  const { loading, error, data  } = useQuery<getServicesIds, getServicesIdsVariables>(GET_SERVICESIDS, {
+    variables: {
+      parentId: "5eb7d2a1dad91000081488ec",
+      offset: 0,
+      limit: 20
+    },
+  }); 
+  const ids = data?.search.items.map(item =>
     {
-      variables: {
-        Ids: ids,
-      },
-      skip: idsIsLoading,
-    }
-  );
-  let webinars;
-  if (loading === false) {
-    webinars = createWebbinarData(data?.getWebinars);
+      return item._id
+    });
+    return { loading, error, ids }
+}
+
+const fetchAllServices = (ids, servicesIdsloading) => {
+  const { loading, error, data  } = useQuery<getServices, getServicesVariables>(GET_SERVICES, {
+    variables: {
+      Ids: ids
+    },
+    skip: servicesIdsloading
+  });   
+  let services ;
+  if(loading == false){
+    services = createServicesAndBanerData(data?.getGenerals)
+  }
+  return { loading, error, data: services }
+}
+
+const FetchWebinars = (ids, idsIsLoading) =>
+{  
+  const { loading, error, data  } = useQuery<getWebinars, getWebinarsVariables>(GET_WEBINARS, {
+    variables: {
+      Ids: ids
+    },
+    skip: idsIsLoading
+  });   
+  let webinars ;
+  if(loading == false){
+    webinars = createWebbinarData(data?.getWebinars)
   }
   return { loading, error, data: webinars };
 };
@@ -174,27 +183,69 @@ const createWebbinarData = (items) => {
   return webinars;
 };
 
+const createServicesAndBanerData = (services) => {
+    let generalServices: ServiceCardProps[] = [];
+    let bannerContent = "";
+    let bannerButtom = "";
+    let bannerTitle = "";
+    let bannerImage = "";
+    let bgPictureServices = "";
+    if(services) {
+    services.map(service=>{
+      if(service.listBody)
+      {
+        if(service.key === "ServicesComponent")
+        {
+          service.listBody.map(item =>{ 
+            generalServices.push({image: item.image, name:item.title, description: item.text  })
+          })
+        }
+        else if(service.key === "BannerComponent")
+        {
+          bannerContent = service.listBody[0].text
+          bannerImage = service.listBody[0].image
+          bannerButtom = service.listBody[0].input
+          bannerTitle = service.listBody[0].title
+        }
+      }
+      else if(service.key === "HowToBannerBgPic")
+      {
+        bgPictureServices = service.body
+      }
+    })
+  }
+
+  return { generalServices, bannerContent, bannerImage, bannerTitle, bannerButtom, bgPictureServices }
+}
+
 const Home: NextPage<FC> = () => {
+  const allServicesIds = fetchGenralServicesIds();
+  const allServices = fetchAllServices(allServicesIds.ids, allServicesIds.loading); 
   const webinarIds = FetchWebinarsIds();
   const webinars = FetchWebinars(webinarIds.ids, webinarIds.loading);
   const presentersIds = FetchPresentersIds();
   const presenters = FetchPresenters(presentersIds.ids, presentersIds.loading);
-
-  return (
-    <Page>
-      <Banner
-        title="درباره وبینار آوید"
-        description="این سایت ابزاری برای برنامه ریزی و اجرای وبینارها برای عموم است. بسیاری از گویندگان Avid یا خارج از کشور می توانند وبینار خود را در اینجا اعلام کنند و ما بایگانی وبینارها و همچنین وبینارهای برنامه ریزی شده آینده را نشان می دهیم."
-        linktitle="بیشتر بخوانید > "
-        linkWrapper={renderAddItemLink}
-      />
-      <Services services={service} />
-      <UpComingWebbbinars
-        webbinars={webinars.data}
-        loading={webinars.loading}
-      />
-      <Presnter presnters={presenters.data} loading={presenters.loading} />
-    </Page>
+  const loading = allServices.loading || webinarIds.loading || webinars.loading || presentersIds.loading || presenters.loading;
+  return (        
+      <Page>
+          <LoadingData loading = {loading}>
+                {() => {
+                return(
+                 <>
+                 <Banner
+                        title = {allServices.data?.bannerTitle}
+                        description = {allServices.data?.bannerContent}
+                        linktitle = {allServices.data?.bannerButtom}
+                        image = {allServices.data?.bannerImage}
+                        linkWrapper = {renderAddItemLink}
+                        loading = {allServices.loading}
+                      />
+                      <Services services = {allServices.data?.generalServices} loading = {allServices.loading} backgroundImg = {allServices.data?.bgPictureServices} />
+                      <UpComingWebbbinars webbinars = {webinars.data} loading = {webinars.loading} />
+                      <Presnter presnters={presenters.data} loading={presenters.loading} />
+                 </>)}} 
+           </LoadingData>            
+        </Page>
   );
 };
 

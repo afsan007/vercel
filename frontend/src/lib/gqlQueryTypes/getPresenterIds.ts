@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface getPresenterIds_search_items {
-  __typename: "Collection" | "Webinar" | "Video" | "Presenter" | "General" | "_BaseItem";
+  __typename: "Collection" | "Webinar" | "Presenter" | "Video" | "General" | "Test" | "_BaseItem";
   title: string;
   _id: GraphQLObjectId;
 }
