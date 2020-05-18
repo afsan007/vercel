@@ -83,20 +83,22 @@ const Like = styled.a`
 
 export interface WebbinarCardProps {
     id: string;
-    presenterId: string;
+    presenterId?: string;
     name: string;
     image: string;
-    presenter: string;
-    presenterImage: string;
+    presenter?: string;
+    presenterImage?: string;
     keywords: string[];
     date: string;
     link: (children: JSX.Element,id: string) => JSX.Element;
-    presenterLink: (children: JSX.Element,id: string) => JSX.Element;
+    presenterLink?: (children: JSX.Element,id: string) => JSX.Element;
 }
 
 
 export const WebbinarCard: FC<WebbinarCardProps> = ({ id, presenterId, name, image, presenter, presenterImage, keywords, date, link, presenterLink}) => {
-    return (        
+    const avatar = (presenterLink && presenterId) ? presenterLink(<PresenterAvatar aria-label="recipe" src={presenterImage} title={presenter} />, presenterId) : <></>;
+    const presenterName = (presenterLink && presenterId) ? presenterLink(<Title>ارائه دهنده  <NameText> {presenter} </NameText></Title> ,presenterId) : <></>;
+     return (        
             <WebCard>
             {link(
                 <MyMedia
@@ -104,18 +106,14 @@ export const WebbinarCard: FC<WebbinarCardProps> = ({ id, presenterId, name, ima
                     title={name}
                 />   
                 ,id)}
-                {presenterLink(<PresenterAvatar aria-label="recipe" src={presenterImage} title={presenter} />, presenterId)}                    
+                {avatar}                    
                 {link(
                 <WebbinarName>
                     {name}
                 </WebbinarName>,id)}
                 <FatherGrid item xs={12} container direction="row" justify="flex-start" alignItems="baseline">
                     <Grid item xs >
-                    {presenterLink(
-                        <Title>
-                        ارائه دهنده  <NameText> {presenter} </NameText>
-                        </Title>  
-                        ,presenterId)}   
+                    {presenterName}
                     </Grid>
                 </FatherGrid>
                 <FatherGrid item xs={12} container direction="row" justify="center" alignItems="baseline">
