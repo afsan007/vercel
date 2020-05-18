@@ -12,8 +12,10 @@ const WebCard = styled(Card)`
     font-family: "IRANSans";
     margin: 0 auto;
     margin-top: 50px;
-    width:243px;
-    height: 500px;    
+    width:260px;  
+    display: 'flex',
+    justifyContent: 'space-between', 
+    flexDirection: 'column'
     border-radius: 5px;
     box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
@@ -39,9 +41,10 @@ const KeyWords = styled(WebbinarKeyWords)`
 `;
 
 const PresenterAvatar = styled(Avatar)`
-  float: right;
-  bottom: 15px;
-  right: 22px;
+    float: right;
+    bottom: 15px;
+    right: 22px;
+    cursor: pointer;
 `;
 
 const WebbinarName = styled(Typography)`
@@ -62,10 +65,11 @@ const Title = styled(Typography)`
 `;
 
 const NameText = styled.span`
-  font-family: "IRANSans";
-  color: #323232;
-  font-size: 14px;
-  margin-right: 15px;
+    font-family: "IRANSans";
+    color: #323232;
+    font-size: 14px;
+    margin-right: 15px;
+    cursor: pointer;
 `;
 
 const Like = styled.a`
@@ -78,86 +82,67 @@ const Like = styled.a`
 `;
 
 export interface WebbinarCardProps {
-  id: string;
-  name: string;
-  image: string;
-  presenter: string;
-  presenterImage: string;
-  keywords: string[];
-  date: string;
-  link: (children: JSX.Element, id: string) => JSX.Element;
+    id: string;
+    presenterId?: string;
+    name: string;
+    image: string;
+    presenter?: string;
+    presenterImage?: string;
+    keywords: string[];
+    date: string;
+    link: (children: JSX.Element,id: string) => JSX.Element;
+    presenterLink?: (children: JSX.Element,id: string) => JSX.Element;
 }
 
-export const WebbinarCard: FC<WebbinarCardProps> = ({
-  id,
-  name,
-  image,
-  presenter,
-  presenterImage,
-  keywords,
-  date,
-  link,
-}) => {
-  return (
-    <WebCard>
-      {link(<MyMedia image={image} title={name} />, id)}
-      <PresenterAvatar
-        aria-label="recipe"
-        src={presenterImage}
-        title={presenter}
-      />
-      {link(<WebbinarName>{name}</WebbinarName>, id)}
-      <FatherGrid
-        item
-        xs={12}
-        container
-        direction="row"
-        justify="flex-start"
-        alignItems="baseline"
-      >
-        <Grid item xs>
-          <Title>
-            ارائه دهنده <NameText> {presenter} </NameText>
-          </Title>
-        </Grid>
-      </FatherGrid>
-      <FatherGrid
-        item
-        xs={12}
-        container
-        direction="row"
-        justify="center"
-        alignItems="baseline"
-      >
-        <Grid item xs={4}>
-          <Title>کلیدواژه ها</Title>
-        </Grid>
-        <Grid item xs={8}>
-          <KeyWords keywords={keywords} />
-        </Grid>
-      </FatherGrid>
-      <FatherGrid
-        item
-        xs={12}
-        container
-        direction="row"
-        justify="center"
-        alignItems="flex-start"
-      >
-        <Grid item xs={4}>
-          <Title>تاریخ</Title>
-        </Grid>
-        <Grid item xs={4}>
-          <NameText>{date}</NameText>
-        </Grid>
-        <Grid item xs={4}>
-          <Like href="#">
-            <FavoriteBorderOutlinedIcon />
-          </Like>
-        </Grid>
-      </FatherGrid>
-    </WebCard>
-  );
+
+export const WebbinarCard: FC<WebbinarCardProps> = ({ id, presenterId, name, image, presenter, presenterImage, keywords, date, link, presenterLink}) => {
+    const avatar = (presenterLink && presenterId) ? presenterLink(<PresenterAvatar aria-label="recipe" src={presenterImage} title={presenter} />, presenterId) : <></>;
+    const presenterName = (presenterLink && presenterId) ? presenterLink(<Title>ارائه دهنده  <NameText> {presenter} </NameText></Title> ,presenterId) : <></>;
+     return (        
+            <WebCard>
+            {link(
+                <MyMedia
+                    image={image}
+                    title={name}
+                />   
+                ,id)}
+                {avatar}                    
+                {link(
+                <WebbinarName>
+                    {name}
+                </WebbinarName>,id)}
+                <FatherGrid item xs={12} container direction="row" justify="flex-start" alignItems="baseline">
+                    <Grid item xs >
+                    {presenterName}
+                    </Grid>
+                </FatherGrid>
+                <FatherGrid item xs={12} container direction="row" justify="center" alignItems="baseline">
+                        <Grid item xs={4}>
+                            <Title>
+                                کلیدواژه ها  
+                            </Title>    
+                        </Grid>
+                        <Grid item xs={8}>
+                            <KeyWords keywords={keywords} />
+                        </Grid>
+                </FatherGrid>
+                <FatherGrid item xs={12} container direction="row" justify="center" alignItems="flex-start">
+                        <Grid item xs={4}>
+                            <Title>
+                                تاریخ
+                            </Title> 
+                        </Grid>
+                        <Grid item xs={4}>
+                            <NameText>{date}</NameText>
+                        </Grid>     
+                        <Grid item xs={4} >
+                            <Like href="#">
+                                <FavoriteBorderOutlinedIcon />
+                            </Like>
+                        </Grid>                                         
+                </FatherGrid>                         
+                </WebCard>
+    );
 };
 
 export default WebbinarCard;

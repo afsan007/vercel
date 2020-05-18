@@ -12,9 +12,13 @@ const ContainerSection = styled(Grid)`
     background-color: #ededed;
 `;
 
+const FlexGrid = styled(Grid)`
+  display: flex
+`
+
 const Mygrid = styled(Grid)`
     margin-top:30px;
-    margin-bottom: 30px
+    margin-bottom: 30px;
 `
 export interface UpComingWebbbinarsProps {
       webbinars: WebbinarCardProps[];
@@ -24,10 +28,11 @@ export interface UpComingWebbbinarsProps {
 const renderWebbinars = ({ webbinars }: UpComingWebbbinarsProps) => {
       return webbinars.map(function (webbinar,index) {
         return(         
-          <Grid item key = {index} xl={4} lg={4} md={4} sm={4} xs={12}>
-              <WebbinarCard                    
+          <FlexGrid item  key = {index} xl={4} lg={4} md={4} sm={4} xs={12}>
+              <WebbinarCard                                        
                     key = {index}    
-                    id = {webbinar.id}               
+                    id = {webbinar.id}   
+                    presenterId = {webbinar.presenterId}            
                     name = {webbinar.name}
                     image = {webbinar.image}
                     presenter = {webbinar.presenter}
@@ -35,8 +40,9 @@ const renderWebbinars = ({ webbinars }: UpComingWebbbinarsProps) => {
                     keywords = {webbinar.keywords}
                     date = {webbinar.date}
                     link = {webbinar.link}
+                    presenterLink = {webbinar.presenterLink}
                      />
-              </Grid>    
+              </FlexGrid>    
               );          
   });
 }
@@ -47,17 +53,14 @@ export const UpComingWebbbinars = ({webbinars, loading = false}: UpComingWebbbin
        {() => {
          return(
           <>
-        <ContainerSection
-            container
-        >
+        <ContainerSection container>
           <Container maxWidth="md">
             <Mygrid
               container
               direction="row"
               justify="flex-start"
-              alignItems="flex-start"
-              spacing={0}
-            >
+              alignItems="stretch"
+              spacing={0}>
               <TextTitle title="وبینار ها" dir="center"/>
                 {renderWebbinars({webbinars,loading})}   
             </Mygrid> 

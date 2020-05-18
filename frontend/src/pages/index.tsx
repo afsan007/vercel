@@ -173,9 +173,11 @@ const createWebbinarData = (items) => {
         image: item.coverImageAddress,
         date: item.presentDate,
         name: item.title,
-        presenter: item.presenter.presenterName,
-        presenterImage: item.presenter.presenterImage,
+        presenter: item.presenters[0].title,
+        presenterImage: item.presenters[0].profileImage,
+        presenterId: item.presenters[0]._id,
         keywords: item.keywords,
+        presenterLink: renderPresenterLink,
         link: renderWebinarLink,
       };
     });

@@ -23,10 +23,11 @@ export const GET_WEBINARS = gql`
              Height
           }
         }  
-        presenter{
-          presenterName
-          presenterImage
-          presenterEducation
+        presenters{
+          _id
+          title
+          profileImage
+          affiliation
         }
   }
 }

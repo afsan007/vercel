@@ -49,7 +49,7 @@ const createWebbinarData = (items, presenterImage, presenterName) => {
         presenter: presenterName,
         presenterImage: presenterImage,
         keywords: item.keywords,
-        link: renderWebinarLink,
+        link: renderWebinarLink,        
       };
     });
   }
