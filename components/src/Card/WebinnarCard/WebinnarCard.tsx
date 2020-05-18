@@ -12,8 +12,10 @@ const WebCard = styled(Card)`
     font-family: "IRANSans";
     margin: 0 auto;
     margin-top: 50px;
-    width:243px;
-    height: 500px;    
+    width:260px;  
+    display: 'flex',
+    justifyContent: 'space-between', 
+    flexDirection: 'column'
     border-radius: 5px;
     box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
