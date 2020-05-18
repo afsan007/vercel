@@ -6,9 +6,7 @@ module.exports = withTM({
   transpileModules: ['bp-components'],
   distDir: 'build',
   env: {
-    SERVER_ADDRESS: process.env.SERVER_ADDRESS,
-    ORG_ID: process.env.ORG_ID,
-
+    SERVER_ADDRESS: process.env.SERVER_ADDRESS
   },
   onDemandEntries: {
     maxInactiveAge: 60 * 60 * 1000,

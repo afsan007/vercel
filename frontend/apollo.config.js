@@ -1,7 +1,7 @@
 require('dotenv').config();
 const path = require('path');
 console.log(`*********url~~~~~~~*******`);
-console.log (`${process.env.SERVER_ADDRESS}/api/v1/${process.env.ORG_ID}/graphql`);
+console.log (`${process.env.SERVER_ADDRESS}/api/v1/graphql`);
 module.exports = {  
   client: {
     includes: ['ts', 'tsx'].map((extension) =>
@@ -9,7 +9,7 @@ module.exports = {
     ),
     service: {
       name: 'Remote-Schema',
-      url: `${process.env.SERVER_ADDRESS}/api/v1/${process.env.ORG_ID}/graphql`,
+      url: `${process.env.SERVER_ADDRESS}/api/v1/graphql`,
       skipSSLValidation: true
     },
     addTypename: true,

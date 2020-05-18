@@ -12,8 +12,12 @@ import fetch from 'isomorphic-unfetch';
 import { createUploadLink } from 'apollo-upload-client';
 
 type ICreateApolloClient = (
-  ...args: [NormalizedCacheObject, string]
+  ...args: [NormalizedCacheObject]
 ) => ApolloClient<NormalizedCacheObject>;
+
+// interface IOptions {
+//   domain?: string;
+// }
 
 /**
  * Creates and configures an isomorphic ApolloClient
@@ -21,22 +25,23 @@ type ICreateApolloClient = (
  */
 export const createApolloClient: ICreateApolloClient = (
   initialState = {},
-  orgId,
+  // {domain},
 ) => {
   const authLink = setContext((request, previousContext) => {
     const { headers } = previousContext;
     
     let host = process.env.SERVER_ADDRESS;
-    if (typeof window === 'undefined' && process.env.SERVERSIDE_SERVER_ADDRESS) {
-      host = process.env.SERVERSIDE_SERVER_ADDRESS;
-    }
+    ``
+    // if (typeof window === 'undefined' && process.env.SERVERSIDE_SERVER_ADDRESS) {
+    //   host = process.env.SERVERSIDE_SERVER_ADDRESS;
+    // }
 
     return {
       headers: {
         ...headers,
         // authorization: ''
       },
-      uri: `${host}/api/v1/${orgId}/graphql`,
+      uri: `${host}/api/v1/graphql`,
     };
   });
 

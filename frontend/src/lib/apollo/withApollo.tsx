@@ -7,7 +7,7 @@ import { IPage } from './IPage';
 import { NormalizedCacheObject } from 'apollo-cache-inmemory';
 import ApolloClient from 'apollo-client';
 
-const orgId = process.env.ORG_ID || 'null';
+// const orgId = process.env.ORG_ID || 'null';
 
 interface IOptions {
   ssr?: boolean;
@@ -32,7 +32,7 @@ export function withApollo(
     if (apolloClient) {
       client = apolloClient;
     } else if (apolloState) {
-      client = getApolloClient(apolloState, orgId);
+      client = getApolloClient(apolloState);
     } else {
       throw new Error('no apollo client or state provided');
     }
@@ -54,7 +54,7 @@ export function withApollo(
 
   if (ssr || PageComponent.getInitialProps) {
     WithApollo.getInitialProps = async (ctx) => {
-      const apolloClient = (ctx.apolloClient = getApolloClient({}, orgId));
+      const apolloClient = (ctx.apolloClient = getApolloClient({}));
 
       const pageProps = PageComponent.getInitialProps
         ? await PageComponent.getInitialProps(ctx)
