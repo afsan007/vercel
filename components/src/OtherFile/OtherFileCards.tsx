@@ -17,16 +17,16 @@ const FileSectionTitle = styled.div`
   }
 `
 
-
 const Mygrid = styled(Grid)`
     margin-top:30px;
     margin-bottom: 30px
 `
 export interface OtherFileCardsProps {
-    files: OtherFileCardProps[]
+    files?: OtherFileCardProps[]
     };
 
 const renderFiles = ({ files }: OtherFileCardsProps) => {
+      if (!files) return <></>;
       return files.map(function (file, index) {
         return(             
           <Grid key = {index} item xl={3} lg={3} md={3} sm={4} xs={12} >
@@ -43,11 +43,12 @@ const renderFiles = ({ files }: OtherFileCardsProps) => {
 }
 
 export const OtherFileCards: FC<OtherFileCardsProps> = ({files}) => {
+  if(!files || files.length === 0) return <></>;
   return (   
         <ContainerSection
             container
         >
-          <Container maxWidth="md">
+          <Container maxWidth="lg">
             <FileSectionTitle>
               <TextTitle title = "فایل ها" dir = "right" />
             </FileSectionTitle>

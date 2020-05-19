@@ -1,10 +1,19 @@
 import React, { FC } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import { VideoCards, VideoCardProps, WebinarDescSection, OtherFileCardProps, OtherFileCards } from "bp-components";
+import { 
+  VideoCards, 
+  VideoCardProps, 
+  WebinarDescSection, 
+  OtherFileCardProps, 
+  OtherFileCards, 
+  WebbinarCardProps, 
+  WebinarCarousel,
+  LoadingData } from "bp-components";
 import Page from "$components/layout/Page";
+import {getWebbinarIds, getWebbinarIdsVariables} from "$gqlQueryTypes/getWebbinarIds";
 import { withApollo } from '$withApollo';
-import { GET_WEBINARS } from '$queries';
+import { GET_WEBINARS,  GET_WEBINARIDS } from '$queries';
 import { useQuery } from '@apollo/react-hooks';
 import { getWebinars, getWebinarsVariables } from '$gqlQueryTypes/getWebinars';
 import Link from "next/link";
@@ -17,6 +26,14 @@ const fetchWebinar = (webinarId) => {
     });
     return { loading, error, data };
 }
+
+const renderWebinarLink = (children: JSX.Element, id: string) => {
+  return (
+    <Link href="/webinar/[webId]" as={`/webinar/${id}`}>
+      {children}
+    </Link>
+  );
+};
 
 const renderPresenterLink = (children: JSX.Element, id: string) => {
   return (
@@ -53,32 +70,97 @@ const filterVideosAndFiles = (attachments, loading) => {
      return videosAndFiles = { files, videos }
 }
 
+const FetchWebinarsIds = () => {
+  let { loading, error, data } = useQuery<
+    getWebbinarIds,
+    getWebbinarIdsVariables
+  >(GET_WEBINARIDS, {
+    variables: {
+      parentId: "5ea559b3222115000aa8c02c",
+      offset: 0,
+      limit: 10,
+    },
+  });
+
+  const ids = data?.search.items.map((item) => {
+    return item._id;
+  });
+  return { loading, error, ids };
+};
+
+  const FetchWebinars = (ids, idsIsLoading) => {
+    const { loading, error, data } = useQuery<getWebinars, getWebinarsVariables>(
+      GET_WEBINARS,
+      {
+        variables: {
+          Ids: ids,
+        },
+        skip: idsIsLoading,
+      }
+    );
+    let webinars;
+    if (loading === false) {
+      webinars = createWebbinarData(data?.getWebinars);
+    }
+    return { loading, error, data: webinars };
+  };
+
+
+  const createWebbinarData = (items) => {
+    let webinars: WebbinarCardProps[] = [];
+    if (items) {
+      webinars = items.map(function (item) {
+        return {
+          id: item._id,
+          image: item.coverImageAddress,
+          date: item.presentDate,
+          name: item.title,
+          presenter: item.presenters[0].title,
+          presenterImage: item.presenters[0].profileImage,
+          presenterId: item.presenters[0]._id,
+          keywords: item.keywords,
+          presenterLink: renderPresenterLink,
+          link: renderWebinarLink,
+        };
+      });
+    }
+    return webinars;
+  };
+  
+
 const Webinar: NextPage<FC> = () => {
     const router = useRouter();
     const webinarMetaData = fetchWebinar(router.query.webId);
     const descData = webinarMetaData.data?.getWebinars[0];
     const attachments = filterVideosAndFiles(webinarMetaData.data?.getWebinars[0].Attachment, webinarMetaData.loading);
-    let videoComponent = (attachments.videos.length) ? <VideoCards videos = {attachments.videos} />  : <div></div>;
-    let fileComponent = (attachments.files.length) ? <OtherFileCards files = {attachments.files} /> : <div></div>;
+    const webinarIds = FetchWebinarsIds();
+    const webinars = FetchWebinars(webinarIds.ids, webinarIds.loading);
+    const loading = webinarIds.loading || webinarMetaData.loading || webinars.loading ;
     return (
       <Page>
-            <WebinarDescSection 
-              title = { descData?.title }
-              image = { descData?.coverImageAddress }
-              prsenterImage = { descData?.presenters?.[0].profileImage } 
-              prsenterName = { descData?.presenters?.[0].title}
-              prsenterEducation = { descData?.presenters?.[0].affiliation }          
-              keywords = { descData?.keywords } 
-              description = { descData?.description } 
-              loading = { webinarMetaData.loading }
-              presenterLink = {renderPresenterLink}
-              presenterId = {descData?.presenters?.[0]._id}
-              />
-            {videoComponent}
-            {fileComponent}
+        <LoadingData loading={loading} >
+          {() => {
+            return ( <>        
+                <WebinarDescSection 
+                      title = { descData?.title }
+                      image = { descData?.coverImageAddress }
+                      prsenterImage = { descData?.presenters?.[0].profileImage } 
+                      prsenterName = { descData?.presenters?.[0].title}
+                      prsenterEducation = { descData?.presenters?.[0].affiliation }          
+                      keywords = { descData?.keywords } 
+                      description = { descData?.description } 
+                      loading = { webinarMetaData.loading }
+                      presenterLink = {renderPresenterLink}
+                      presenterId = {descData?.presenters?.[0]._id}
+                 />
+                      <VideoCards videos = {attachments.videos} />
+                      <OtherFileCards files = {attachments.files} />
+                      <WebinarCarousel webbinars={webinars.data} />        
+            </>)}}
+        </LoadingData>
       </Page>
     );
   };
-  
+
   export default withApollo(Webinar);
   

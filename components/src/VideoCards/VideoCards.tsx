@@ -23,10 +23,11 @@ const Mygrid = styled(Grid)`
     margin-bottom: 30px
 `
 export interface VideosCardProps {
-        videos: VideoCardProps[]
+        videos?: VideoCardProps[]
     };
 
 const renderVideos = ({ videos }: VideosCardProps) => {
+      if(!videos) return <></>;
       return videos.map(function (video, index) {
         return(             
           <Grid key = {index} item xl={3} lg={4} md={4} sm={4} xs={12} >
@@ -42,11 +43,12 @@ const renderVideos = ({ videos }: VideosCardProps) => {
 }
 
 export const VideoCards = ({videos}: VideosCardProps) => {
+  if(!videos || videos.length === 0) return <></>;
   return (   
         <ContainerSection
             container
         >
-          <Container maxWidth="md">
+          <Container maxWidth="lg">
             <VideoSectionTitle>
               <TextTitle title = "ویدیوها" dir = "right" />
             </VideoSectionTitle>
