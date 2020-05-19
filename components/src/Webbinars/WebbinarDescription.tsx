@@ -112,7 +112,7 @@ export interface WebbinarDescriptionProps {
       prsenterEducation?: string | undefined | null;
       keywords?: string[] | undefined | null;
       description?: string | undefined | null;
-      presenterId: string | undefined | null;
+      presenterId: string ;
       presenterLink: (children: JSX.Element,id: string) => JSX.Element;
     };
 

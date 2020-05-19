@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container';
 import styled from "styled-components";
 
 const MyContainer = styled(Container)`
-  text-align: ${props => props.dir}
+  text-align: ${props => props.dir};
 `;
 
 const SectionTitle = styled.span`
