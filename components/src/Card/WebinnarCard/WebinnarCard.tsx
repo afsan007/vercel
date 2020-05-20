@@ -1,31 +1,30 @@
 import React, { FC } from "react";
-import Card from "@material-ui/core/Card";
-import Grid from "@material-ui/core/Grid";
-import CardMedia from "@material-ui/core/CardMedia";
-import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
+import { Card, Grid, CardMedia, Avatar, Typography } from "@material-ui/core";
 import styled from "styled-components";
 import { WebbinarKeyWords } from "../../KeyWords/KeyWords";
-import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
+// import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 
 const WebCard = styled(Card)`
     font-family: "IRANSans";
     margin: 0 auto;
     margin-top: 50px;
     width:260px;  
-    display: 'flex',
     justifyContent: 'space-between', 
     flexDirection: 'column'
     border-radius: 5px;
     box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     padding: 13px 5px 13px 5px;  
+    display: grid;
+    grid-template-rows: auto 1px auto;
+    box-sizing: content-box;
 `;
 
 const FatherGrid = styled(Grid)`
   margin-top: 15px;
   font-family: "IRANSans";
 `;
+
 
 const MyMedia = styled(CardMedia)`
   width: 231px;
@@ -72,14 +71,14 @@ const NameText = styled.span`
     cursor: pointer;
 `;
 
-const Like = styled.a`
-  font-family: "IRANSans";
-  float: left;
-  color: grey;
-  &:hover {
-    color: red;
-  }
-`;
+// const Like = styled.a`
+//   font-family: "IRANSans";
+//   float: left;
+//   color: grey;
+//   &:hover {
+//     color: red;
+//   }
+// `;
 
 export interface WebbinarCardProps {
     id: string;
@@ -111,7 +110,7 @@ export const WebbinarCard: FC<WebbinarCardProps> = ({ id, presenterId, name, ima
                 <WebbinarName>
                     {name}
                 </WebbinarName>,id)}
-                <FatherGrid item xs={12} container direction="row" justify="flex-start" alignItems="baseline">
+                <FatherGrid  item xs={12} container direction="row" justify="flex-start" alignItems="baseline">
                     <Grid item xs >
                     {presenterName}
                     </Grid>
@@ -132,14 +131,15 @@ export const WebbinarCard: FC<WebbinarCardProps> = ({ id, presenterId, name, ima
                                 تاریخ
                             </Title> 
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={8}>
                             <NameText>{date}</NameText>
                         </Grid>     
-                        <Grid item xs={4} >
+                        {/*TODO: Like should implenment in the future with our server-side or repo after authenticate */}
+                        {/* <Grid item xs={4} >
                             <Like href="#">
                                 <FavoriteBorderOutlinedIcon />
                             </Like>
-                        </Grid>                                         
+                        </Grid>                                          */}
                 </FatherGrid>                         
                 </WebCard>
     );
