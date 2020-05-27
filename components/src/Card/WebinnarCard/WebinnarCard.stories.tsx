@@ -18,7 +18,7 @@ export const WebbinarCardStory = () => {
       presenter="سینا ماشینی"
       presenterImage="profile.jpg"
       keywords={keywords}
-      date="22.12.1398"
+      date="2020-12-12T19:52:49"
       link={renderWebinarLink}
     />
   );
