@@ -2,8 +2,7 @@ import React,{ FC } from "react";
 import { WebbinarCard, WebbinarCardProps } from '../Card/WebinnarCard/WebinnarCard';
 import { TextTitle } from '../Titles/TextTitle';
 import { ItemCarousel } from "../Carousel/ItemCarousel"
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
+import { Container, Grid } from "@material-ui/core";
 import styled from "styled-components";
 
 const ContainerSection = styled(Grid)`

@@ -2,7 +2,7 @@ import React from "react";
 import { WebinarDescSection } from './WebbinarDescSection'
 
 export default {
-    title: "Section Components | Webbinar / WebinarDescSection ",
+    title: "Section Components | Webinar / WebinarDescSection ",
     component: WebinarDescSection
 };
 
