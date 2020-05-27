@@ -112,12 +112,12 @@ export interface WebbinarDescriptionProps {
       prsenterEducation?: string | undefined | null;
       keywords?: string[] | undefined | null;
       description?: string | undefined | null;
-      presenterId: string ;
+      presenterId: string | undefined | null;
       presenterLink: (children: JSX.Element,id: string) => JSX.Element;
     };
 
 export const WebbinarDescription: FC<WebbinarDescriptionProps> = (props) => {
-  if (!props.image || !props.title || !props.prsenterImage || !props.prsenterName || !props.keywords || !props.description){
+  if (!props.image || !props.title || !props.prsenterImage || !props.prsenterName || !props.keywords || !props.description || !props.presenterId){
     return <div></div>;
   }
   return (   

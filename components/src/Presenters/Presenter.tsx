@@ -10,11 +10,12 @@ import {
 } from "../Card/SimplePresenterCard/SimplePresenter";
 
 const BodyContainer = styled(Container)`
-  margin-top: 20px;
+  margin-top: 35px;
+  margin-bottom: 55px;
 `;
 
 const BodyGrid = styled(Grid)`
-  margin-top: 50px;
+  margin-top: 55px;
 `;
 
 export interface PresnterProps {
@@ -51,7 +52,7 @@ export const Presnter = ({ presnters, loading = false }: PresnterProps) => {
               xs={12}
               container
               direction="row"
-              justify="flex-start"
+              justify="center"
               alignItems="flex-start"
             >
               {renderPresenters({ presnters })}

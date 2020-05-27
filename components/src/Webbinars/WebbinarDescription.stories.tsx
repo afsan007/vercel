@@ -2,7 +2,7 @@ import React from "react";
 import { WebbinarDescription } from "./WebbinarDescription";
 
 export default {
-    title: "ATOMS | WebbinarDescription / Description",
+    title: "ATOMS | WebinarDescription / Description",
     component: WebbinarDescription
 };
 
