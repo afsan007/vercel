@@ -20,7 +20,7 @@ export const Webbinars = () => {
             presenter:"سینا ماشینی",
             presenterImage:"profile.jpg",
             keywords:["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-            date:"1.10.1399",
+            date:"2020-12-12T19:52:49",
             link: renderWebinarLink
         },
         {
@@ -30,7 +30,7 @@ export const Webbinars = () => {
             presenter:"سینا ماشینی",
             presenterImage:"profile.jpg",
             keywords:["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-            date:"1.10.1399",
+            date:"2019-12-12T19:52:49",
             link: renderWebinarLink
         },
         {
@@ -40,7 +40,7 @@ export const Webbinars = () => {
             presenter:"سینا ماشینی",
             presenterImage:"profile.jpg",
             keywords:["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-            date:"1.10.1399",
+            date:"2019-12-12T19:52:49",
             link: renderWebinarLink
         },
         {
@@ -50,7 +50,7 @@ export const Webbinars = () => {
             presenter:"سینا ماشینی",
             presenterImage:"profile.jpg",
             keywords:["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-            date:"1.10.1399",
+            date:"2020-02-12T19:52:49",
             link: renderWebinarLink
         },
         {
@@ -60,7 +60,7 @@ export const Webbinars = () => {
         presenter:"سینا ماشینی",
         presenterImage:"profile.jpg",
         keywords:["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-        date:"1.10.1399",
+        date:"2020-12-12T19:52:49",
         link: renderWebinarLink
     },
     {   id: "64564654654fdf651",
@@ -69,7 +69,7 @@ export const Webbinars = () => {
         presenter:"سینا ماشینی",
         presenterImage:"profile.jpg",
         keywords:["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-        date:"1.10.1399",
+        date:"2020-12-14T19:52:49",
         link: renderWebinarLink
     },
     {
@@ -79,7 +79,7 @@ export const Webbinars = () => {
         presenter:"سینا ماشینی",
         presenterImage:"profile.jpg",
         keywords:["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-        date:"1.10.1399",
+        date:"2020-12-12T19:52:49",
         link: renderWebinarLink
     },
     {
@@ -87,9 +87,9 @@ export const Webbinars = () => {
         name: "وبینار برای8 گراف کیوال",
         image:"gph.png",
         presenter:"سینا ماشینی",
-        presenterImage:"profile.jpg",
+        presenterImage:"profile.jpg",        
         keywords:["OOP", "Grphql", "Programmig", "برنامه نویسی"],
-        date:"1.10.1399",
+        date:"2020-12-12T19:52:49",
         link: renderWebinarLink
     }
 ]
