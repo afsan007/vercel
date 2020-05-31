@@ -115,9 +115,9 @@ const FetchWebinarsIds = () => {
           image: item.coverImageAddress,
           date: item.presentDate,
           name: item.title,
-          presenter: item.presenters[0].title,
-          presenterImage: item.presenters[0].profileImage,
-          presenterId: item.presenters[0]._id,
+          presenter: item.presenterId.title,
+          presenterImage: item.presenterId.profileImage,
+          presenterId: item.presenterId._id,
           keywords: item.keywords,
           presenterLink: renderPresenterLink,
           link: renderWebinarLink,
@@ -131,6 +131,7 @@ const FetchWebinarsIds = () => {
 const Webinar: NextPage<FC> = () => {
     const router = useRouter();
     const webinarMetaData = fetchWebinar(router.query.webId);
+    console.log("webinarMetaData:", webinarMetaData);
     const descData = webinarMetaData.data?.getWebinars[0];
     const attachments = filterVideosAndFiles(webinarMetaData.data?.getWebinars[0].Attachment, webinarMetaData.loading);
     const webinarIds = FetchWebinarsIds();
@@ -144,14 +145,14 @@ const Webinar: NextPage<FC> = () => {
                 <WebinarDescSection 
                       title = { descData?.title }
                       image = { descData?.coverImageAddress }
-                      prsenterImage = { descData?.presenters?.[0].profileImage } 
-                      prsenterName = { descData?.presenters?.[0].title}
-                      prsenterEducation = { descData?.presenters?.[0].affiliation }          
+                      prsenterImage = { descData?.presenterId?.profileImage } 
+                      prsenterName = { descData?.presenterId?.title}
+                      prsenterEducation = { descData?.presenterId?.affiliation }          
                       keywords = { descData?.keywords } 
                       description = { descData?.description } 
                       loading = { webinarMetaData.loading }
                       presenterLink = {renderPresenterLink}
-                      presenterId = {descData?.presenters?.[0]._id}
+                      presenterId = {descData?.presenterId?._id}
                  />
                       <VideoCards videos = {attachments.videos} />
                       <OtherFileCards files = {attachments.files} />

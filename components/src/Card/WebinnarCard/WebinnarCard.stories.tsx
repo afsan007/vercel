@@ -19,7 +19,9 @@ export const WebbinarCardStory = () => {
       presenterImage="profile.jpg"
       keywords={keywords}
       date="2020-12-12T19:52:49"
+      presenterId="445465456546"
       link={renderWebinarLink}
+      presenterLink={renderWebinarLink}
     />
   );
 };
