@@ -13,6 +13,11 @@ const Mygrid = styled(Grid)`
   margin-bottom: 30px;
 `;
 
+const ContainerSection = styled(Grid)`
+    display:flex;
+`;
+
+
 export interface PresenterWebinarsProps {
   webinars: WebbinarCardProps[];
 }
@@ -20,7 +25,6 @@ export interface PresenterWebinarsProps {
 const renderWebbinars = ({ webinars }: PresenterWebinarsProps) => {
   return webinars.map(function(webbinar, index) {
     return (
-      <Grid item key={index} xl={4} lg={4} md={4} sm={4} xs={12}>
         <WebbinarCard
           id = { webbinar.id}
           key = {index}
@@ -32,7 +36,6 @@ const renderWebbinars = ({ webinars }: PresenterWebinarsProps) => {
           date = {webbinar.date}
           link = {webbinar.link}
         />
-      </Grid>
     );
   });
 };
@@ -41,20 +44,20 @@ export const PresenterPageWebinars: FC<PresenterWebinarsProps> = ({
   webinars,
 }) => {
   return (
-    <Grid container>
-      <Container maxWidth="md">
+    <ContainerSection container>
+      <Container maxWidth="lg">
         <Mygrid
           container
           direction="row"
           justify="flex-start"
-          alignItems="flex-start"
+          alignItems="stretch"
           spacing={0}
         >
           <TextTitle title="وبینار ها" dir="right" />
           {renderWebbinars({ webinars })}
         </Mygrid>
       </Container>
-    </Grid>
+    </ContainerSection>
   );
 };
 

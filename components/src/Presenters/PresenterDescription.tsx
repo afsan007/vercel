@@ -158,9 +158,10 @@ export const PresenterDescription: FC<PresenterDescriptionProps> = (props) => {
           </FatherGrid>
         </Grid>
         <Grid item lg={2} xl={2} md={2} />
-        <FollowGrid item lg={5} xl={5} md={5} sm={12} xs={12}>
+        {/* TODO Follow button should add after serverside  */}
+        {/* <FollowGrid item lg={5} xl={5} md={5} sm={12} xs={12}>
           <FollowButton>دنبال کردن</FollowButton>
-        </FollowGrid>
+        </FollowGrid> */}
       </FatherGrid>
       <PresenterDesc>
         <ShowMoreText text={props.description} />

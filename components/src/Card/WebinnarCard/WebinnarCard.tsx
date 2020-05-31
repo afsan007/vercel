@@ -140,7 +140,7 @@ export const WebbinarCard: FC<WebbinarCardProps> = ({
         presenterId
       )
     ) : (
-      <></>
+      <div></div>
     );
   const presenterName =
     presenterLink && presenterId ? (
@@ -151,7 +151,7 @@ export const WebbinarCard: FC<WebbinarCardProps> = ({
         presenterId
       )
     ) : (
-      <></>
+      <div></div>
     );
   return (
     <WebCard>

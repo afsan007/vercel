@@ -25,7 +25,7 @@ export interface getWebinars_getWebinars_Attachment {
   Iframe: getWebinars_getWebinars_Attachment_Iframe | null;
 }
 
-export interface getWebinars_getWebinars_presenters {
+export interface getWebinars_getWebinars_presenterId {
   __typename: "Presenter";
   _id: GraphQLObjectId;
   title: string;
@@ -43,7 +43,7 @@ export interface getWebinars_getWebinars {
   description: string | null;
   coverImageAddress: string | null;
   Attachment: getWebinars_getWebinars_Attachment[] | null;
-  presenters: getWebinars_getWebinars_presenters[] | null;
+  presenterId: getWebinars_getWebinars_presenterId | null;
 }
 
 export interface getWebinars {
