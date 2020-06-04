@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Head from "next/head";
 import { bool, node, InferProps } from "prop-types";
 import { Header } from "bp-components";
+import { Search } from "../Search/Search";
 
 type PropTypes = InferProps<typeof propTypes>;
 
@@ -14,7 +15,9 @@ const Page: FC<PropTypes> = (props) => (
         <link rel="stylsheet" href="./global.css" />
       </Head>
     )}
-    <Header src="/Logo.png" />
+    <Header src="/Logo.png">
+      <Search />
+    </Header>
     {props.children}
   </div>
 );
