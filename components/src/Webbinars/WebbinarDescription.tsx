@@ -2,7 +2,7 @@ import React ,{ FC } from "react";
 import Grid from '@material-ui/core/Grid';
 import CardMedia from '@material-ui/core/CardMedia';
 import Avatar from '@material-ui/core/Avatar';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+// import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import Typography from '@material-ui/core/Typography';
 import { ShowMoreText } from "../Text/ShowMore"
 import { WebbinarKeyWords } from  '../KeyWords/KeyWords'
@@ -75,34 +75,34 @@ const WebbinarDesc = styled.div`
   color: #7a7a7a;
 `
 
-const Oval = styled.div`
-  position: relative;
-  float:left;
-  bottom:10px;
-  left: 20px;
-  width: 79px;
-  height: 75px;
-  background-color: #91bfd9;
-  border-radius: 120px;
-  text-align: center;
-  color: white;
-  cursor: pointer;
-  @media (max-width: 768px) {
-    bottom:0px;
-    left: 0px;
-    float: unset;
-    margin: 0 auto;
-   }
-`
+// const Oval = styled.div`
+//   position: relative;
+//   float:left;
+//   bottom:10px;
+//   left: 20px;
+//   width: 79px;
+//   height: 75px;
+//   background-color: #91bfd9;
+//   border-radius: 120px;
+//   text-align: center;
+//   color: white;
+//   cursor: pointer;
+//   @media (max-width: 768px) {
+//     bottom:0px;
+//     left: 0px;
+//     float: unset;
+//     margin: 0 auto;
+//    }
+// `
 
 const SpaceBetween = styled.div`
   margin-top: 5px
 `
 
-const LikeSymbol = styled(FavoriteBorderIcon)`
-  margin-top:15px;
-  font-size: 48px;
-`
+// const LikeSymbol = styled(FavoriteBorderIcon)`
+//   margin-top:15px;
+//   font-size: 48px;
+// `
 
 export interface WebbinarDescriptionProps {
       image?: string | undefined | null;
@@ -157,9 +157,9 @@ export const WebbinarDescription: FC<WebbinarDescriptionProps> = (props) => {
                     <ShowMoreText text={props.description} />
                   </WebbinarDesc>                  
             </FatherGrid>  
-            <Oval>
+            {/* <Oval>
                 <LikeSymbol />
-            </Oval>  
+            </Oval>   */}
         </DescriptionDiv>
   );
 };

@@ -21,22 +21,22 @@ const Description = styled.div`
   font-size: 16px;
 `;
 
-const ShowMore = styled(Grid)`
-  font-size: 16px;
-  color: #ffce73;
-  padding-top: 20px;
-`;
+// const ShowMore = styled(Grid)`
+//   font-size: 16px;
+//   color: #ffce73;
+//   padding-top: 20px;
+// `;
 
-const LinkTitle = styled.a`
-  a:link {
-    text-decoration: none;
-    color: #ffce73;
-  }
-  :hover {
-    text-decoration: none;
-    cursor: pointer;
-  }
-`;
+// const LinkTitle = styled.a`
+//   a:link {
+//     text-decoration: none;
+//     color: #ffce73;
+//   }
+//   :hover {
+//     text-decoration: none;
+//     cursor: pointer;
+//   }
+// `;
 
 export const Text = ({
   title,
@@ -59,9 +59,9 @@ export const Text = ({
           <Description>{description}</Description>
         </Grid>
 
-        <ShowMore item xl={12} lg={12} md={12} sm={12} xs={12}>
+        {/* <ShowMore item xl={12} lg={12} md={12} sm={12} xs={12}>
           {linkWrapper(<LinkTitle>{linktitle}</LinkTitle>)}
-        </ShowMore>
+        </ShowMore> */}
       </Grid>
     </Root>
   );

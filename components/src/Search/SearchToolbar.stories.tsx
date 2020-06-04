@@ -15,8 +15,6 @@ const searchResults: searchResult[] = [
 ];
 
 const renderLink = (children: JSX.Element, schema, id) => {
-  let href = "/webinar/[webId]" ;
-  if (schema == "Presenter") href = "/presenter/[presenterId]";
   return (
     <a href="#">
       {children}

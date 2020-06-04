@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Grid, Avatar, Typography, Button } from "@material-ui/core";
+import { Grid, Avatar, Typography } from "@material-ui/core";
 import { ShowMoreText } from "../Text/ShowMore";
 import styled from "styled-components";
 

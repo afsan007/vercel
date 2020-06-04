@@ -15,7 +15,7 @@ import {
   Banner,
   Presnter,
   SimplePresenterProps,
-  Services,
+  // Services,
   ServiceCardProps,
   WebbinarCardProps,
   UpComingWebinarsCarousel,
@@ -291,11 +291,11 @@ const Home: NextPage<FC> = () => {
                 linkWrapper={renderAddItemLink}
                 loading={allServices.loading}
               />
-              <Services
+              {/* <Services
                 services={allServices.data?.generalServices}
                 loading={allServices.loading}
                 backgroundImg={allServices.data?.bgPictureServices}
-              />
+              /> */}
 
               <UpComingWebinarsCarousel
                 webbinars={webinars.data.newWebinars}
