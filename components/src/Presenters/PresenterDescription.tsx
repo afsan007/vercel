@@ -29,9 +29,9 @@ const PresenterName = styled(Typography)`
   }
 `;
 
-const FollowGrid = styled(Grid)`
-  text-align: center;
-`;
+// const FollowGrid = styled(Grid)`
+//   text-align: center;
+// `;
 
 const FatherGrid = styled(Grid)`
   font-family: "IRANSans";
@@ -74,18 +74,18 @@ const PresenterDesc = styled.div`
   color: #7a7a7a;
 `;
 
-const FollowButton = styled(Button)`
-  width: 174px;
-  height: 34px;
-  border-radius: 17px;
-  background-color: #91bfd9;
-  font-family: "IRANSans";
-  color:#ffffff
-  font-size: 14px;
-  margin: 0 auto;
-  margin-top:8px;
-  text-align: center;
-`;
+// const FollowButton = styled(Button)`
+//   width: 174px;
+//   height: 34px;
+//   border-radius: 17px;
+//   background-color: #91bfd9;
+//   font-family: "IRANSans";
+//   color:#ffffff
+//   font-size: 14px;
+//   margin: 0 auto;
+//   margin-top:8px;
+//   text-align: center;
+// `;
 
 export interface PresenterDescriptionProps {
   prsenterUniversity?: string | undefined | null;

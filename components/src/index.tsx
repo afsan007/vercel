@@ -6,5 +6,6 @@ export * from "./Presenters";
 export * from "./Titles/TextTitle";
 export * from "./Webbinars";
 export * from "./Services";
-export * from './VideoCards';
-export * from './OtherFile';
+export * from "./VideoCards";
+export * from "./OtherFile";
+export * from "./Search/SearchToolbar";

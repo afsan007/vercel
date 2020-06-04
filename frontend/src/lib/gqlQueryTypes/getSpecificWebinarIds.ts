@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface getSpecificWebinarIds_search_items {
-  __typename: "Collection" | "Webinar" | "Presenter" | "Video" | "General" | "Test" | "_BaseItem";
+  __typename: "Collection" | "Webinar" | "Presenter" | "Video" | "General" | "Test" | "RootCollection" | "_BaseItem";
   _id: GraphQLObjectId;
 }
 
