@@ -61,7 +61,7 @@ const filterVideosAndFiles = (attachments, loading) => {
           files.push({    
             title: attachment.Title,
             type: attachment.format ,
-            src: attachment.Thumbnail ,
+            src: attachment.URL ,
             image: attachment.Thumbnail,          
           })
           }
@@ -131,7 +131,6 @@ const FetchWebinarsIds = () => {
 const Webinar: NextPage<FC> = () => {
     const router = useRouter();
     const webinarMetaData = fetchWebinar(router.query.webId);
-    console.log("webinarMetaData:", webinarMetaData);
     const descData = webinarMetaData.data?.getWebinars[0];
     const attachments = filterVideosAndFiles(webinarMetaData.data?.getWebinars[0].Attachment, webinarMetaData.loading);
     const webinarIds = FetchWebinarsIds();

@@ -37,6 +37,7 @@ const FatherGrid = styled(Grid)`
 const WebbinarImage = styled(CardMedia)`
   width: 229px;
   height: 143px;
+  background-size: contain;
   @media (max-width: 768px) {
    margin:0 auto;
   }

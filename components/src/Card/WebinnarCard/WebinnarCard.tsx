@@ -32,6 +32,7 @@ const MyMedia = styled(CardMedia)`
   margin: 0 auto;
   cursor: pointer;
   object-fit: contain;
+  background-size: contain;
 `;
 
 const KeyWords = styled(WebbinarKeyWords)`
@@ -62,12 +63,29 @@ const Title = styled(Typography)`
   margin: 0px 15px 0px 0px;
 `;
 
-const NameText = styled.span`
+const TitleText = styled.span`
   font-family: "IRANSans";
   color: #323232;
   font-size: 14px;
   margin-right: 15px;
 `;
+ 
+const NameText = styled.a`
+  font-family: "IRANSans";
+  color: #323232;
+  font-size: 14px;
+  margin-right: 15px;
+  cursor:pointer;
+  :active {
+    color: black;
+  }
+  :visited {
+    color: black;
+  }
+  :hover {
+    color: black;
+  }
+`
 
 // const Like = styled.a`
 //   font-family: "IRANSans";
@@ -144,12 +162,9 @@ export const WebbinarCard: FC<WebbinarCardProps> = ({
     );
   const presenterName =
     presenterLink && presenterId ? (
-      presenterLink(
         <Title>
-          ارائه دهنده <NameText> {presenter} </NameText>
-        </Title>,
-        presenterId
-      )
+          ارائه دهنده  {presenterLink(<NameText title={presenter}> {presenter} </NameText> , presenterId)}
+        </Title>
     ) : (
       <div></div>
     );
@@ -194,13 +209,13 @@ export const WebbinarCard: FC<WebbinarCardProps> = ({
           <Title>تاریخ</Title>
         </Grid>
         <Grid item xs={9}>
-          <NameText>
+          <TitleText>
             {" "}
             {moment(date.toString(), "YYYY-M-D HH:mm:ss ")
               .add(3, "hours")
               .locale("fa")
               .format("HH:mm YYYY-M-D  ")}
-          </NameText>
+          </TitleText>
         </Grid>
         {/*TODO: Like should implenment in the future with our server-side or repo after authenticate */}
         {/* <Grid item xs={4} >
@@ -217,13 +232,13 @@ export const WebbinarCard: FC<WebbinarCardProps> = ({
         alignItems="flex-end"
       >
         <Grid item xs={2}>
-          <NameText>{remainingdays(date).remainingDays}</NameText>
+          <TitleText>{remainingdays(date).remainingDays}</TitleText>
         </Grid>
         <Grid item xs={2}>
           <Title>روز</Title>
         </Grid>
         <Grid item xs={2}>
-          <NameText>{remainingdays(date).remaininghours}</NameText>
+          <TitleText>{remainingdays(date).remaininghours}</TitleText>
         </Grid>
         {remainingDay}
       </FatherGrid>
