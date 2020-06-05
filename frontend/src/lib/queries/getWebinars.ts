@@ -8,6 +8,7 @@ export const GET_WEBINARS = gql`
         keywords
         thumbnail      
         presentDate
+        presentEndDate
         description
         coverImageAddress
         Attachment{

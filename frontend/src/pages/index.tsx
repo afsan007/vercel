@@ -41,6 +41,7 @@ import {
   getPresentersVariables,
 } from "$gqlQueryTypes/getPresenters";
 import moment from "jalali-moment";
+import { Scheduler } from '../components/Scheduler/Scheduler'
 
 const renderAddItemLink = (children: JSX.Element) => (
   <Link href="/">{children}</Link>
@@ -291,12 +292,13 @@ const Home: NextPage<FC> = () => {
                 linkWrapper={renderAddItemLink}
                 loading={allServices.loading}
               />
+              <Scheduler />
               {/* <Services
+              <Services
                 services={allServices.data?.generalServices}
                 loading={allServices.loading}
                 backgroundImg={allServices.data?.bgPictureServices}
               /> */}
-
               <UpComingWebinarsCarousel
                 webbinars={webinars.data.newWebinars}
                 title="وبینارهای آینده"
