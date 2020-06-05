@@ -7,13 +7,26 @@ import { useQuery } from "@apollo/react-hooks";
 import { GET_SEARCH_RESULT } from "$queries";
 import { SearchToolbar } from "bp-components";
 import Link from "next/link";
+import styled from "styled-components";
+
+const Mylink = styled.a`
+  :active {
+    color: black;
+  }
+  :visited {
+    color: black;
+  }
+  :hover{
+    color: green
+  }
+`
 
 const renderLink = (children: JSX.Element, schema, id) => {
   let href = "/webinar/[webId]" ;
   if (schema == "Presenter") href = "/presenter/[presenterId]";
   return (
     <Link href={href} as={`/${schema}/${id}`}>
-      {children}
+      <Mylink>{children}</Mylink>
     </Link>
   );
 };

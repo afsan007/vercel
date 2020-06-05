@@ -40,6 +40,7 @@ export interface getWebinars_getWebinars {
   keywords: string[] | null;
   thumbnail: string | null;
   presentDate: GraphQLDateTime | null;
+  presentEndDate: GraphQLDateTime | null;
   description: string | null;
   coverImageAddress: string | null;
   Attachment: getWebinars_getWebinars_Attachment[] | null;

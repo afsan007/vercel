@@ -7,3 +7,4 @@ export * from "./getServicesIds";
 export * from "./getServices";
 export * from "./getSpecificWebinarIds";
 export * from "./getSearchResult";
+export * from './getWebinarsWithDateIds';
