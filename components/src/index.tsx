@@ -9,3 +9,4 @@ export * from "./Services";
 export * from "./VideoCards";
 export * from "./OtherFile";
 export * from "./Search/SearchToolbar";
+export * from './Scheduler';
