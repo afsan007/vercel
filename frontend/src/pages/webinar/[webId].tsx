@@ -90,9 +90,12 @@ const FetchWebinarsIds = () => {
 
   const FetchWebinars = (ids, idsIsLoading, currentWebId) => {
     let newIds:any = []; 
-    ids.map(id =>{
-      if (id != currentWebId) newIds.push(id)
-    })
+    if(ids)
+    {
+      ids.map(id =>{
+       if (id != currentWebId) newIds.push(id)
+        })
+    }
     const { loading, error, data } = useQuery<getWebinars, getWebinarsVariables>(
       GET_WEBINARS,
       {
