@@ -13,7 +13,7 @@ export interface getSearchResult_search_items_schema {
 }
 
 export interface getSearchResult_search_items {
-  __typename: "Collection" | "Webinar" | "Presenter" | "Video" | "General" | "Test" | "RootCollection" | "_BaseItem";
+  __typename: "Collection" | "Webinar" | "Presenter" | "General" | "RootCollection" | "_BaseItem";
   title: string;
   _id: GraphQLObjectId;
   schema: getSearchResult_search_items_schema;

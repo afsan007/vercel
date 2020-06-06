@@ -88,12 +88,16 @@ const FetchWebinarsIds = () => {
   return { loading, error, ids };
 };
 
-  const FetchWebinars = (ids, idsIsLoading) => {
+  const FetchWebinars = (ids, idsIsLoading, currentWebId) => {
+    let newIds:any = []; 
+    ids.map(id =>{
+      if (id != currentWebId) newIds.push(id)
+    })
     const { loading, error, data } = useQuery<getWebinars, getWebinarsVariables>(
       GET_WEBINARS,
       {
         variables: {
-          Ids: ids,
+          Ids: newIds,
         },
         skip: idsIsLoading,
       }
@@ -134,7 +138,7 @@ const Webinar: NextPage<FC> = () => {
     const descData = webinarMetaData.data?.getWebinars[0];
     const attachments = filterVideosAndFiles(webinarMetaData.data?.getWebinars[0].Attachment, webinarMetaData.loading);
     const webinarIds = FetchWebinarsIds();
-    const webinars = FetchWebinars(webinarIds.ids, webinarIds.loading);
+    const webinars = FetchWebinars(webinarIds.ids, webinarIds.loading, router.query.webId);
     const loading = webinarIds.loading || webinarMetaData.loading || webinars.loading ;
     return (
       <Page>

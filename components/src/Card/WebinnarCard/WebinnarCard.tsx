@@ -32,7 +32,6 @@ const MyMedia = styled(CardMedia)`
   margin: 0 auto;
   cursor: pointer;
   object-fit: contain;
-  background-size: contain;
 `;
 
 const KeyWords = styled(WebbinarKeyWords)`
