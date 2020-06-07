@@ -7,9 +7,11 @@ export default {
   component: Header,
 };
 
+const HomeLink = (childeren:JSX.Element) => <a href="#">{childeren}</a>
+
 export const HeaderComponent = () => {
   return (
-    <Header src="Logo.png">
+    <Header src="Logo.png" HomeLink = {HomeLink}>
       <SearchComponent />
     </Header>
   );

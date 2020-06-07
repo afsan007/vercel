@@ -1,6 +1,6 @@
 import React from "react";
 import { PresenterPageWebinars } from "./PresenterPageWebinar";
-import { WebbinarCardProps } from "../Card/WebinnarCard/WebinnarCard";
+import { WebinarCardProps } from "../Card/WebinarCard/WebinarCard";
 
 export default {
   title: "Section Components | Presenters / PresenterPageWebbbinars ",
@@ -10,7 +10,7 @@ export default {
 const renderWebinarLink = (children: JSX.Element) => <a href="#">{children}</a>;
 
 export const PresenterWebbbinars = () => {
-  const webinars: WebbinarCardProps[] = [
+  const webinars: WebinarCardProps[] = [
     {
       id: "6545645646565",
       name: "وبینار برای گراف کیوال",

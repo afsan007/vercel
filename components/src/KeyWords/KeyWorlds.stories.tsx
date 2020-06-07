@@ -1,14 +1,14 @@
 
 import React from "react";
-import { WebbinarKeyWords } from "./KeyWords";
+import { WebinarKeyWords } from "./KeyWords";
 
 export default {
-    title: "ATOMS | Keywords / WebbinarKeyWords",
-    component: WebbinarKeyWords
+    title: "ATOMS | Keywords / WebinarKeyWords",
+    component: WebinarKeyWords
 };
 
 export const Keywords = () => {
     const keywords = ["graphql", "coding", "برنامه نویسی", "OOP"];
-    return <WebbinarKeyWords keywords={keywords} />
+    return <WebinarKeyWords keywords={keywords} />
 };
 

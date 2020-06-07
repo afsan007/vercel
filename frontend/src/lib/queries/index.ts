@@ -1,5 +1,5 @@
 export * from "./getChildren";
-export * from "./getWebbinarIds";
+export * from "./getWebinarIds";
 export * from "./getPresenterIds";
 export * from "./getWebinars";
 export * from "./getPresenter";

@@ -1,5 +1,5 @@
 import React,{ FC } from "react";
-import { WebbinarCard, WebbinarCardProps } from '../Card/WebinnarCard/WebinnarCard';
+import { WebinarCard, WebinarCardProps } from '../Card/WebinarCard/WebinarCard';
 import { TextTitle } from '../Titles/TextTitle';
 import { ItemCarousel } from "../Carousel/ItemCarousel"
 import { Container, Grid } from "@material-ui/core";
@@ -23,30 +23,30 @@ const FileSectionTitle = styled.div`
 `
 
 export interface WebinarCarouselProps {
-      webbinars: WebbinarCardProps[];
+      Webinars: WebinarCardProps[];
     };
 
-const renderWebbinars = ({ webbinars }) => {
-   return webbinars.map(function (webbinar,index) {
+const renderWebinars = ({ Webinars }) => {
+   return Webinars.map(function (Webinar,index) {
         return(         
-              <WebbinarCard                    
+              <WebinarCard                    
                     key = {index}    
-                    id = {webbinar.id}               
-                    name = {webbinar.name}
-                    image = {webbinar.image}
-                    presenter = {webbinar.presenter}
-                    presenterImage = {webbinar.presenterImage}
-                    keywords = {webbinar.keywords}
-                    date = {webbinar.date}
-                    link = {webbinar.link}
-                    presenterId = {webbinar.presenterId}
-                    presenterLink = {webbinar.presenterLink}
+                    id = {Webinar.id}               
+                    name = {Webinar.name}
+                    image = {Webinar.image}
+                    presenter = {Webinar.presenter}
+                    presenterImage = {Webinar.presenterImage}
+                    keywords = {Webinar.keywords}
+                    date = {Webinar.date}
+                    link = {Webinar.link}
+                    presenterId = {Webinar.presenterId}
+                    presenterLink = {Webinar.presenterLink}
                      />
               );          
   });
 }
 
-export const WebinarCarousel: FC<WebinarCarouselProps> = ({webbinars}) => {
+export const WebinarCarousel: FC<WebinarCarouselProps> = ({Webinars}) => {
   return (   
         <ContainerSection container>
           <Container maxWidth="lg">
@@ -63,7 +63,7 @@ export const WebinarCarousel: FC<WebinarCarouselProps> = ({webbinars}) => {
               spacing={0}
             > 
             <ItemCarousel>
-                  {renderWebbinars({webbinars})}   
+                  {renderWebinars({Webinars})}   
             </ItemCarousel>     
         </Grid> 
           </Container>                       

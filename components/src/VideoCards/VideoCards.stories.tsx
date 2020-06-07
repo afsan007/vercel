@@ -8,7 +8,7 @@ export default {
 };
 
 
-export const Webbinars = () => {
+export const Webinars = () => {
     const videos: VideoCardProps [] = [
     {   
         desc:"برگزاری آزمون آنلاین از گروه ؟" ,

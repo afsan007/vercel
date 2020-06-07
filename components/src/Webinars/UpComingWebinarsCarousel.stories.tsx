@@ -1,6 +1,6 @@
 import React from "react";
 import { UpComingWebinarsCarousel } from "./UpComingWebinarsCarousel";
-import { WebbinarCardProps } from "../Card/WebinnarCard/WebinnarCard";
+import { WebinarCardProps } from "../Card/WebinarCard/WebinarCard";
 
 export default {
   title: "Section Components | Webinar / UpCommingWebinars ",
@@ -9,8 +9,8 @@ export default {
 
 const renderWebinarLink = (children: JSX.Element) => <a href="#">{children}</a>;
 
-export const Webbinars = () => {
-  const webbinars: WebbinarCardProps[] = [
+export const Webinars = () => {
+  const Webinars: WebinarCardProps[] = [
     {
       id: "4564654654651",
       name: "وبینار برای گراف کیوال",
@@ -50,7 +50,7 @@ export const Webbinars = () => {
   ];
   return (
     <UpComingWebinarsCarousel
-      webbinars={webbinars}
+      Webinars={Webinars}
       title="وبینار های آینده"
       color="#ededed"
     />
