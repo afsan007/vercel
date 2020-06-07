@@ -27,6 +27,6 @@ const files: OtherFileCardProps [] = [
     },
 ];
 
-export const Webbinars = () => {
+export const Webinars = () => {
     return <OtherFileCards files = {files} />
 };

@@ -3,6 +3,9 @@ import Head from "next/head";
 import { bool, node, InferProps } from "prop-types";
 import { Header } from "bp-components";
 import { Search } from "../Search/Search";
+import Link from "next/link";
+
+const HomeLink = (childeren:JSX.Element | JSX.Element[]) => <Link href="/"><a>{childeren}</a></Link>
 
 type PropTypes = InferProps<typeof propTypes>;
 
@@ -15,7 +18,7 @@ const Page: FC<PropTypes> = (props) => (
         <link rel="stylsheet" href="./global.css" />
       </Head>
     )}
-    <Header src="/Logo.png">
+    <Header src="/Logo.png" HomeLink = {HomeLink}>
       <Search />
     </Header>
     {props.children}

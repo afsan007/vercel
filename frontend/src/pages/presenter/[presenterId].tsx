@@ -3,7 +3,7 @@ import { NextPage } from "next";
 import {
   PresenterDescSection,
   PresenterPageWebinars,
-  WebbinarCardProps,
+  WebinarCardProps,
 } from "bp-components";
 import { useRouter } from "next/router";
 import Page from "$components/layout/Page";
@@ -81,7 +81,7 @@ const FetchWebinars = (id) => {
 };
 
 const createWebinarData = (items) => {
-  let webinars: WebbinarCardProps[] = [];
+  let webinars: WebinarCardProps[] = [];
   if (items) {
     webinars = items.map(function (item) {
       return {

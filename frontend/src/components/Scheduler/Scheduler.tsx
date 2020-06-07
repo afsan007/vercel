@@ -64,12 +64,12 @@ const fetchWebinars = (ids, idsIsLoading) =>
   });   
   let webinars ;
   if(loading == false){
-    webinars = createWebbinarData(data?.getWebinars)
+    webinars = createWebinarData(data?.getWebinars)
   }
   return { loading, error, data: webinars };
 };
 
-const createWebbinarData = (items) => {
+const createWebinarData = (items) => {
   let webinars: ScdulerData[] = [];
   if (items) {
     webinars = items.map(function (item) {

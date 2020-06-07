@@ -5,7 +5,7 @@ import Avatar from '@material-ui/core/Avatar';
 // import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import Typography from '@material-ui/core/Typography';
 import { ShowMoreText } from "../Text/ShowMore"
-import { WebbinarKeyWords } from  '../KeyWords/KeyWords'
+import { WebinarKeyWords } from  '../KeyWords/KeyWords'
 import styled from "styled-components";
 
 
@@ -22,7 +22,7 @@ const DescriptionDiv = styled(Grid)`
   }
 `;
 
-const WebbinarTitle = styled(Typography)`
+const WebinarTitle = styled(Typography)`
     font-family: "IRANSans";
     @media (max-width: 768px) {
       text-align: center;
@@ -34,7 +34,7 @@ const FatherGrid = styled(Grid)`
   margin-top: 5px;
 `
 
-const WebbinarImage = styled(CardMedia)`
+const WebinarImage = styled(CardMedia)`
   width: 229px;
   height: 143px;
   background-size: contain;
@@ -43,7 +43,7 @@ const WebbinarImage = styled(CardMedia)`
   }
 `;
 
-const WebbinarDetail = styled.div`
+const WebinarDetail = styled.div`
   margin-top:10px;
 `
 
@@ -63,7 +63,7 @@ const FullName = styled.span`
   cursor:pointer;
 `;
 
-const WebbinarDesc = styled.div`
+const WebinarDesc = styled.div`
   font-family: "IRANSans";
   min-height:150px;
   margin-top:25px;
@@ -105,7 +105,7 @@ const SpaceBetween = styled.div`
 //   font-size: 48px;
 // `
 
-export interface WebbinarDescriptionProps {
+export interface WebinarDescriptionProps {
       image?: string | undefined | null;
       title?: string | undefined | null;
       prsenterName?: string | undefined | null;
@@ -117,7 +117,7 @@ export interface WebbinarDescriptionProps {
       presenterLink: (children: JSX.Element,id: string) => JSX.Element;
     };
 
-export const WebbinarDescription: FC<WebbinarDescriptionProps> = (props) => {
+export const WebinarDescription: FC<WebinarDescriptionProps> = (props) => {
   if (!props.image || !props.title || !props.prsenterImage || !props.prsenterName || !props.keywords || !props.description || !props.presenterId){
     return <div></div>;
   }
@@ -125,14 +125,14 @@ export const WebbinarDescription: FC<WebbinarDescriptionProps> = (props) => {
         <DescriptionDiv>      
           <FatherGrid item xs={12} container direction="row" justify="flex-start" alignItems="flex-start">
             <Grid item lg={4} xl={4} md={4} sm={4} xs={12} >
-                <WebbinarImage 
+                <WebinarImage 
                           image = {props.image}
                           title = {props.title}                    
                       />    
                 </Grid>
                 <Grid item lg={8} xl={8} md={8} sm={4} xs={12} >
-                  <WebbinarDetail>
-                    <WebbinarTitle variant="h6" gutterBottom>{props.title}</WebbinarTitle>                 
+                  <WebinarDetail>
+                    <WebinarTitle variant="h6" gutterBottom>{props.title}</WebinarTitle>                 
                     <FatherGrid item xs={12} container direction="row" justify="flex-start" alignItems="center">
                       <Grid item xs={2} lg={1} xl={1} md={1} sm={2}>
                       {props.presenterLink(<a><Avatar aria-label="recipe" src={props.prsenterImage} title={props.prsenterName} /></a>, props.presenterId)}                    
@@ -149,14 +149,14 @@ export const WebbinarDescription: FC<WebbinarDescriptionProps> = (props) => {
                         <Title>کلیدواژه ها</Title> 
                       </Grid>  
                       <Grid item lg={10} xl={10} md={10} sm={12} xs={12} >
-                          <WebbinarKeyWords keywords={props.keywords} />                    
+                          <WebinarKeyWords keywords={props.keywords} />                    
                       </Grid>  
                       </FatherGrid> 
-                  </WebbinarDetail>            
+                  </WebinarDetail>            
                 </Grid>
-                <WebbinarDesc>
+                <WebinarDesc>
                     <ShowMoreText text={props.description} />
-                  </WebbinarDesc>                  
+                  </WebinarDesc>                  
             </FatherGrid>  
             {/* <Oval>
                 <LikeSymbol />
@@ -165,5 +165,5 @@ export const WebbinarDescription: FC<WebbinarDescriptionProps> = (props) => {
   );
 };
 
-export default WebbinarDescription;
+export default WebinarDescription;
 

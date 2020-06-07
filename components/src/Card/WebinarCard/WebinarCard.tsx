@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Card, Grid, CardMedia, Avatar, Typography } from "@material-ui/core";
 import styled from "styled-components";
-import { WebbinarKeyWords } from "../../KeyWords/KeyWords";
+import { WebinarKeyWords } from "../../KeyWords/KeyWords";
 import moment from "jalali-moment";
 // import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 
@@ -34,7 +34,7 @@ const MyMedia = styled(CardMedia)`
   object-fit: contain;
 `;
 
-const KeyWords = styled(WebbinarKeyWords)`
+const KeyWords = styled(WebinarKeyWords)`
   font-family: "IRANSans";
   color: #323232;
 `;
@@ -45,7 +45,7 @@ const PresenterAvatar = styled(Avatar)`
   right: 22px;
 `;
 
-const WebbinarName = styled(Typography)`
+const WebinarName = styled(Typography)`
   font-family: "IRANSans";
   font-size: 18px;
   letter-spacing: -0.29px;
@@ -112,7 +112,7 @@ const remainingdays = (webinarDate) => {
   return { remainingDays, remaininghours };
 };
 
-export interface WebbinarCardProps {
+export interface WebinarCardProps {
   id: string;
   presenterId?: string;
   name: string;
@@ -125,7 +125,7 @@ export interface WebbinarCardProps {
   presenterLink?: (children: JSX.Element, id: string) => JSX.Element;
 }
 
-export const WebbinarCard: FC<WebbinarCardProps> = ({
+export const WebinarCard: FC<WebinarCardProps> = ({
   id,
   presenterId,
   name,
@@ -171,7 +171,7 @@ export const WebbinarCard: FC<WebbinarCardProps> = ({
     <WebCard>
       {link(<MyMedia image={image} title={name} />, id)}
       {avatar}
-      {link(<WebbinarName>{name}</WebbinarName>, id)}
+      {link(<WebinarName>{name}</WebinarName>, id)}
       <FatherGrid
         xs={12}
         container
@@ -245,4 +245,4 @@ export const WebbinarCard: FC<WebbinarCardProps> = ({
   );
 };
 
-export default WebbinarCard;
+export default WebinarCard;

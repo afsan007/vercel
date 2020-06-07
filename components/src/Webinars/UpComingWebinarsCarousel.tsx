@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import {
-  WebbinarCard,
-  WebbinarCardProps,
-} from "../Card/WebinnarCard/WebinnarCard";
+  WebinarCard,
+  WebinarCardProps,
+} from "../Card/WebinarCard/WebinarCard";
 import { TextTitle } from "../Titles/TextTitle";
 import { ItemCarousel } from "../Carousel/ItemCarousel";
 import { Container, Grid } from "@material-ui/core";
@@ -25,33 +25,33 @@ const FileSectionTitle = styled.div`
 `;
 
 export interface UpcomiongWebinarProps {
-  webbinars: WebbinarCardProps[];
+  Webinars: WebinarCardProps[];
   title: string;
   color?: string;
 }
 
-const renderWebbinars = ({ webbinars }) => {
-  return webbinars.map(function(webbinar, index) {
+const renderWebinars = ({ Webinars }) => {
+  return Webinars.map(function(Webinar, index) {
     return (
-      <WebbinarCard
+      <WebinarCard
         key={index}
-        id={webbinar.id}
-        name={webbinar.name}
-        image={webbinar.image}
-        presenter={webbinar.presenter}
-        presenterImage={webbinar.presenterImage}
-        keywords={webbinar.keywords}
-        date={webbinar.date}
-        link={webbinar.link}
-        presenterId={webbinar.presenterId}
-        presenterLink={webbinar.presenterLink}
+        id={Webinar.id}
+        name={Webinar.name}
+        image={Webinar.image}
+        presenter={Webinar.presenter}
+        presenterImage={Webinar.presenterImage}
+        keywords={Webinar.keywords}
+        date={Webinar.date}
+        link={Webinar.link}
+        presenterId={Webinar.presenterId}
+        presenterLink={Webinar.presenterLink}
       />
     );
   });
 };
 
 export const UpComingWebinarsCarousel: FC<UpcomiongWebinarProps> = ({
-  webbinars,
+  Webinars,
   title,
   color,
 }) => {
@@ -70,7 +70,7 @@ export const UpComingWebinarsCarousel: FC<UpcomiongWebinarProps> = ({
           alignItems="stretch"
           spacing={0}
         >
-          <ItemCarousel>{renderWebbinars({ webbinars })}</ItemCarousel>
+          <ItemCarousel>{renderWebinars({ Webinars })}</ItemCarousel>
         </Grid>
       </Container>
     </ContainerSection>

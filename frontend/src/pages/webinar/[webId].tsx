@@ -7,11 +7,11 @@ import {
   WebinarDescSection, 
   OtherFileCardProps, 
   OtherFileCards, 
-  WebbinarCardProps, 
+  WebinarCardProps, 
   WebinarCarousel,
   LoadingData } from "bp-components";
 import Page from "$components/layout/Page";
-import {getWebbinarIds, getWebbinarIdsVariables} from "$gqlQueryTypes/getWebbinarIds";
+import {getWebinarIds, getWebinarIdsVariables} from "$gqlQueryTypes/getWebinarIds";
 import { withApollo } from '$withApollo';
 import { GET_WEBINARS,  GET_WEBINARIDS } from '$queries';
 import { useQuery } from '@apollo/react-hooks';
@@ -72,8 +72,8 @@ const filterVideosAndFiles = (attachments, loading) => {
 
 const FetchWebinarsIds = () => {
   let { loading, error, data } = useQuery<
-    getWebbinarIds,
-    getWebbinarIdsVariables
+    getWebinarIds,
+    getWebinarIdsVariables
   >(GET_WEBINARIDS, {
     variables: {
       parentId: "5ea559b3222115000aa8c02c",
@@ -107,14 +107,14 @@ const FetchWebinarsIds = () => {
     );
     let webinars;
     if (loading === false) {
-      webinars = createWebbinarData(data?.getWebinars);
+      webinars = createWebinarData(data?.getWebinars);
     }
     return { loading, error, data: webinars };
   };
 
 
-  const createWebbinarData = (items) => {
-    let webinars: WebbinarCardProps[] = [];
+  const createWebinarData = (items) => {
+    let webinars: WebinarCardProps[] = [];
     if (items) {
       webinars = items.map(function (item) {
         return {
@@ -162,7 +162,7 @@ const Webinar: NextPage<FC> = () => {
                  />
                       <VideoCards videos = {attachments.videos} />
                       <OtherFileCards files = {attachments.files} />
-                      <WebinarCarousel webbinars={webinars.data} />        
+                      <WebinarCarousel Webinars={webinars.data} />        
             </>)}}
         </LoadingData>
       </Page>

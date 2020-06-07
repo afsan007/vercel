@@ -22,7 +22,7 @@ export interface keyWordsProps {
     keywords?: string[] | undefined;
 }
 
-export const WebbinarKeyWords: FC<keyWordsProps> = ({ keywords }) => {
+export const WebinarKeyWords: FC<keyWordsProps> = ({ keywords }) => {
     let webinarKeyWordss  = [<div></div>];
     if (keywords){
         webinarKeyWordss = keywords.map(function (keyword, index) {
@@ -37,4 +37,4 @@ export const WebbinarKeyWords: FC<keyWordsProps> = ({ keywords }) => {
     );          
 };
 
-export default WebbinarKeyWords;
+export default WebinarKeyWords;

@@ -1,17 +1,17 @@
 import React from "react";
-import { WebbinarCard } from "./WebinnarCard";
+import { WebinarCard } from "./WebinarCard";
 
 export default {
-  title: "ATOMS | Card / WebbinarCard",
-  component: WebbinarCard,
+  title: "ATOMS | Card / WebinarCard",
+  component: WebinarCard,
 };
 
 const renderWebinarLink = (children: JSX.Element) => <a href="#">{children}</a>;
 
-export const WebbinarCardStory = () => {
+export const WebinarCardStory = () => {
   const keywords = ["graphql", "coding", "برنامه نویسی", "OOP"];
   return (
-    <WebbinarCard
+    <WebinarCard
       id="4564654654651"
       name="وبینار برای گراف کیوال"
       image="gph.png"

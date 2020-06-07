@@ -4,48 +4,24 @@ import { withApollo } from "$withApollo";
 import {
   GET_WEBINARIDS,
   GET_WEBINARS,
-  GET_SERVICESIDS,
-  GET_SERVICES,
-  GET_PRESENTERIDS,
-  GET_PRESENTER,
 } from "$queries";
 import { useQuery } from "@apollo/react-hooks";
 import Page from "$components/layout/Page";
 import {
-  Banner,
-  Presnter,
-  SimplePresenterProps,
-  // Services,
-  ServiceCardProps,
-  WebbinarCardProps,
+  WebinarCardProps,
   UpComingWebinarsCarousel,
   LoadingData,
 } from "bp-components";
 import Link from "next/link";
 import {
-  getWebbinarIds,
-  getWebbinarIdsVariables,
-} from "$gqlQueryTypes/getWebbinarIds";
-import {
-  getServicesIds,
-  getServicesIdsVariables,
-} from "$gqlQueryTypes/getServicesIds";
-import { getServices, getServicesVariables } from "$gqlQueryTypes/getServices";
+  getWebinarIds,
+  getWebinarIdsVariables,
+} from "$gqlQueryTypes/getWebinarIds";
 import { getWebinars, getWebinarsVariables } from "$gqlQueryTypes/getWebinars";
-import {
-  getPresenterIds,
-  getPresenterIdsVariables,
-} from "$gqlQueryTypes/getPresenterIds";
-import {
-  getPresenters,
-  getPresentersVariables,
-} from "$gqlQueryTypes/getPresenters";
 import moment from "jalali-moment";
 import { Scheduler } from '../components/Scheduler/Scheduler'
-
-const renderAddItemLink = (children: JSX.Element) => (
-  <Link href="/">{children}</Link>
-);
+import { BannerComponent } from '../components/banner/Banner'
+import { PresenterComponet } from '../components/presenter/Presenter'
 
 const renderPresenterLink = (children: JSX.Element, id: string) => {
   return (
@@ -55,56 +31,10 @@ const renderPresenterLink = (children: JSX.Element, id: string) => {
   );
 };
 
-const FetchPresentersIds = () => {
-  let { loading, error, data } = useQuery<
-    getPresenterIds,
-    getPresenterIdsVariables
-  >(GET_PRESENTERIDS, {
-    variables: {
-      parentId: "5eb6b1ab923c300008351d9d",
-      offset: 0,
-      limit: 10,
-    },
-  });
 
-  const ids = data?.search.items.map((item) => {
-    return item._id;
-  });
-  return { loading, error, ids };
-};
 
-const FetchPresenters = (ids, idsIsLoading) => {
-  const { loading, error, data } = useQuery<
-    getPresenters,
-    getPresentersVariables
-  >(GET_PRESENTER, {
-    variables: {
-      PresenterIds: ids,
-    },
-    skip: idsIsLoading,
-  });
-  let presenters;
-  if (loading === false) {
-    presenters = createPresenterData(data?.getPresenters);
-  }
-  return { loading, error, data: presenters };
-};
 
-const createPresenterData = (items) => {
-  let presenters: SimplePresenterProps[] = [];
-  if (items) {
-    presenters = items.map(function (item) {
-      return {
-        id: item._id,
-        name: item.title,
-        education: item.affiliation,
-        image: item.profileImage,
-        link: renderPresenterLink,
-      };
-    });
-  }
-  return presenters;
-};
+
 
 const renderWebinarLink = (children: JSX.Element, id: string) => {
   return (
@@ -116,8 +46,8 @@ const renderWebinarLink = (children: JSX.Element, id: string) => {
 
 const FetchWebinarsIds = () => {
   let { loading, error, data } = useQuery<
-    getWebbinarIds,
-    getWebbinarIdsVariables
+    getWebinarIds,
+    getWebinarIdsVariables
   >(GET_WEBINARIDS, {
     variables: {
       parentId: "5ea559b3222115000aa8c02c",
@@ -132,39 +62,6 @@ const FetchWebinarsIds = () => {
   return { loading, error, ids };
 };
 
-const fetchGenralServicesIds = () => {
-  const { loading, error, data } = useQuery<
-    getServicesIds,
-    getServicesIdsVariables
-  >(GET_SERVICESIDS, {
-    variables: {
-      parentId: "5eb7d2a1dad91000081488ec",
-      offset: 0,
-      limit: 20,
-    },
-  });
-  const ids = data?.search.items.map((item) => {
-    return item._id;
-  });
-  return { loading, error, ids };
-};
-
-const fetchAllServices = (ids, servicesIdsloading) => {
-  const { loading, error, data } = useQuery<getServices, getServicesVariables>(
-    GET_SERVICES,
-    {
-      variables: {
-        Ids: ids,
-      },
-      skip: servicesIdsloading,
-    }
-  );
-  let services;
-  if (loading == false) {
-    services = createServicesAndBanerData(data?.getGenerals);
-  }
-  return { loading, error, data: services };
-};
 
 const FetchWebinars = (ids, idsIsLoading) => {
   const { loading, error, data } = useQuery<getWebinars, getWebinarsVariables>(
@@ -178,14 +75,14 @@ const FetchWebinars = (ids, idsIsLoading) => {
   );
   let webinars;
   if (loading == false) {
-    webinars = createWebbinarData(data?.getWebinars);
+    webinars = createWebinarData(data?.getWebinars);
   }
   return { loading, error, data: webinars };
 };
 
-const createWebbinarData = (items) => {
-  let newWebinars: WebbinarCardProps[] = [];
-  let oldWebinars: WebbinarCardProps[] = [];
+const createWebinarData = (items) => {
+  let newWebinars: WebinarCardProps[] = [];
+  let oldWebinars: WebinarCardProps[] = [];
 
   if (items) {
     items.forEach((item?) => {
@@ -221,96 +118,27 @@ const createWebbinarData = (items) => {
   }
 };
 
-const createServicesAndBanerData = (services) => {
-  let generalServices: ServiceCardProps[] = [];
-  let bannerContent = "";
-  let bannerButtom = "";
-  let bannerTitle = "";
-  let bannerImage = "";
-  let bgPictureServices = "";
-  if (services) {
-    services.map((service) => {
-      if (service.listBody) {
-        if (service.key === "ServicesComponent") {
-          service.listBody.map((item) => {
-            generalServices.push({
-              image: item.image,
-              name: item.title,
-              description: item.text,
-            });
-          });
-        } else if (service.key === "BannerComponent") {
-          bannerContent = service.listBody[0].text;
-          bannerImage = service.listBody[0].image;
-          bannerButtom = service.listBody[0].input;
-          bannerTitle = service.listBody[0].title;
-        }
-      } else if (service.key === "HowToBannerBgPic") {
-        bgPictureServices = service.body;
-      }
-    });
-  }
-
-  return {
-    generalServices,
-    bannerContent,
-    bannerImage,
-    bannerTitle,
-    bannerButtom,
-    bgPictureServices,
-  };
-};
 
 const Home: NextPage<FC> = () => {
-  const allServicesIds = fetchGenralServicesIds();
-  const allServices = fetchAllServices(
-    allServicesIds.ids,
-    allServicesIds.loading
-  );
   const webinarIds = FetchWebinarsIds();
   const webinars = FetchWebinars(webinarIds.ids, webinarIds.loading);
-  const presentersIds = FetchPresentersIds();
-  const presenters = FetchPresenters(presentersIds.ids, presentersIds.loading);
-  const loading =
-    allServices.loading ||
-    webinarIds.loading ||
-    webinars.loading ||
-    presentersIds.loading ||
-    presenters.loading;
-
+  const loading = webinarIds.loading || webinars.loading 
   return (
     <Page>
       <LoadingData loading={loading}>
         {() => {
           return (
             <>
-              <Banner
-                title={allServices.data?.bannerTitle}
-                description={allServices.data?.bannerContent}
-                linktitle={allServices.data?.bannerButtom}
-                image={allServices.data?.bannerImage}
-                linkWrapper={renderAddItemLink}
-                loading={allServices.loading}
-              />
+              <BannerComponent />
               <Scheduler />
-              {/* <Services
-              <Services
-                services={allServices.data?.generalServices}
-                loading={allServices.loading}
-                backgroundImg={allServices.data?.bgPictureServices}
-              /> */}
               <UpComingWebinarsCarousel
-                webbinars={webinars.data.newWebinars}
+                Webinars={webinars.data.newWebinars}
                 title="وبینارهای آینده"
                 color="#ededed"
               />
-
-              <Presnter
-                presnters={presenters.data}
-                loading={presenters.loading}
-              />
+              <PresenterComponet />
               <UpComingWebinarsCarousel
-                webbinars={webinars.data.oldWebinars}
+                Webinars={webinars.data.oldWebinars}
                 title="وبینارهای گذشته"
                 color="#ededed"
               />

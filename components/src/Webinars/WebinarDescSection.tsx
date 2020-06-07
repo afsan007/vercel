@@ -1,6 +1,6 @@
 import React ,{ FC } from "react";
 import Grid from '@material-ui/core/Grid';
-import { WebbinarDescription } from './WebbinarDescription'
+import { WebinarDescription } from './WebinarDescription'
 import { LoadingData } from "../Progress/LoadingData"
 import styled from "styled-components";
 
@@ -35,7 +35,7 @@ export const WebinarDescSection: FC<WebinarDescSectionProps> = (props) =>{
                   {() => {
                     return (
                       <>
-                        <WebbinarDescription
+                        <WebinarDescription
                                 title = {props.title}
                                 description = {props.description}
                                 image = {props.image}

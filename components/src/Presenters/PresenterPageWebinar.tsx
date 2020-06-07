@@ -2,9 +2,9 @@ import React, { FC } from "react";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import {
-  WebbinarCard,
-  WebbinarCardProps,
-} from "../Card/WebinnarCard/WebinnarCard";
+  WebinarCard,
+  WebinarCardProps,
+} from "../Card/WebinarCard/WebinarCard";
 import { TextTitle } from "../Titles/TextTitle";
 import styled from "styled-components";
 
@@ -19,22 +19,22 @@ const ContainerSection = styled(Grid)`
 
 
 export interface PresenterWebinarsProps {
-  webinars: WebbinarCardProps[];
+  webinars: WebinarCardProps[];
 }
 
-const renderWebbinars = ({ webinars }: PresenterWebinarsProps) => {
-  return webinars.map(function(webbinar, index) {
+const renderWebinars = ({ webinars }: PresenterWebinarsProps) => {
+  return webinars.map(function(Webinar, index) {
     return (
-        <WebbinarCard
-          id = { webbinar.id}
+        <WebinarCard
+          id = { Webinar.id}
           key = {index}
-          name = {webbinar.name}
-          image = {webbinar.image}
-          presenter = {webbinar.presenter}
-          presenterImage = {webbinar.presenterImage}
-          keywords = {webbinar.keywords}
-          date = {webbinar.date}
-          link = {webbinar.link}
+          name = {Webinar.name}
+          image = {Webinar.image}
+          presenter = {Webinar.presenter}
+          presenterImage = {Webinar.presenterImage}
+          keywords = {Webinar.keywords}
+          date = {Webinar.date}
+          link = {Webinar.link}
         />
     );
   });
@@ -54,7 +54,7 @@ export const PresenterPageWebinars: FC<PresenterWebinarsProps> = ({
           spacing={0}
         >
           <TextTitle title="وبینار ها" dir="right" />
-          {renderWebbinars({ webinars })}
+          {renderWebinars({ webinars })}
         </Mygrid>
       </Container>
     </ContainerSection>
