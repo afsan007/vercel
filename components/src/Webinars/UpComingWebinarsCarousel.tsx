@@ -42,6 +42,7 @@ const renderWebinars = ({ Webinars }) => {
         presenterImage={Webinar.presenterImage}
         keywords={Webinar.keywords}
         date={Webinar.date}
+        endDate = {Webinar.endDate}
         link={Webinar.link}
         presenterId={Webinar.presenterId}
         presenterLink={Webinar.presenterLink}

@@ -121,6 +121,7 @@ const FetchWebinarsIds = () => {
           id: item._id,
           image: item.coverImageAddress,
           date: item.presentDate,
+          endDate: item.presentEndDate,
           name: item.title,
           presenter: item.presenterId.title,
           presenterImage: item.presenterId.profileImage,
@@ -158,6 +159,8 @@ const Webinar: NextPage<FC> = () => {
                       description = { descData?.description } 
                       loading = { webinarMetaData.loading }
                       presenterLink = {renderPresenterLink}
+                      startDate = { descData?.presentDate }
+                      endDate = {  descData?.presentEndDate }
                       presenterId = {descData?.presenterId?._id}
                  />
                       <VideoCards videos = {attachments.videos} />

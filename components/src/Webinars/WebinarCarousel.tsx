@@ -41,6 +41,7 @@ const renderWebinars = ({ Webinars }) => {
                     link = {Webinar.link}
                     presenterId = {Webinar.presenterId}
                     presenterLink = {Webinar.presenterLink}
+                    endDate = {Webinar.endDate}
                      />
               );          
   });
