@@ -1,8 +1,9 @@
 import React, { FC } from "react";
-import { Card, Grid, CardMedia, Avatar, Typography } from "@material-ui/core";
+import { Card, Grid, CardMedia, Avatar, Typography, Chip} from "@material-ui/core";
 import styled from "styled-components";
 import { WebinarKeyWords } from "../../KeyWords/KeyWords";
 import moment from "jalali-moment";
+import TimerIcon from '@material-ui/icons/Timer';
 // import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 
 const WebCard = styled(Card)`
@@ -85,6 +86,12 @@ const NameText = styled.a`
     color: black;
   }
 `
+const TimeStatus = styled(Chip)`
+  font-family: "IRANSans";
+  padding: 5px;
+  position: relative;
+  bottom: 216px;;
+`
 
 // const Like = styled.a`
 //   font-family: "IRANSans";
@@ -121,6 +128,7 @@ export interface WebinarCardProps {
   presenterImage?: string;
   keywords: string[];
   date: string;
+  endDate: string;
   link: (children: JSX.Element, id: string) => JSX.Element;
   presenterLink?: (children: JSX.Element, id: string) => JSX.Element;
 }
@@ -134,9 +142,17 @@ export const WebinarCard: FC<WebinarCardProps> = ({
   presenterImage,
   keywords,
   date,
+  endDate,
   link,
   presenterLink,
 }) => {
+  const presenting = (Date.now() >= Date.parse(date) && Date.now() <= Date.parse(endDate))
+  const presentingChip = (presenting) ? <TimeStatus
+    size="small"
+    icon={<TimerIcon />}
+    label="در حال برگزاری "
+    color="secondary"
+  /> : <></>;
   const remainingDay = moment().isBefore(moment(date)) ? (
     <Grid item xs={6}>
       <Title>ساعت دیگر</Title>
@@ -168,17 +184,18 @@ export const WebinarCard: FC<WebinarCardProps> = ({
       <div></div>
     );
   return (
-    <WebCard>
+    <WebCard>      
       {link(<MyMedia image={image} title={name} />, id)}
       {avatar}
       {link(<WebinarName>{name}</WebinarName>, id)}
+      {presentingChip}
       <FatherGrid
         xs={12}
         container
         direction="row"
         justify="flex-start"
         alignItems="baseline"
-      >
+        >
         <Grid item xs={12}>
           {presenterName}
         </Grid>

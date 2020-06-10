@@ -5,7 +5,8 @@ import {
    Grid, 
    CardMedia, 
    Typography,
-   LinearProgress 
+   LinearProgress,
+   Chip
  } from '@material-ui/core';
 import { ViewState } from '@devexpress/dx-react-scheduler';
 import {
@@ -18,6 +19,7 @@ import {
   AppointmentTooltip} from '@devexpress/dx-react-scheduler-material-ui';
 import styled from "styled-components";
 import InfoIcon from '@material-ui/icons/Info';
+
 
 const MyPaper = styled(Paper)`
   * {
@@ -53,6 +55,37 @@ const GridBtn = styled(Grid)`
   margin-top:15px;
   text-align:center;
   `
+const PresenterAppointment = styled.div`
+  color: white;
+  margin-right:2px
+`
+const AppointmentCard = styled(Appointments.Appointment)`
+  ${props => {
+    if(props.now)
+    return (`
+    animation:blinkingText 1.2s infinite;
+    @keyframes blinkingText{
+      0%{     background-color: rgb(100, 181, 246);    }
+      49%{    background-color: rgb(100, 181, 246); }
+      60%{    background-color: red; }
+      99%{    background-color:red;  }
+      100%{   background-color: rgb(100, 181, 246);    }
+    }
+  `)
+  }};
+`
+const TimeStatus = styled(Chip)`
+  font-family: "IRANSans";
+  position: relative;
+  bottom: 125px;
+  right: 23px;
+  float:left;
+  -webkit-transform:rotate(-50deg);
+  -moz-transform: rotate(-50deg);
+  -ms-transform: rotate(-50deg);
+  -o-transform: rotate(-50deg);
+  transform: rotate(-50deg);
+`
  export interface ScdulerData {
    startDate: string; 
    endDate: string; 
@@ -109,7 +142,7 @@ export interface ScheduleCalendarProps{
        <DateNavigator navigationButtonComponent={nav} overlayComponent={overLayComponent} />
        <TodayButton messages={messages} />
       <WeekView intervalCount={1} startDayHour={6}  endDayHour={24} cellDuration={60} /> 
-       <Appointments  />
+       <Appointments  appointmentComponent = {Appointment} />
        <AppointmentTooltip
             headerComponent = {appointemntTooltipCompnent}
             contentComponent = {renderContentComponent}
@@ -125,16 +158,32 @@ const schedulerRoot = ({height,children}:any) =>{
       </Scheduler.Root>)
 }
 
+const Appointment = ({children, data, onClick, resources}: any) => {
+  const presenting = (Date.now() >= Date.parse(data.startDate) && Date.now() <= Date.parse(data.endDate))
+  return (
+  <AppointmentCard  data = {data} onClick = {onClick} draggable={false} resources = {resources} now = {presenting}>
+    {children}
+    <PresenterAppointment><span> توسط </span><span>{data.presenterName}</span></PresenterAppointment>
+  </AppointmentCard>);
+}
+
 const appointemntTooltipCompnent = ({appointmentData}:any) =>
 {
+  const presenting = (Date.now() >= Date.parse(appointmentData.startDate) && Date.now() <= Date.parse(appointmentData.endDate))
+  const presentingChip = (presenting) ? <TimeStatus
+    size="small"
+    label="در حال برگزاری "
+    color="secondary"
+  /> : <></>;
   return (
-  <Grid> 
+  <Grid>   
   {appointmentData.webinarLink(         
     <MyMedia
      image={appointmentData.image}
      title={appointmentData.title}
    /> 
    ,appointmentData.id)}
+   {presentingChip}
  </Grid>);
 }
 
@@ -154,12 +203,11 @@ const renderContentComponent = ({formatDate,appointmentData }:any) =>
          </Grid>
          <Grid xs={12} md={6}>
           {appointmentData.presenterLink(<Title>ارائه دهنده  <NameText> {appointmentData.presenterName} </NameText></Title>,appointmentData.presenterId)}
-          <GridBtn justify="flex-start" alignItems="flex-start">{appointmentData.webinarLink(<Button variant="contained" color="primary">مشاهده وبینار</Button>, appointmentData.id)}</GridBtn>
+          <GridBtn justify="flex-start" alignItems="flex-start">{appointmentData.webinarLink(<Button variant="contained" color="primary">مشاهده</Button>, appointmentData.id)}</GridBtn>
          </Grid>
          </Grid>
       </MyPaper>
      )
-
 }
 
 const loadingComponent = () =>

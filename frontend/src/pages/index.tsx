@@ -96,6 +96,7 @@ const createWebinarData = (items) => {
           presenterImage: item.presenterId.profileImage,
           presenterId: item.presenterId._id,
           keywords: item.keywords,
+          endDate: item.presentEndDate,
           presenterLink: renderPresenterLink,
           link: renderWebinarLink,
         });
@@ -109,6 +110,7 @@ const createWebinarData = (items) => {
           presenterImage: item.presenterId.profileImage,
           presenterId: item.presenterId._id,
           keywords: item.keywords,
+          endDate: item.presentEndDate,
           presenterLink: renderPresenterLink,
           link: renderWebinarLink,
         });

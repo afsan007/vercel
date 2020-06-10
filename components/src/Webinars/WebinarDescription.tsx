@@ -1,11 +1,9 @@
 import React ,{ FC } from "react";
-import Grid from '@material-ui/core/Grid';
-import CardMedia from '@material-ui/core/CardMedia';
-import Avatar from '@material-ui/core/Avatar';
+import {Grid , Chip, CardMedia, Avatar, Typography} from '@material-ui/core';
 // import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import Typography from '@material-ui/core/Typography';
 import { ShowMoreText } from "../Text/ShowMore"
 import { WebinarKeyWords } from  '../KeyWords/KeyWords'
+import TimerIcon from '@material-ui/icons/Timer';
 import styled from "styled-components";
 
 
@@ -76,6 +74,16 @@ const WebinarDesc = styled.div`
   color: #7a7a7a;
 `
 
+const TimeStatus = styled(Chip)`
+  font-family: "IRANSans";
+  padding: 5px;
+  float:left;
+  @media (max-width: 768px) {
+    text-align:center;
+    float:unset;
+   }
+`
+
 // const Oval = styled.div`
 //   position: relative;
 //   float:left;
@@ -114,16 +122,26 @@ export interface WebinarDescriptionProps {
       keywords?: string[] | undefined | null;
       description?: string | undefined | null;
       presenterId: string | undefined | null;
+      startDate?: string | undefined | null;
+      endDate?: string | undefined | null;
       presenterLink: (children: JSX.Element,id: string) => JSX.Element;
     };
 
 export const WebinarDescription: FC<WebinarDescriptionProps> = (props) => {
-  if (!props.image || !props.title || !props.prsenterImage || !props.prsenterName || !props.keywords || !props.description || !props.presenterId){
+  if (!props.image || !props.title || !props.prsenterImage || !props.prsenterName || !props.keywords || !props.description || !props.presenterId || !props.startDate || !props.endDate){
     return <div></div>;
   }
+  const presenting = (Date.now() >= Date.parse(props.startDate) && Date.now() <= Date.parse(props.endDate))
+  const presentingChip = (presenting) ? <TimeStatus
+    size="small"
+    icon={<TimerIcon />}
+    label="در حال برگزاری "
+    color="secondary"
+  /> : <></>;
   return (   
-        <DescriptionDiv>      
-          <FatherGrid item xs={12} container direction="row" justify="flex-start" alignItems="flex-start">
+        <DescriptionDiv>    
+          {presentingChip}   
+          <FatherGrid item xs={12} container direction="row" justify="flex-start" alignItems="flex-start">          
             <Grid item lg={4} xl={4} md={4} sm={4} xs={12} >
                 <WebinarImage 
                           image = {props.image}
@@ -132,7 +150,7 @@ export const WebinarDescription: FC<WebinarDescriptionProps> = (props) => {
                 </Grid>
                 <Grid item lg={8} xl={8} md={8} sm={4} xs={12} >
                   <WebinarDetail>
-                    <WebinarTitle variant="h6" gutterBottom>{props.title}</WebinarTitle>                 
+                    <WebinarTitle variant="h6" gutterBottom>{props.title}</WebinarTitle>                
                     <FatherGrid item xs={12} container direction="row" justify="flex-start" alignItems="center">
                       <Grid item xs={2} lg={1} xl={1} md={1} sm={2}>
                       {props.presenterLink(<a><Avatar aria-label="recipe" src={props.prsenterImage} title={props.prsenterName} /></a>, props.presenterId)}                    
