@@ -22,6 +22,7 @@ export const WebinarCardStory = () => {
       presenterId="445465456546"
       link={renderWebinarLink}
       presenterLink={renderWebinarLink}
+      endDate = "2020-12-12T19:52:49"
     />
   );
 };
