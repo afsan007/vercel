@@ -19,6 +19,7 @@ class MyDocument extends Document {
     <Html dir="ltr">
       <Head>
         <meta name="theme-color" content={muiTheme.palette.primary.main} />
+        {/* <script src="../src/assets/keycloak.js"></script> */}
       </Head>
       <body>
         <Main />

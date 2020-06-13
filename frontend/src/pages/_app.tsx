@@ -33,7 +33,7 @@ export default class MyApp extends App {
       <>
         <body dir="rtl">
           <Head>
-            <title>Boilerplate client</title>
+            <title>Educational Package</title>
           </Head>
 
           <StylesProvider injectFirst>
