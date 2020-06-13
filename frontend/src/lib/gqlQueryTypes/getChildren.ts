@@ -13,7 +13,7 @@ export interface getChildren_search_items_schema {
 }
 
 export interface getChildren_search_items {
-  __typename: "Collection" | "Webinar" | "Presenter" | "General" | "RootCollection" | "_BaseItem";
+  __typename: "Collection" | "Webinar" | "Presenter" | "General" | "RootCollection" | "Test" | "_BaseItem";
   _id: GraphQLObjectId;
   title: string;
   isCollection: boolean;

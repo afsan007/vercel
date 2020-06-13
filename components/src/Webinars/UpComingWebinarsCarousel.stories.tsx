@@ -22,6 +22,7 @@ export const Webinars = () => {
       link: renderWebinarLink,
       presenterId: "445465456546",
       presenterLink: renderWebinarLink,
+      endDate:"2019-12-24T19:52:49",
     },
     {
       id: "4564654654fdf651",
@@ -34,6 +35,7 @@ export const Webinars = () => {
       link: renderWebinarLink,
       presenterId: "445465456546",
       presenterLink: renderWebinarLink,
+      endDate:"2019-12-24T19:52:49",
     },
     {
       id: "4564654654fdffdfsd651",
@@ -46,6 +48,7 @@ export const Webinars = () => {
       link: renderWebinarLink,
       presenterId: "445465456546",
       presenterLink: renderWebinarLink,
+      endDate:"2019-12-24T19:52:49",
     },
   ];
   return (

@@ -22,6 +22,7 @@ export const Webinars = () => {
       presenterId: "445465456546",
       link: renderWebinarLink,
       presenterLink: renderWebinarLink,
+      endDate: "2020-12-12T19:52:49"
     },
     {
       id: "4564654654651",
@@ -34,6 +35,7 @@ export const Webinars = () => {
       presenterId: "445465456546",
       link: renderWebinarLink,
       presenterLink: renderWebinarLink,
+      endDate: "2020-12-12T19:52:49"
     },
     {
       id: "4564654654651",
@@ -46,6 +48,7 @@ export const Webinars = () => {
       presenterId: "445465456546",
       link: renderWebinarLink,
       presenterLink: renderWebinarLink,
+      endDate: "2020-12-12T19:52:49"
     },
     {
       id: "4564654654651",
@@ -58,6 +61,7 @@ export const Webinars = () => {
       presenterId: "445465456546",
       link: renderWebinarLink,
       presenterLink: renderWebinarLink,
+      endDate: "2020-12-12T19:52:49"
     },
     {
       id: "4564654654651",
@@ -70,6 +74,7 @@ export const Webinars = () => {
       presenterId: "445465456546",
       link: renderWebinarLink,
       presenterLink: renderWebinarLink,
+      endDate: "2020-12-12T19:52:49"
     },
     {
       id: "64564654654fdf651",
@@ -82,6 +87,7 @@ export const Webinars = () => {
       presenterId: "445465456546",
       link: renderWebinarLink,
       presenterLink: renderWebinarLink,
+      endDate: "2020-12-12T19:52:49"
     },
     {
       id: "4564654654fdffdfsd651",
@@ -94,6 +100,7 @@ export const Webinars = () => {
       presenterId: "445465456546",
       link: renderWebinarLink,
       presenterLink: renderWebinarLink,
+      endDate: "2020-12-12T19:52:49"
     },
     {
       id: "4564654654fdffdfsd651",
@@ -106,6 +113,7 @@ export const Webinars = () => {
       presenterId: "445465456546",
       link: renderWebinarLink,
       presenterLink: renderWebinarLink,
+      endDate: "2020-12-12T19:52:49"
     },
   ];
   return <WebinarCarousel Webinars={Webinars} />;

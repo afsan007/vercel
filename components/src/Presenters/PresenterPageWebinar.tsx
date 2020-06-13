@@ -35,6 +35,7 @@ const renderWebinars = ({ webinars }: PresenterWebinarsProps) => {
           keywords = {Webinar.keywords}
           date = {Webinar.date}
           link = {Webinar.link}
+          endDate = {Webinar.endDate}
         />
     );
   });

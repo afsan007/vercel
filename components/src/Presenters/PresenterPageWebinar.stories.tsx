@@ -20,6 +20,7 @@ export const PresenterWebbbinars = () => {
       keywords: ["OOP", "Grphql", "Programmig", "برنامه نویسی"],
       date: "1.10.1399",
       link: renderWebinarLink,
+      endDate: "1.10.1399"
     },
     {
       id: "6545645646565",
@@ -30,6 +31,7 @@ export const PresenterWebbbinars = () => {
       keywords: ["OOP", "Grphql", "Programmig", "برنامه نویسی"],
       date: "1.10.1399",
       link: renderWebinarLink,
+      endDate: "1.10.1399"
     },
     {
       id: "6545645646565",
@@ -40,6 +42,7 @@ export const PresenterWebbbinars = () => {
       keywords: ["OOP", "Grphql", "Programmig", "برنامه نویسی"],
       date: "1.10.1399",
       link: renderWebinarLink,
+      endDate: "1.10.1399"
     },
     {
       id: "6545645646565",
@@ -50,6 +53,7 @@ export const PresenterWebbbinars = () => {
       keywords: ["OOP", "Grphql", "Programmig", "برنامه نویسی"],
       date: "1.10.1399",
       link: renderWebinarLink,
+      endDate: "1.10.1399"
     },
     {
       id: "6545645646565",
@@ -60,6 +64,7 @@ export const PresenterWebbbinars = () => {
       keywords: ["OOP", "Grphql", "Programmig", "برنامه نویسی"],
       date: "1.10.1399",
       link: renderWebinarLink,
+      endDate: "1.10.1399"
     },
     {
       id: "6545645646565",
@@ -70,6 +75,7 @@ export const PresenterWebbbinars = () => {
       keywords: ["OOP", "Grphql", "Programmig", "برنامه نویسی"],
       date: "1.10.1399",
       link: renderWebinarLink,
+      endDate: "1.10.1399"
     },
   ];
   return <PresenterPageWebinars webinars={webinars} />;
