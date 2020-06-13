@@ -16,10 +16,10 @@ import muiTheme from "$components/theme/muiTheme";
 
 class MyDocument extends Document {
   render = () => (
-    <Html dir="ltr">
+    <Html dir="ltr">config.homePageconfig.homePage
       <Head>
         <meta name="theme-color" content={muiTheme.palette.primary.main} />
-        {/* <script src="../src/assets/keycloak.js"></script> */}
+        <script src="/keycloak.js"></script>
       </Head>
       <body>
         <Main />

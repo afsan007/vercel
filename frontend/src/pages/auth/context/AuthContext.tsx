@@ -321,7 +321,9 @@ export const AuthProvider = (props: any) => {
         registerURL,
       }}
     >
-      {showComponent ? props.children : <LoadingData loading = {true} > {() => {return (<><div></div></>)}}</LoadingData>}
+      <LoadingData loading = {!showComponent}> 
+         {() => {return (<>{props.children}</>)}}
+        </LoadingData>
     </AuthContext.Provider>
   );
 };

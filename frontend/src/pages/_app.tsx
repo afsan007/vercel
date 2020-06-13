@@ -17,6 +17,7 @@ import "@iin/typeface-iran-rounded";
 import "@iin/typeface-iran-sharp";
 import "@iin/typeface-iran-yekan";
 
+
 export default class MyApp extends App {
   componentDidMount() {
     // Remove the server-side injected CSS.

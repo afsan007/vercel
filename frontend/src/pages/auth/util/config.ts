@@ -1,15 +1,18 @@
 import IConfig from '../types/IConfig';
 
 const config: IConfig = {
-  defaultLoginRedirectUri: '/profile',
+  defaultLoginRedirectUri: '/index',
   defaultCookieMaxAge: 30 * 24 * 60 * 60,
-  homePage: '/how-it-works',
+  homePage: '/index',
   publicPages: [
-    'how-it-works',
-    'home/how-it-works',
-    'logout-callback',
-    'public',
-    'not-found',
+    'index',
+    'webinar',
+    '/webinar/',
+    '/webinar/[webId]',
+    '/presenter/[presenterId]',
+    'presenter',
+    '/presenter',
+    '/presenter/'
   ],
   keycloakConfig: {
     url: 'https://accounts.iknito.com/auth',
