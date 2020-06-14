@@ -17,11 +17,12 @@ const Img = styled.img`
 
 export interface HeaderProps {
   src: string;
+  userpart: JSX.Element[] | JSX.Element;
   HomeLink: (children: JSX.Element) => JSX.Element;
   children: JSX.Element[] | JSX.Element;
 }
 
-export const Header: FC<HeaderProps> = ({ src, children, HomeLink }) => {
+export const Header: FC<HeaderProps> = ({ src, children, HomeLink, userpart }) => {
   return (
     <AppBar>
       <ToolBar>
@@ -38,7 +39,9 @@ export const Header: FC<HeaderProps> = ({ src, children, HomeLink }) => {
           <Grid item lg={6} xs={4} sm={3} md={3} xl={6}>
             {children}
           </Grid>
-          <Grid item lg={3} xs={4} sm={4} md={5} xl={3}></Grid>
+          <Grid item lg={3} xs={4} sm={4} md={5} xl={3}>
+             {userpart}
+          </Grid>
         </Grid>
       </ToolBar>
     </AppBar>

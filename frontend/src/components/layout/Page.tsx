@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import Head from "next/head";
 import { bool, node, InferProps } from "prop-types";
-import { Header } from "bp-components";
+import { Header, RoundedButton } from "bp-components";
 import { Search } from "../Search/Search";
 import Link from "next/link";
 import { AuthProvider } from '../../pages/auth/context/AuthContext';
@@ -12,6 +12,21 @@ import store from 'store';
 const Name = styled.span`
  color: black;
 `
+const userpart =  <AuthProvider>
+<AuthContext.Consumer>                
+  {(props) => {   
+    let login = <RoundedButton label="ورود" onClick = {props.login} variant = "outlined" />;
+    if (store.get('user'))
+      login = <RoundedButton label="خروج" onClick = {props.logout} variant = "contained" />;          
+    return (
+      <div>
+      <Name>{props.getUser()?.email}</Name>
+      {login}
+      </div>
+    )
+    }}
+</AuthContext.Consumer>
+</AuthProvider>;
 
 const HomeLink = (childeren:JSX.Element | JSX.Element[]) => <Link href="/"><a>{childeren}</a></Link>
 
@@ -26,21 +41,8 @@ const Page: FC<PropTypes> = (props) => (
         <link rel="stylsheet" href="./global.css" />
       </Head>
     )}
-    <Header src="/Logo.png" HomeLink = {HomeLink}>
+    <Header src="/Logo.png" HomeLink = {HomeLink} userpart = {userpart} >
       <Search />
-      <AuthProvider>
-                <AuthContext.Consumer>                
-                  {(props) => {   
-                    console.log('user', store.get('user'))
-                    console.log(props);                             
-                    return (
-                      <a onClick={() => props.logout()}>
-                      <Name>{props.getUser()?.email}</Name>
-                      </a>
-                    )
-                    }}
-     </AuthContext.Consumer>
-        </AuthProvider>
     </Header>
    
     {props.children}

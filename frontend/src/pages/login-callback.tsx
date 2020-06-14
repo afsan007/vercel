@@ -16,6 +16,11 @@ const LoginCallback = () => {
     if (showComponent && getToken()) {
       process();
     }
+    else 
+    {
+      lastPage = config.defaultLoginRedirectUri;
+      Router.push(lastPage);
+    }
   }, [showComponent, getToken()]);
 
   const process = () => {

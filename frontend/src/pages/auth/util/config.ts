@@ -4,20 +4,13 @@ const config: IConfig = {
   defaultLoginRedirectUri: '/index',
   defaultCookieMaxAge: 30 * 24 * 60 * 60,
   homePage: '/index',
-  publicPages: [
-    'index',
-    'webinar',
-    '/webinar/',
-    '/webinar/[webId]',
-    '/presenter/[presenterId]',
-    'presenter',
-    '/presenter',
-    '/presenter/'
+  privatePages: [
+    'profile',
   ],
   keycloakConfig: {
-    url: 'https://accounts.iknito.com/auth',
+    url: 'https://nightly.accounts.pubnito.com/auth/',
     realm: 'Accounts',
-    clientId: 'iknito-receommender',
+    clientId: 'edupack',
   },
 };
 

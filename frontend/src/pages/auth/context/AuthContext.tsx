@@ -142,7 +142,7 @@ export const AuthProvider = (props: any) => {
       // home page is public
       return false;
     }
-    return !config.publicPages.includes(currentPath);
+    return config.privatePages.includes(currentPath);
   };
 
   const _checkToken = () => {
@@ -259,6 +259,7 @@ export const AuthProvider = (props: any) => {
 
   const login = () => {
     const appUrl = window.location.origin;
+    console.log("ssomanagfer:", ssoManager);
     ssoManager.login({
       redirectUri: `${appUrl}/login-callback?lastPage=${btoa(
         window.location.pathname + window.location.search,

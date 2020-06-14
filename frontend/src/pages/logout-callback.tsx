@@ -11,7 +11,6 @@ const LogoutCallback = () => {
   }, []);
 
   const process = () => {
-    console.log(config.homePage)
     Router.push(config.homePage);
   };
 
