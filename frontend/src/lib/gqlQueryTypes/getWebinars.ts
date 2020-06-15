@@ -43,6 +43,7 @@ export interface getWebinars_getWebinars {
   presentEndDate: GraphQLDateTime | null;
   description: string | null;
   coverImageAddress: string | null;
+  webinarLink: string | null;
   Attachment: getWebinars_getWebinars_Attachment[] | null;
   presenterId: getWebinars_getWebinars_presenterId | null;
 }
