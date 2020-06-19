@@ -39,7 +39,7 @@ export const Header: FC<HeaderProps> = ({ src, children, HomeLink, userpart }) =
           <Grid item lg={6} xs={4} sm={3} md={3} xl={6}>
             {children}
           </Grid>
-          <Grid item lg={3} xs={4} sm={4} md={5} xl={3}>
+          <Grid item lg={3} xs={12} sm={4} md={5} xl={3}>
              {userpart}
           </Grid>
         </Grid>
