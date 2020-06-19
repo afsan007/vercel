@@ -207,7 +207,6 @@ export const WebinarCard: FC<WebinarCardProps> = ({
       {link(<WebinarName>{name}</WebinarName>, id)}
       {presentingChip}
       <FatherGrid
-        xs={12}
         container
         direction="row"
         justify="flex-start"
@@ -218,7 +217,6 @@ export const WebinarCard: FC<WebinarCardProps> = ({
         </Grid>
       </FatherGrid>
       <FatherGrid
-        xs={12}
         container
         direction="row"
         justify="center"
@@ -232,7 +230,6 @@ export const WebinarCard: FC<WebinarCardProps> = ({
         </Grid>
       </FatherGrid>
       <FatherGrid
-        xs={12}
         container
         direction="row"
         justify="center"
@@ -258,7 +255,6 @@ export const WebinarCard: FC<WebinarCardProps> = ({
                         </Grid>                                          */}
       </FatherGrid>
       <FatherGrid
-        xs={12}
         container
         direction="row"
         justify="center"

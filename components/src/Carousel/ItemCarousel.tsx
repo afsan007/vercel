@@ -53,7 +53,7 @@ const createResponsiveChildren = (children, itemNumberInEachStep) => {
         }        
 
         component.push( 
-            <ContainerSection container > 
+            <ContainerSection container key={childIndex}> 
                 <Container maxWidth="md">
                   <Mygrid
                   container

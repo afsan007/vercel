@@ -16,6 +16,7 @@ import "@iin/typeface-iran-kharazmi";
 import "@iin/typeface-iran-rounded";
 import "@iin/typeface-iran-sharp";
 import "@iin/typeface-iran-yekan";
+import { AuthProvider } from './auth/context/AuthContext';
 
 export default class MyApp extends App {
   componentDidMount() {
@@ -26,6 +27,8 @@ export default class MyApp extends App {
     }
   }
 
+  
+
   render() {
     const { Component, pageProps } = this.props;
 
@@ -33,14 +36,16 @@ export default class MyApp extends App {
       <>
         <body dir="rtl">
           <Head>
-            <title>Boilerplate client</title>
+            <title>Educational Package</title>
           </Head>
 
           <StylesProvider injectFirst>
             <MuiThemeProvider theme={muiTheme}>
               <SCThemeProvider theme={muiTheme}>
                 <CssBaseline />
-                <Component {...pageProps} />
+                <AuthProvider>                
+                  <Component {...pageProps} />
+                </AuthProvider>
               </SCThemeProvider>
             </MuiThemeProvider>
           </StylesProvider>
