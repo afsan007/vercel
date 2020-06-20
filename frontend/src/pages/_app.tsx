@@ -16,7 +16,7 @@ import "@iin/typeface-iran-kharazmi";
 import "@iin/typeface-iran-rounded";
 import "@iin/typeface-iran-sharp";
 import "@iin/typeface-iran-yekan";
-import { AuthProvider } from './auth/context/AuthContext';
+import { AuthProvider } from '../components/auth/context/AuthContext';
 
 export default class MyApp extends App {
   componentDidMount() {

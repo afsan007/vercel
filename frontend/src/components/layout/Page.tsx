@@ -4,8 +4,8 @@ import { bool, node, InferProps } from "prop-types";
 import { Header, RoundedButton } from "bp-components";
 import { Search } from "../Search/Search";
 import Link from "next/link";
-import { AuthProvider } from '../../pages/auth/context/AuthContext';
-import AuthContext from '../../pages/auth/context/AuthContext';
+import { AuthProvider } from '../auth/context/AuthContext';
+import AuthContext from '../auth/context/AuthContext';
 import styled from "styled-components";
 import store from 'store';
 

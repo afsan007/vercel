@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Router from 'next/router';
 import { LoadingData } from "bp-components";
 // import { includeDefaultNamespaces } from '../../i18n';
-import config from './auth/util/config';
+import config from '../components/auth/util/config';
 
 const LogoutCallback = () => {
   const [loading] = useState(true);

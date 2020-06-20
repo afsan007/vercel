@@ -2,8 +2,8 @@ import { useEffect, useState, useContext } from 'react';
 import Router, { useRouter } from 'next/router';
 import { LoadingData } from "bp-components";
 // import { includeDefaultNamespaces } from '../../i18n';
-import config from './auth/util/config';
-import AuthContext from './auth/context/AuthContext';
+import config from '../components/auth/util/config';
+import AuthContext from '../components/auth/context/AuthContext';
 
 const LoginCallback = () => {
   const { showComponent, getToken } = useContext(AuthContext);
