@@ -143,6 +143,7 @@ const createWebinarData = (items) => {
 
 const Webinar: NextPage<FC> = () => {
   const router = useRouter();
+  console.log(window.location.hostname);
   const webinarMetaData = fetchWebinar(router.query.webId);
   const descData = webinarMetaData.data?.getWebinars[0];
   const attachments = filterVideosAndFiles(
