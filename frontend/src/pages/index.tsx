@@ -31,11 +31,6 @@ const renderPresenterLink = (children: JSX.Element, id: string) => {
   );
 };
 
-
-
-
-
-
 const renderWebinarLink = (children: JSX.Element, id: string) => {
   return (
     <Link href="/webinar/[webId]" as={`/webinar/${id}`}>

@@ -14,7 +14,7 @@ const Root = styled(Grid)`
   height: 434px;
   background-size: cover;
   background-position: right bottom, left top;
-  margin-top: 100px;
+  margin-top: 80px;
 `;
 
 export interface BannerProps {
