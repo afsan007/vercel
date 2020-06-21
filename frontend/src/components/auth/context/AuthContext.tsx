@@ -1,10 +1,10 @@
-import React, { createContext, useEffect, useState } from 'react';
-import Router from 'next/router';
-import {LoadingData} from "bp-components";
-import IUser from '../types/IUser';
-import { parseToken, synchUser } from '../util/util';
-import config from '../util/config';
-import store from 'store';
+import React, { createContext, useEffect, useState } from "react";
+import Router from "next/router";
+import { LoadingData } from "bp-components";
+import IUser from "../types/IUser";
+import { parseToken, synchUser } from "../util/util";
+import config from "../util/config";
+import store from "store";
 
 const defaultContext = {
   showComponent: false,
@@ -22,8 +22,12 @@ export default AuthContext;
 
 export const AuthProvider = (props: any) => {
   const [ssoManager, setSsoManager] = useState<any>(undefined);
-  const [showComponent, setShowComponent] = useState(defaultContext.showComponent);
-  const [isAuthenticate, setIsAuthenticate] = useState(defaultContext.isAuthenticate);
+  const [showComponent, setShowComponent] = useState(
+    defaultContext.showComponent
+  );
+  const [isAuthenticate, setIsAuthenticate] = useState(
+    defaultContext.isAuthenticate
+  );
 
   useEffect(() => {
     setShowComponent(false);
@@ -31,21 +35,21 @@ export const AuthProvider = (props: any) => {
   }, []);
 
   const fake_login =
-    process.env.NODE_ENV !== 'production' && process.env.LOGIN_MODE === 'fake';
+    process.env.NODE_ENV !== "production" && process.env.LOGIN_MODE === "fake";
   const initialUseEffect = async () => {
     try {
       let checkInterval: any = undefined;
-      const keycloak = window['Keycloak'](config.keycloakConfig);
+      const keycloak = window["Keycloak"](config.keycloakConfig);
       if (fake_login) {
         const token =
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIzZGQ1YWQzZS0zNTk4LTQ2ZTAtYjg4MS1kMzM3NWMxNTdmMGIiLCJleHAiOjE1ODc4OTgwOTYsIm5iZiI6MCwiaWF0IjoxNTg3ODg1NTIyLCJpc3MiOiJodHRwczovL2FjY291bnRzLnB1Ym5pdG8uY29tL2F1dGgvcmVhbG1zL0FjY291bnRzIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCIsInR5cCI6IkJlYXJlciIsImF6cCI6Imlrbml0by1yZWNlb21tZW5kZXIiLCJub25jZSI6IjQ1MWJmMDQxLWFlODItNDkyNy04NTUwLTU1MzY5M2NkMTc5ZiIsImF1dGhfdGltZSI6MTU4NzgwMTAyNSwic2Vzc2lvbl9zdGF0ZSI6ImI1MWI0MGQxLWVjMDEtNGM5YS05MGQ3LWUwNTM0MmQzZGFjYSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovLzEyNy4wLjAuMTo0MDAwIiwiaHR0cDovL25pZ2h0bHkucnMuaWtuaXRvLmNvbSIsImh0dHA6Ly9uaWdodGx5LnJzLmlrbml0by5jb206NTQwMCIsImh0dHA6Ly9uaWdodGx5LnJzLmlrbml0by5jb206NTQ1NyIsImh0dHA6Ly9sb2NhbGhvc3Q6NDAwMCJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJNYXJrIFZpbmNlbnQiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJtYXJrLnZpbmNlbnQiLCJsb2NhbGUiOiJlbiIsImdpdmVuX25hbWUiOiJNYXJrIiwiZmFtaWx5X25hbWUiOiJWaW5jZW50IiwiZW1haWwiOiJtYXJrLnZpbmNlbnRAZXhhbXBsZS5jb20ifQ.oUFVXZQi27Pbg5LcgPHg1TIN_9iDk5hmH1FEnUcLPYc';
-        await _processAfterLogin(token, '');
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIzZGQ1YWQzZS0zNTk4LTQ2ZTAtYjg4MS1kMzM3NWMxNTdmMGIiLCJleHAiOjE1ODc4OTgwOTYsIm5iZiI6MCwiaWF0IjoxNTg3ODg1NTIyLCJpc3MiOiJodHRwczovL2FjY291bnRzLnB1Ym5pdG8uY29tL2F1dGgvcmVhbG1zL0FjY291bnRzIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCIsInR5cCI6IkJlYXJlciIsImF6cCI6Imlrbml0by1yZWNlb21tZW5kZXIiLCJub25jZSI6IjQ1MWJmMDQxLWFlODItNDkyNy04NTUwLTU1MzY5M2NkMTc5ZiIsImF1dGhfdGltZSI6MTU4NzgwMTAyNSwic2Vzc2lvbl9zdGF0ZSI6ImI1MWI0MGQxLWVjMDEtNGM5YS05MGQ3LWUwNTM0MmQzZGFjYSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovLzEyNy4wLjAuMTo0MDAwIiwiaHR0cDovL25pZ2h0bHkucnMuaWtuaXRvLmNvbSIsImh0dHA6Ly9uaWdodGx5LnJzLmlrbml0by5jb206NTQwMCIsImh0dHA6Ly9uaWdodGx5LnJzLmlrbml0by5jb206NTQ1NyIsImh0dHA6Ly9sb2NhbGhvc3Q6NDAwMCJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJNYXJrIFZpbmNlbnQiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJtYXJrLnZpbmNlbnQiLCJsb2NhbGUiOiJlbiIsImdpdmVuX25hbWUiOiJNYXJrIiwiZmFtaWx5X25hbWUiOiJWaW5jZW50IiwiZW1haWwiOiJtYXJrLnZpbmNlbnRAZXhhbXBsZS5jb20ifQ.oUFVXZQi27Pbg5LcgPHg1TIN_9iDk5hmH1FEnUcLPYc";
+        await _processAfterLogin(token, "");
         await synchUser(token);
         setIsAuthenticate(true);
       } else {
         keycloak
           .init({
-            onLoad: 'check-sso',
+            onLoad: "check-sso",
             token: getToken(),
             refreshToken: getRefreshToken(),
             checkLoginIframe: true, // detect if a Single-Sign Out has occurred
@@ -64,18 +68,18 @@ export const AuthProvider = (props: any) => {
             setIsAuthenticate(authenticated);
           })
           .error((e) => {
-            console.log('failed to initialize keyclock', e);
+            console.log("failed to initialize keyclock", e);
           });
       }
 
       keycloak.onAuthSuccess = () => {
-        console.log('onAuthSuccess');
+        console.log("onAuthSuccess");
       };
       keycloak.onTokenExpired = () => {
-        console.log('onTokenExpired');
+        console.log("onTokenExpired");
       };
       keycloak.onAuthRefreshSuccess = () => {
-        console.log('onAuthRefreshSuccess');
+        console.log("onAuthRefreshSuccess");
       };
       keycloak.onAuthRefreshError = () => {
         cleanProcess();
@@ -99,7 +103,7 @@ export const AuthProvider = (props: any) => {
       };
     } catch (e) {
       //TODO handle this error
-      console.error('Error in SSO provider!', e);
+      console.error("Error in SSO provider!", e);
     }
   };
 
@@ -117,9 +121,9 @@ export const AuthProvider = (props: any) => {
           } else {
             const appUrl = window.location.origin;
             ssoManager.login({
-              prompt: 'login',
+              prompt: "login",
               redirectUri: `${appUrl}/login-callback?lastPage=${btoa(
-                window.location.pathname + window.location.search,
+                window.location.pathname + window.location.search
               )}`,
             });
           }
@@ -133,12 +137,12 @@ export const AuthProvider = (props: any) => {
         setShowComponent(true);
       }
     },
-    process.browser ? [location.pathname, ssoManager] : [],
+    process.browser ? [location.pathname, ssoManager] : []
   );
 
   const _checkPrivatePage = () => {
     const currentPath = window.location.pathname.substr(1);
-    if (currentPath === '') {
+    if (currentPath === "") {
       // home page is public
       return false;
     }
@@ -146,7 +150,7 @@ export const AuthProvider = (props: any) => {
   };
 
   const _checkToken = () => {
-    let t: any = store.get('token');
+    let t: any = store.get("token");
     if (t === undefined || !t) {
       if (ssoManager && ssoManager.idToken) {
         t = ssoManager.idToken;
@@ -197,22 +201,25 @@ export const AuthProvider = (props: any) => {
         .updateToken(60)
         .success((refreshed: boolean) => {
           if (refreshed) {
-            console.log('token updated!');
+            console.log("token updated!");
             _updateTokenInStorage(keycloak.token);
             _updateRefreshTokenInStorage(keycloak.refreshToken);
           } else {
-            console.log('Token is still valid');
+            console.log("Token is still valid");
           }
         })
         .error((e) => {
-          console.log('Failed to refresh the token, or the session has expired', e);
+          console.log(
+            "Failed to refresh the token, or the session has expired",
+            e
+          );
         });
     }, period * 1000);
     return interval;
   };
 
   const getUser = (): IUser | undefined => {
-    const token = store.get('token');
+    const token = store.get("token");
     if (token == undefined) {
       return undefined;
     }
@@ -229,28 +236,28 @@ export const AuthProvider = (props: any) => {
   };
 
   const _updateTokenInStorage = (token: string) => {
-    store.set('token', token);
+    store.set("token", token);
   };
 
   const _updateRefreshTokenInStorage = (refreshToken: string) => {
-    store.set('refresh_token', refreshToken);
+    store.set("refresh_token", refreshToken);
   };
 
   const _updateUserInStorage = (user: any) => {
-    store.set('user', user);
+    store.set("user", user);
   };
 
   const _clearUserInStorage = () => {
-    store.remove('user');
+    store.remove("user");
   };
 
   const _clearReadRequestInStorage = () => {
-    store.remove('readRequest');
+    store.remove("readRequest");
   };
 
   const _clearTokenInStorage = () => {
-    store.remove('token');
-    store.remove('refresh_token');
+    store.remove("token");
+    store.remove("refresh_token");
   };
 
   const _cleanStates = () => {
@@ -262,7 +269,7 @@ export const AuthProvider = (props: any) => {
     console.log("ssomanagfer:", ssoManager);
     ssoManager.login({
       redirectUri: `${appUrl}/login-callback?lastPage=${btoa(
-        window.location.pathname + window.location.search,
+        window.location.pathname + window.location.search
       )}`,
     });
   };
@@ -272,7 +279,7 @@ export const AuthProvider = (props: any) => {
     _clearTokenInStorage();
     _clearReadRequestInStorage();
     const appUrl = window.location.origin;
-    ssoManager.logout({ redirectUri: appUrl + '/logout-callback' });
+    ssoManager.logout({ redirectUri: appUrl + "/logout-callback" });
   };
 
   const editProfileURL = () => {
@@ -283,13 +290,13 @@ export const AuthProvider = (props: any) => {
     const appUrl = window.location.origin;
     return ssoManager.createRegisterUrl({
       redirectUri: `${appUrl}/login-callback?lastPage=${btoa(
-        window.location.pathname + config.defaultLoginRedirectUri,
+        window.location.pathname + config.defaultLoginRedirectUri
       )}`,
     });
   };
 
   const getToken = () => {
-    let token: any = store.get('token');
+    let token: any = store.get("token");
     if (token === undefined || !token) {
       if (ssoManager && ssoManager.idToken) {
         token = ssoManager.idToken;
@@ -301,11 +308,11 @@ export const AuthProvider = (props: any) => {
   };
 
   const getRefreshToken = () => {
-    const refresh_token: any = store.get('refresh_token');
+    const refresh_token: any = store.get("refresh_token");
     if (refresh_token) {
       return refresh_token;
     } else {
-      return '';
+      return "";
     }
   };
 
@@ -322,9 +329,11 @@ export const AuthProvider = (props: any) => {
         registerURL,
       }}
     >
-      <LoadingData loading = {!showComponent}> 
-         {() => {return (<>{props.children}</>)}}
-        </LoadingData>
+      <LoadingData loading={!showComponent}>
+        {() => {
+          return <>{props.children}</>;
+        }}
+      </LoadingData>
     </AuthContext.Provider>
   );
 };
