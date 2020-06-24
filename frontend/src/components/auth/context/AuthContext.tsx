@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import Router from "next/router";
 import { LoadingData } from "bp-components";
 import IUser from "../types/IUser";
-import { parseToken, synchUser } from "../util/util";
+import { parseToken } from "../util/util";
 import config from "../util/config";
 import store from "store";
 
@@ -44,7 +44,7 @@ export const AuthProvider = (props: any) => {
         const token =
           "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIzZGQ1YWQzZS0zNTk4LTQ2ZTAtYjg4MS1kMzM3NWMxNTdmMGIiLCJleHAiOjE1ODc4OTgwOTYsIm5iZiI6MCwiaWF0IjoxNTg3ODg1NTIyLCJpc3MiOiJodHRwczovL2FjY291bnRzLnB1Ym5pdG8uY29tL2F1dGgvcmVhbG1zL0FjY291bnRzIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCIsInR5cCI6IkJlYXJlciIsImF6cCI6Imlrbml0by1yZWNlb21tZW5kZXIiLCJub25jZSI6IjQ1MWJmMDQxLWFlODItNDkyNy04NTUwLTU1MzY5M2NkMTc5ZiIsImF1dGhfdGltZSI6MTU4NzgwMTAyNSwic2Vzc2lvbl9zdGF0ZSI6ImI1MWI0MGQxLWVjMDEtNGM5YS05MGQ3LWUwNTM0MmQzZGFjYSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cDovLzEyNy4wLjAuMTo0MDAwIiwiaHR0cDovL25pZ2h0bHkucnMuaWtuaXRvLmNvbSIsImh0dHA6Ly9uaWdodGx5LnJzLmlrbml0by5jb206NTQwMCIsImh0dHA6Ly9uaWdodGx5LnJzLmlrbml0by5jb206NTQ1NyIsImh0dHA6Ly9sb2NhbGhvc3Q6NDAwMCJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJNYXJrIFZpbmNlbnQiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJtYXJrLnZpbmNlbnQiLCJsb2NhbGUiOiJlbiIsImdpdmVuX25hbWUiOiJNYXJrIiwiZmFtaWx5X25hbWUiOiJWaW5jZW50IiwiZW1haWwiOiJtYXJrLnZpbmNlbnRAZXhhbXBsZS5jb20ifQ.oUFVXZQi27Pbg5LcgPHg1TIN_9iDk5hmH1FEnUcLPYc";
         await _processAfterLogin(token, "");
-        await synchUser(token);
+        // await synchUser(token);
         setIsAuthenticate(true);
       } else {
         keycloak
@@ -182,7 +182,7 @@ export const AuthProvider = (props: any) => {
     _updateRefreshTokenInStorage(refreshToken);
     _updateUserInStorage(user);
     //synch user!
-    await synchUser(token);
+    // await synchUser(token);
   };
 
   const _setCheckTokenInterval = (keycloak) => {
